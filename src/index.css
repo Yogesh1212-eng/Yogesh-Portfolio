@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: #08080b;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+}
+
+body.dark-mode {
+  background: #08080b;
+}
+
+body:not(.dark-mode) {
+  background: #f5f4f1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: #ff3d81;
+  color: white;
+}

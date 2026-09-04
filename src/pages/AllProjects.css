@@ -1,0 +1,583 @@
+/* =========================================================
+   ALL PROJECTS PAGE
+   ========================================================= */
+
+.all-projects-page {
+  width: 100%;
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 25%,
+      rgba(255, 30, 30, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 70%,
+      rgba(255, 30, 30, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    #050505;
+
+  background-size:
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.all-projects-glow {
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+.all-projects-glow-one {
+  left: -300px;
+  top: 25%;
+
+  background: rgba(255, 20, 20, 0.10);
+}
+
+.all-projects-glow-two {
+  right: -300px;
+  bottom: 10%;
+
+  background: rgba(255, 20, 20, 0.07);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.all-projects-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 80px 30px 100px;
+
+  box-sizing: border-box;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.all-projects-heading {
+  text-align: center;
+
+  margin-bottom: 55px;
+}
+
+.all-projects-small-title {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #777;
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+}
+
+.all-projects-heading h1 {
+  margin: 0;
+
+  font-size: clamp(45px, 5vw, 68px);
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+}
+
+.all-projects-heading h1 span {
+  color: #ff2424;
+}
+
+.all-projects-heading p {
+  max-width: 650px;
+
+  margin: 15px auto 0;
+
+  color: #858585;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.all-projects-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.all-project-card {
+  position: relative;
+
+  min-height: 390px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    ),
+    #0a0a0a;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.all-project-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(255, 36, 36, 0.45);
+
+  box-shadow:
+    0 20px 60px rgba(255, 20, 20, 0.08);
+}
+
+
+/* =========================================================
+   LAST PROJECT
+   ========================================================= */
+
+.all-project-card-last {
+  grid-column: 1 / -1;
+
+  width: calc(50% - 11px);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.all-project-top {
+  height: 48px;
+
+  padding: 0 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-sizing: border-box;
+}
+
+.all-project-number {
+  color: #ff2424;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.all-project-label {
+  color: #666;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   VISUAL
+   ========================================================= */
+
+.all-project-visual {
+  position: relative;
+
+  height: 125px;
+
+  overflow: hidden;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 30, 30, 0.12),
+      transparent 38%
+    );
+}
+
+
+/* =========================================================
+   GRID BACKGROUND
+   ========================================================= */
+
+.all-project-grid-bg {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+}
+
+
+/* =========================================================
+   VISUAL CONTENT
+   ========================================================= */
+
+.all-project-visual-content {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 22px;
+}
+
+.all-project-visual-number {
+  color: rgba(255, 30, 30, 0.15);
+
+  font-size: 70px;
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+.all-project-visual-label {
+  color: #ff2424;
+
+  font-size: 9px;
+
+  letter-spacing: 5px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.all-project-content {
+  padding: 18px 22px 20px;
+}
+
+.all-project-content h2 {
+  margin: 0 0 8px;
+
+  color: #f5f5f5;
+
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 750;
+}
+
+.all-project-content p {
+  margin: 0 0 13px;
+
+  color: #858585;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.all-project-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 14px;
+}
+
+.all-project-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #d5d5d5;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+.all-project-tag span {
+  color: #ff2424;
+}
+
+
+/* =========================================================
+   GITHUB
+   ========================================================= */
+
+.all-project-github {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.all-project-github span {
+  color: #ff2424;
+
+  font-size: 14px;
+}
+
+.all-project-github:hover {
+  border-color: #ff2424;
+
+  color: #ff2424;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+.app.light .all-projects-page {
+  background:
+    radial-gradient(
+      circle at 8% 25%,
+      rgba(255, 30, 30, 0.07),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px
+    ),
+    #fff;
+
+  background-size:
+    auto,
+    48px 48px,
+    48px 48px;
+
+  color: #111;
+}
+
+.app.light .all-project-card {
+  background: rgba(0, 0, 0, 0.015);
+
+  border-color: rgba(0, 0, 0, 0.10);
+}
+
+.app.light .all-project-content h2 {
+  color: #111;
+}
+
+.app.light .all-project-tag {
+  color: #222;
+
+  border-color: rgba(0, 0, 0, 0.10);
+
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.app.light .all-project-github {
+  color: #111;
+
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .all-projects-container {
+    padding: 60px 20px 80px;
+  }
+
+  .all-projects-grid {
+    gap: 18px;
+  }
+
+  .all-project-card {
+    min-height: 390px;
+  }
+
+  .all-project-card-last {
+    width: calc(50% - 9px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .all-projects-container {
+    padding: 45px 16px 60px;
+  }
+
+  .all-projects-heading {
+    margin-bottom: 35px;
+  }
+
+  .all-projects-heading h1 {
+    font-size: 38px;
+
+    letter-spacing: -2px;
+  }
+
+  .all-projects-heading p {
+    font-size: 12px;
+  }
+
+  .all-projects-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .all-project-card {
+    width: 100%;
+
+    min-height: 380px;
+  }
+
+  .all-project-card-last {
+    grid-column: auto;
+
+    width: 100%;
+
+    margin: 0;
+  }
+
+  .all-project-content h2 {
+    font-size: 20px;
+  }
+
+  .all-project-content p {
+    font-size: 12px;
+  }
+}

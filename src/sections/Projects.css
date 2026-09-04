@@ -1,0 +1,728 @@
+/* =========================================================
+   PROJECTS SECTION
+   ========================================================= */
+
+.projects-section {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 45%,
+      rgba(255, 30, 30, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 65%,
+      rgba(255, 30, 30, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    #050505;
+
+  background-size:
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.projects-container {
+  width: 100%;
+  height: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 45px 30px 35px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.projects-heading {
+  text-align: center;
+
+  flex-shrink: 0;
+
+  margin-bottom: 25px;
+}
+
+.projects-small-title {
+  display: block;
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  color: #777;
+
+  margin-bottom: 8px;
+}
+
+.projects-heading h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 64px);
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+}
+
+.projects-heading h2 span {
+  color: #ff2424;
+}
+
+.projects-heading p {
+  margin: 12px auto 0;
+
+  max-width: 650px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #858585;
+}
+
+
+/* =========================================================
+   PROJECT STAGE
+   IMPORTANT:
+   ONLY THIS AREA CHANGES
+   PAGE HEIGHT DOES NOT CHANGE
+   ========================================================= */
+
+.projects-stage {
+  position: relative;
+
+  width: 820px;
+  max-width: 100%;
+
+  height: 420px;
+
+  margin: auto;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ALL CARDS SAME POSITION
+   ========================================================= */
+.project-card {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+  height: 420px;
+
+  transform:
+    translate(-50%, -50%)
+    translateY(110%);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.015)
+    ),
+    #0a0a0a;
+
+  /* SLOWER + SMOOTHER */
+  transition:
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.75s ease;
+
+  z-index: 1;
+}
+
+/* =========================================================
+   ACTIVE PROJECT
+   ======================================================== */
+
+.project-card.project-active {
+  transform:
+    translate(-50%, -50%)
+    translateY(0);
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   OLD PROJECTS
+   STAY BEHIND
+   ========================================================= */
+/* =========================================================
+   STACKED PREVIOUS PROJECTS
+   Previous cards stay slightly visible behind
+   ========================================================= */
+
+.project-card.project-behind {
+  opacity: 1;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Project 01 stays slightly above Project 02 */
+.project-card.project-behind:nth-child(1) {
+  transform:
+    translate(-50%, -50%)
+    translateY(-90px);
+}
+
+/* Project 02 stays slightly above Project 03 */
+.project-card.project-behind:nth-child(2) {
+  transform:
+    translate(-50%, -50%)
+    translateY(-45px);
+}
+
+/* Project 03 when it becomes old */
+.project-card.project-behind:nth-child(3) {
+  transform:
+    translate(-50%, -50%)
+    translateY(-45px);
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.project-top {
+  height: 48px;
+
+  padding: 0 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-sizing: border-box;
+}
+
+.project-number {
+  color: #ff2424;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.project-status {
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  color: #777;
+}
+
+
+/* =========================================================
+   VISUAL
+   ========================================================= */
+
+.project-visual {
+  position: relative;
+
+  height: 140px;
+
+  overflow: hidden;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 30, 30, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    auto,
+    40px 40px,
+    40px 40px;
+}
+
+
+/* =========================================================
+   VISUAL GRID
+   ========================================================= */
+
+.visual-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+}
+
+
+/* =========================================================
+   VISUAL CONTENT
+   ========================================================= */
+
+.visual-content {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+}
+
+.visual-number {
+  font-size: 74px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  color: rgba(255, 30, 30, 0.15);
+}
+
+.visual-label {
+  color: #ff2424;
+
+  font-size: 10px;
+
+  letter-spacing: 5px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.project-content {
+  padding: 20px 24px;
+}
+
+.project-content h3 {
+  margin: 0 0 8px;
+
+  font-size: 25px;
+
+  line-height: 1.15;
+
+  font-weight: 750;
+
+  color: #f5f5f5;
+}
+
+.project-content p {
+  margin: 0 0 12px;
+
+  max-width: 100%;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+
+  color: #8b8b8b;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.project-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 12px;
+}
+
+.project-tag {
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #d7d7d7;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.project-actions {
+  display: flex;
+}
+
+.project-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.project-button:hover {
+  border-color: #ff2424;
+
+  color: #ff2424;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   VIEW MORE
+   ========================================================= */
+
+.view-more-projects {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    translateY(110px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease;
+}
+
+.view-more-projects.view-more-active {
+  transform:
+    translate(-50%, -50%)
+    translateY(250px);
+
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   VIEW MORE BUTTON
+   ========================================================= */
+
+.view-more-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 20px;
+
+  border: 1px solid #ff2424;
+
+  border-radius: 9px;
+
+  background: rgba(255, 36, 36, 0.04);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition: 0.3s ease;
+}
+
+.view-more-button:hover {
+  background: #ff2424;
+
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+.view-more-arrow {
+  font-size: 16px;
+
+  color: #ff2424;
+}
+
+.view-more-button:hover .view-more-arrow {
+  color: #fff;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+.app.light .projects-section {
+  background:
+    radial-gradient(
+      circle at 8% 45%,
+      rgba(255, 30, 30, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px
+    ),
+    #fff;
+
+  color: #111;
+}
+
+.app.light .project-card {
+  background: rgba(0, 0, 0, 0.015);
+
+  border-color: rgba(0, 0, 0, 0.10);
+}
+
+.app.light .project-content h3 {
+  color: #111;
+}
+
+.app.light .project-tag {
+  color: #222;
+
+  border-color: rgba(0, 0, 0, 0.10);
+
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.app.light .project-button {
+  color: #111;
+
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .projects-container {
+    padding: 35px 20px;
+  }
+
+  .projects-heading h2 {
+    font-size: 44px;
+  }
+
+  .projects-stage {
+    width: 720px;
+
+    height: 400px;
+  }
+
+  .project-card {
+    height: 400px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .projects-container {
+    padding: 30px 16px;
+  }
+
+  .projects-heading {
+    margin-bottom: 15px;
+  }
+
+  .projects-heading h2 {
+    font-size: 36px;
+
+    letter-spacing: -2px;
+  }
+
+  .projects-heading p {
+    font-size: 12px;
+  }
+
+  .projects-stage {
+    width: 100%;
+
+    height: 390px;
+  }
+
+  .project-card {
+    height: 390px;
+
+    border-radius: 15px;
+  }
+
+  .project-top {
+    padding: 0 17px;
+
+    height: 44px;
+  }
+
+  .project-visual {
+    height: 125px;
+  }
+
+  .visual-number {
+    font-size: 60px;
+  }
+
+  .project-content {
+    padding: 17px;
+  }
+
+  .project-content h3 {
+    font-size: 20px;
+  }
+
+  .project-content p {
+    font-size: 12px;
+  }
+
+  .project-tag {
+    font-size: 10px;
+
+    padding: 5px 7px;
+  }
+
+  .view-more-projects.view-more-active {
+    transform:
+      translate(-50%, -50%)
+      translateY(220px);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .project-card,
+  .view-more-projects {
+    transition: none;
+  }
+}
