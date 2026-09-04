@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import "./CodingProfile.css";
 
 const USERNAME = "Yogesh_Maurya12";
@@ -20,15 +20,15 @@ function CodingProfile() {
   // FETCH LEETCODE DATA
   // =========================================
 
-  const fetchLeetCodeData = async () => {
+  const fetchLeetCodeData = useCallback(async (signal) => {
     try {
       setLoading(true);
       setError(false);
 
       const [profileResponse, calendarResponse] =
         await Promise.all([
-          fetch(PROFILE_API),
-          fetch(CALENDAR_API),
+          fetch(PROFILE_API, { signal }),
+          fetch(CALENDAR_API, { signal }),
         ]);
 
       if (!profileResponse.ok) {
@@ -43,40 +43,39 @@ function CodingProfile() {
           ? await calendarResponse.json()
           : null;
 
-      console.log("LEETCODE PROFILE:", profileData);
-      console.log("LEETCODE CALENDAR:", calendarData);
-
       setProfile(profileData);
       setCalendar(calendarData);
 
     } catch (err) {
-      console.error(
-        "LeetCode API Error:",
-        err
-      );
+      if (err?.name === "AbortError") return;
+
+      console.error("LeetCode API Error:", err);
 
       setError(true);
 
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // =========================================
   // INITIAL FETCH
   // =========================================
 
   useEffect(() => {
-    fetchLeetCodeData();
+    const controller = new AbortController();
 
-    // Auto refresh every 30 minutes
-    const interval = setInterval(
-      fetchLeetCodeData,
-      30 * 60 * 1000
-    );
+    fetchLeetCodeData(controller.signal);
 
-    return () => clearInterval(interval);
-  }, []);
+    const interval = setInterval(() => {
+      fetchLeetCodeData(controller.signal);
+    }, 30 * 60 * 1000);
+
+    return () => {
+      controller.abort();
+      clearInterval(interval);
+    };
+  }, [fetchLeetCodeData]);
 
   // =========================================
   // PROBLEMS SOLVED
@@ -299,7 +298,7 @@ function CodingProfile() {
   return (
     <section
       className="coding-profile"
-      id="coding-profile"
+      id="coding"
     >
 
       {/* Background */}
@@ -405,9 +404,7 @@ function CodingProfile() {
               </span>
 
               <button
-                onClick={
-                  fetchLeetCodeData
-                }
+                onClick={() => fetchLeetCodeData()}
               >
                 Try Again
               </button>

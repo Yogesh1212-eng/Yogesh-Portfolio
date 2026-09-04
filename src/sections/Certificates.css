@@ -1,0 +1,1538 @@
+/* =========================================
+   CERTIFICATIONS — PREMIUM ARCHIVE
+========================================= */
+
+.cert-section {
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #050505;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  isolation: isolate;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.cert-grid {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+}
+
+
+.cert-noise {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -2;
+
+  opacity: 0.035;
+
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+
+.cert-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: 0.12;
+
+  background: #e50914;
+
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+
+.cert-glow-left {
+  left: -280px;
+  top: 15%;
+}
+
+
+.cert-glow-right {
+  right: -280px;
+  bottom: 5%;
+}
+
+
+/* =========================================
+   BACKGROUND WORD
+========================================= */
+
+.cert-bg-word {
+  position: absolute;
+
+  left: -2%;
+  bottom: -5%;
+
+  font-size:
+    clamp(130px, 19vw, 320px);
+
+  line-height: 0.8;
+
+  font-weight: 900;
+
+  letter-spacing: -0.08em;
+
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px rgba(255, 255, 255, 0.055);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.cert-container {
+  width: min(1250px, 90%);
+
+  margin: auto;
+
+  padding: 80px 0;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.cert-meta {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-bottom: 22px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.13);
+
+  font-size: 10px;
+
+  letter-spacing: 0.22em;
+
+  color:
+    rgba(255, 255, 255, 0.45);
+}
+
+
+.cert-meta-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.cert-red-dot {
+  width: 7px;
+  height: 7px;
+
+  background: #e50914;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 15px
+    rgba(229, 9, 20, 0.7);
+}
+
+
+.cert-meta-right {
+  font-size: 9px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.cert-main {
+  display: grid;
+
+  grid-template-columns:
+    1fr 0.9fr;
+
+  gap: 70px;
+
+  align-items: center;
+
+  padding:
+    65px 0 45px;
+}
+
+
+/* =========================================
+   LEFT
+========================================= */
+
+.cert-left {
+  max-width: 620px;
+}
+
+
+.cert-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #e50914;
+
+  font-size: 11px;
+
+  letter-spacing: 0.22em;
+
+  font-weight: 700;
+
+  margin-bottom: 25px;
+}
+
+
+.cert-title {
+  margin: 0;
+
+  font-size:
+    clamp(54px, 6vw, 88px);
+
+  line-height: 0.94;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 800;
+}
+
+
+.cert-title span {
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px #ffffff;
+}
+
+
+.cert-description {
+  max-width: 500px;
+
+  margin:
+    30px 0 38px;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color:
+    rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================
+   STAT
+========================================= */
+
+.cert-stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+}
+
+
+.cert-stat-number {
+  font-size: 70px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -0.07em;
+}
+
+
+.cert-stat-number span {
+  color: #e50914;
+}
+
+
+.cert-stat-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding-left: 20px;
+
+  border-left:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 9px;
+
+  letter-spacing: 0.18em;
+}
+
+
+.cert-stat-info strong {
+  color: #ffffff;
+}
+
+
+.cert-stat-info span {
+  color:
+    rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================
+   RIGHT
+========================================= */
+
+.cert-right {
+  position: relative;
+}
+
+
+.cert-archive-label {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   CARD FAN
+========================================= */
+
+.cert-stack {
+  position: relative;
+
+  width: 100%;
+
+  height: 430px;
+
+  perspective: 1600px;
+
+  transform-style: preserve-3d;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  /*
+    Common pivot area
+  */
+  overflow: visible;
+}
+
+
+/* =========================================
+   CARD BASE
+========================================= */
+
+.cert-paper {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 390px;
+  height: 270px;
+
+  margin-left: -195px;
+  margin-top: -135px;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      #151515,
+      #090909
+    );
+
+  transform-origin:
+    50% 50%;
+
+  transform-style: preserve-3d;
+
+  /*
+    Smooth fan movement.
+    No zoom animation.
+  */
+  transition:
+    transform 1.6s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+
+    opacity 1.2s ease,
+
+    filter 1.2s ease,
+
+    box-shadow 1.3s ease;
+
+  will-change: transform;
+
+  user-select: none;
+
+  outline: none;
+}
+
+
+/* =========================================
+   CENTER CARD
+   STRAIGHT + UP
+========================================= */
+
+.cert-paper.fan-center {
+
+  z-index: 30;
+
+  opacity: 1;
+
+  transform:
+    translate3d(
+      0,
+      -55px,
+      70px
+    )
+    rotate(0deg);
+
+  filter:
+    brightness(1);
+
+  box-shadow:
+    0 40px 85px
+      rgba(0, 0, 0, 0.75),
+
+    0 0 0 1px
+      rgba(255, 255, 255, 0.03),
+
+    0 0 50px
+      rgba(229, 9, 20, 0.08);
+}
+
+
+/* =========================================
+   LEFT CARD
+   LEFT + DOWN + NEGATIVE ROTATION
+========================================= */
+
+.cert-paper.fan-left {
+
+  z-index: 20;
+
+  opacity: 0.82;
+
+  transform:
+    translate3d(
+      -125px,
+      62px,
+      28px
+    )
+    rotate(-18deg);
+
+  filter:
+    brightness(0.72);
+
+  box-shadow:
+    0 35px 75px
+      rgba(0, 0, 0, 0.68);
+}
+
+
+/* =========================================
+   RIGHT CARD
+   RIGHT + DOWN + POSITIVE ROTATION
+========================================= */
+
+.cert-paper.fan-right {
+
+  z-index: 20;
+
+  opacity: 0.78;
+
+  transform:
+    translate3d(
+      125px,
+      62px,
+      18px
+    )
+    rotate(18deg);
+
+  filter:
+    brightness(0.66);
+
+  box-shadow:
+    0 35px 75px
+      rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================
+   IMPORTANT
+   NO HOVER ZOOM
+========================================= */
+
+.cert-paper.fan-center:hover,
+.cert-paper.fan-left:hover,
+.cert-paper.fan-right:hover {
+
+  /*
+    Same exact transform.
+    Mouse movement only changes which
+    card gets the center position through React.
+  */
+  scale: 1;
+}
+
+
+/* =========================================
+   RED STRIP
+========================================= */
+
+.paper-red-strip {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 5px;
+
+  background: #e50914;
+
+  box-shadow:
+    0 0 25px
+      rgba(229, 9, 20, 0.4);
+}
+
+
+/* =========================================
+   PAPER CONTENT
+========================================= */
+
+.paper-content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  padding:
+    23px 25px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+
+/* =========================================
+   TOP
+========================================= */
+
+.paper-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.paper-main {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.paper-logo {
+  width: 70px;
+  height: 70px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(229, 9, 20, 0.6);
+
+  color: #e50914;
+
+  background:
+    rgba(229, 9, 20, 0.025);
+
+  box-shadow:
+    inset 0 0 25px
+      rgba(229, 9, 20, 0.06),
+
+    0 0 30px
+      rgba(229, 9, 20, 0.08);
+}
+
+
+/* =========================================
+   SMALL LABEL
+========================================= */
+
+.paper-small {
+  font-size: 7px;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.paper-main h3 {
+  margin:
+    8px 0 0;
+
+  font-size: 34px;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 800;
+}
+
+
+.paper-main h3 span {
+  color: #e50914;
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.paper-bottom {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 7px;
+
+  letter-spacing: 0.13em;
+
+  color:
+    rgba(255, 255, 255, 0.3);
+}
+
+
+.paper-bottom b {
+  color: #e50914;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   CARD ARROW
+   VISUAL ONLY
+========================================= */
+
+.card-arrow {
+  position: absolute;
+
+  right: 16px;
+  top: 16px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(229, 9, 20, 0.45);
+
+  color: #e50914;
+
+  background:
+    rgba(0, 0, 0, 0.3);
+
+  opacity: 0.55;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease;
+}
+
+
+.cert-paper:hover .card-arrow {
+  opacity: 1;
+}
+
+
+/* =========================================
+   STACK NUMBER
+========================================= */
+
+.cert-stack-number {
+  position: absolute;
+
+  right: -10px;
+
+  bottom: -8px;
+
+  z-index: 50;
+
+  pointer-events: none;
+
+  font-size: 85px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: -0.08em;
+
+  color: #e50914;
+
+  text-shadow:
+    0 0 35px
+      rgba(229, 9, 20, 0.22);
+}
+
+
+.cert-stack-number span {
+  font-size: 40px;
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.deck-instruction {
+  margin-top: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(255, 255, 255, 0.3);
+}
+
+
+.deck-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #e50914;
+
+  box-shadow:
+    0 0 10px
+      rgba(229, 9, 20, 0.6);
+
+  animation:
+    deckPulse
+    1.8s ease-in-out infinite;
+}
+
+
+@keyframes deckPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.cert-bottom {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: -80px;
+
+  position: relative;
+
+  z-index: 100;
+}
+
+
+.cert-archive-btn {
+  position: relative;
+
+  width: 145px;
+  height: 145px;
+
+  min-width: 145px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  text-decoration: none;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.28);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 1px
+      rgba(255, 255, 255, 0.18),
+
+    inset 0 -10px 25px
+      rgba(0, 0, 0, 0.25),
+
+    0 0 35px
+      rgba(229, 9, 20, 0.08);
+
+  transition:
+    transform 0.45s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+
+    border-color 0.35s ease,
+
+    box-shadow 0.35s ease;
+
+  overflow: hidden;
+
+  animation:
+    certificateFloat
+    3.5s ease-in-out infinite;
+}
+
+
+.cert-archive-btn::before {
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+  height: 180px;
+
+  top: -30px;
+  left: -100px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  transform: rotate(25deg);
+
+  transition:
+    left 0.7s ease;
+
+  pointer-events: none;
+}
+
+
+.cert-archive-btn:hover::before {
+  left: 180px;
+}
+
+
+.cert-archive-btn::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 7px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(229, 9, 20, 0.35);
+
+  box-shadow:
+    0 0 20px
+      rgba(229, 9, 20, 0.08);
+
+  pointer-events: none;
+}
+
+
+.cert-archive-btn:hover {
+
+  transform: scale(1.08);
+
+  border-color:
+    rgba(229, 9, 20, 0.7);
+
+  color: #ffffff;
+
+  box-shadow:
+    inset 0 1px 1px
+      rgba(255, 255, 255, 0.2),
+
+    0 0 45px
+      rgba(229, 9, 20, 0.22),
+
+    0 15px 45px
+      rgba(0, 0, 0, 0.35);
+
+  animation: none;
+}
+
+
+.cert-btn-text {
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  text-align: center;
+}
+
+
+.cert-btn-text span {
+  font-size: 8px;
+
+  letter-spacing: 0.22em;
+
+  color:
+    rgba(255, 255, 255, 0.45);
+}
+
+
+.cert-btn-text strong {
+  max-width: 85px;
+
+  font-size: 13px;
+
+  line-height: 1.15;
+
+  letter-spacing: 0.05em;
+
+  font-weight: 700;
+}
+
+
+.cert-btn-icon {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 13px;
+  top: 13px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(229, 9, 20, 0.5);
+
+  color: #e50914;
+
+  background:
+    rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.cert-archive-btn:hover .cert-btn-icon {
+  transform: rotate(45deg);
+
+  background:
+    rgba(229, 9, 20, 0.12);
+}
+
+
+.cert-click {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(255, 255, 255, 0.3);
+
+  animation:
+    certClickPulse
+    2s ease-in-out infinite;
+}
+
+
+.cert-click svg {
+  color: #e50914;
+}
+
+
+@keyframes certClickPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform:
+      translateX(0);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translateX(4px);
+  }
+}
+
+
+@keyframes certificateFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-7px);
+  }
+}
+
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+.app.light .cert-section {
+  background: #f5f5f5;
+
+  color: #080808;
+}
+
+
+.app.light .cert-grid {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.045) 1px,
+      transparent 1px
+    );
+}
+
+
+.app.light .cert-bg-word {
+  -webkit-text-stroke:
+    1px rgba(0, 0, 0, 0.07);
+}
+
+
+.app.light .cert-meta {
+  border-color:
+    rgba(0, 0, 0, 0.14);
+}
+
+
+.app.light .cert-meta,
+.app.light .cert-meta-right,
+.app.light .cert-description,
+.app.light .cert-stat-info span,
+.app.light .deck-instruction,
+.app.light .cert-click,
+.app.light .cert-archive-label {
+  color:
+    rgba(0, 0, 0, 0.45);
+}
+
+
+.app.light .cert-title span {
+  -webkit-text-stroke:
+    1px #080808;
+}
+
+
+.app.light .cert-stat-info {
+  border-color:
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.app.light .cert-paper {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #eeeeee
+    );
+
+  border-color:
+    rgba(0, 0, 0, 0.14);
+
+  color: #080808;
+}
+
+
+.app.light .cert-paper.fan-right {
+  filter: brightness(0.95);
+}
+
+
+.app.light .cert-paper.fan-left {
+  filter: brightness(0.92);
+}
+
+
+.app.light .paper-top,
+.app.light .paper-small,
+.app.light .paper-bottom {
+  color:
+    rgba(0, 0, 0, 0.4);
+}
+
+
+.app.light .card-arrow {
+  background:
+    rgba(255, 255, 255, 0.5);
+}
+
+
+.app.light .cert-archive-btn {
+  color: #080808;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.45)
+    );
+
+  border-color:
+    rgba(0, 0, 0, 0.18);
+
+  box-shadow:
+    inset 0 1px 1px
+      rgba(255, 255, 255, 0.9),
+
+    0 0 35px
+      rgba(229, 9, 20, 0.08);
+}
+
+
+.app.light .cert-btn-text span {
+  color:
+    rgba(0, 0, 0, 0.4);
+}
+
+
+.app.light .cert-btn-icon {
+  background:
+    rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .cert-main {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .cert-left {
+    max-width: 700px;
+  }
+
+  .cert-right {
+    max-width: 600px;
+
+    width: 100%;
+
+    margin: auto;
+  }
+
+  .cert-bottom {
+    margin-top: -30px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .cert-container {
+    width: 88%;
+
+    padding: 65px 0;
+  }
+
+  .cert-meta-right {
+    display: none;
+  }
+
+  .cert-main {
+    padding-top: 45px;
+
+    gap: 40px;
+  }
+
+  .cert-title {
+    font-size:
+      clamp(48px, 14vw, 70px);
+  }
+
+  .cert-description {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .cert-stat-number {
+    font-size: 58px;
+  }
+
+
+  .cert-stack {
+    height: 350px;
+
+    transform:
+      scale(0.82);
+
+    transform-origin:
+      center center;
+
+    margin:
+      -20px -45px;
+
+    width:
+      calc(100% + 90px);
+  }
+
+
+  .cert-paper {
+    width: 350px;
+
+    height: 245px;
+
+    margin-left: -175px;
+
+    margin-top: -122.5px;
+  }
+
+
+  /* CENTER */
+
+  .cert-paper.fan-center {
+
+    transform:
+      translate3d(
+        0,
+        -42px,
+        50px
+      )
+      rotate(0deg);
+  }
+
+
+  /* LEFT */
+
+  .cert-paper.fan-left {
+
+    transform:
+      translate3d(
+        -82px,
+        55px,
+        25px
+      )
+      rotate(-15deg);
+  }
+
+
+  /* RIGHT */
+
+  .cert-paper.fan-right {
+
+    transform:
+      translate3d(
+        82px,
+        55px,
+        10px
+      )
+      rotate(15deg);
+  }
+
+
+  .cert-stack-number {
+    right: -5px;
+
+    font-size: 65px;
+  }
+
+
+  .paper-main h3 {
+    font-size: 28px;
+  }
+
+
+  .paper-logo {
+    width: 58px;
+
+    height: 58px;
+  }
+
+
+  .deck-instruction {
+    font-size: 7px;
+  }
+
+
+  .cert-bottom {
+    margin-top: -10px;
+  }
+
+
+  .cert-archive-btn {
+    width: 135px;
+
+    height: 135px;
+
+    min-width: 135px;
+  }
+
+
+  .cert-btn-text strong {
+    font-size: 12px;
+
+    max-width: 80px;
+  }
+
+
+  .cert-btn-icon {
+    width: 27px;
+
+    height: 27px;
+
+    right: 11px;
+
+    top: 11px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .cert-stack {
+    transform:
+      scale(0.72);
+
+    margin:
+      -35px -65px;
+
+    width:
+      calc(100% + 130px);
+  }
+
+  .cert-stat {
+    gap: 14px;
+  }
+
+  .cert-stat-number {
+    font-size: 52px;
+  }
+}

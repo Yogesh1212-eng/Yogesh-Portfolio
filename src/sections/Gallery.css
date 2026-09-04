@@ -1,0 +1,967 @@
+
+/* =========================================================
+   GALLERY SECTION
+========================================================= */
+.gallery-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  position: relative;
+  overflow: hidden;
+
+  isolation: isolate;
+
+
+  background:
+    radial-gradient(
+      circle at 8% 50%,
+      rgba(255, 30, 30, 0.1),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 50%,
+      rgba(255, 30, 30, 0.07),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    #050505;
+
+  background-size:
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
+
+  color: #fff;
+  overscroll-behavior: contain;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.gallery-grid {
+  position: absolute;
+  inset: 0;
+
+  z-index: -3;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+}
+
+
+.gallery-noise {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+  opacity: 0.035;
+
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+
+.gallery-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: #e50914;
+
+  filter: blur(130px);
+  opacity: 0.1;
+
+  pointer-events: none;
+
+  z-index: -2;
+}
+
+
+.gallery-glow-one {
+  left: -300px;
+  top: 20%;
+}
+
+
+.gallery-glow-two {
+  right: -300px;
+  bottom: 5%;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.gallery-container {
+  width: min(1250px, 90%);
+  height: 100%;
+
+  margin: auto;
+
+  padding: 42px 0 35px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.gallery-header {
+  flex-shrink: 0;
+
+  text-align: center;
+
+  margin-bottom: 22px;
+}
+
+
+.gallery-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #e50914;
+
+  font-size: 10px;
+  letter-spacing: 0.23em;
+  font-weight: 700;
+
+  margin-bottom: 13px;
+}
+
+
+.gallery-title {
+  margin: 0;
+
+  font-size: clamp(45px, 5vw, 68px);
+
+  line-height: 0.95;
+
+  font-weight: 800;
+
+  letter-spacing: -0.055em;
+}
+
+
+.gallery-title span {
+  color: #e50914;
+}
+
+
+.gallery-subtitle {
+  margin: 12px 0 0;
+
+  font-size: clamp(15px, 1.5vw, 19px);
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+.gallery-description {
+  max-width: 590px;
+
+  margin: 9px auto 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================================
+   PHOTO STAGE
+========================================================= */
+
+.gallery-stage {
+  position: relative;
+
+  width: 100%;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   PHOTO GROUP
+========================================================= */
+
+.gallery-group {
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 100%;
+  height: 275px;
+
+  transform:
+    translateY(-50%)
+    translateX(110%);
+
+  opacity: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 15px;
+
+  transition:
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s ease;
+}
+
+
+.gallery-group-active {
+  transform:
+    translateY(-50%)
+    translateX(0);
+
+  opacity: 1;
+
+  z-index: 10;
+}
+
+
+.gallery-group-previous {
+  transform:
+    translateY(-50%)
+    translateX(-110%);
+
+  opacity: 0;
+
+  z-index: 2;
+}
+
+
+.gallery-group-next {
+  transform:
+    translateY(-50%)
+    translateX(110%);
+
+  opacity: 0;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   PHOTO CARD
+========================================================= */
+
+.gallery-photo-card {
+  width: 100%;
+  height: 275px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: #0b0b0b;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+.gallery-photo-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(229, 9, 20, 0.5);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(229, 9, 20, 0.08);
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.gallery-image-wrap {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.gallery-photo-card:hover .gallery-image {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 14px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      transparent 32%,
+      transparent 48%,
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+
+/* =========================================================
+   PHOTO META
+========================================================= */
+
+.gallery-photo-meta {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 7px;
+
+  letter-spacing: 0.17em;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+
+/* =========================================================
+   PHOTO BOTTOM
+========================================================= */
+
+.gallery-photo-bottom {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+.gallery-photo-bottom > div:first-child {
+  min-width: 0;
+}
+
+
+.gallery-photo-bottom span {
+  font-size: 7px;
+
+  letter-spacing: 0.18em;
+
+  color: #e50914;
+}
+
+
+.gallery-photo-bottom h3 {
+  margin: 5px 0 0;
+
+  font-size: 17px;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.025em;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.gallery-photo-arrow {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(229, 9, 20, 0.55);
+
+  color: #e50914;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.35s ease;
+}
+
+
+.gallery-photo-card:hover .gallery-photo-arrow {
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   VIEW MORE
+========================================================= */
+
+.gallery-view-more {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 430px;
+  max-width: 75%;
+
+  transform:
+    translate(-50%, -50%)
+    translateX(120%);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s ease;
+}
+
+
+.gallery-view-more-active {
+  transform:
+    translate(-50%, -50%)
+    translateX(0);
+
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   VIEW MORE BUTTON
+========================================================= */
+
+.gallery-view-more-button {
+  width: 100%;
+
+  min-height: 110px;
+
+  padding: 24px 28px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  text-decoration: none;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.065),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  border: 1px solid rgba(229, 9, 20, 0.5);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(229, 9, 20, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.gallery-view-more-button:hover {
+  transform: translateY(-4px);
+
+  border-color: #e50914;
+}
+
+
+.gallery-view-more-button div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.gallery-view-more-button span {
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+.gallery-view-more-button strong {
+  font-size: 25px;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+
+.gallery-view-more-button > svg {
+  color: #e50914;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.gallery-progress {
+  flex-shrink: 0;
+
+  margin-top: 10px;
+}
+
+
+.gallery-progress-line {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+.gallery-progress-fill {
+  height: 100%;
+
+  background: #e50914;
+
+  transition:
+    width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.gallery-progress-text {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 8px;
+
+  font-size: 7px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+.app.light .gallery-section {
+  background:
+    radial-gradient(
+      circle at 8% 50%,
+      rgba(229, 9, 20, 0.06),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 50%,
+      rgba(229, 9, 20, 0.04),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px
+    ),
+    #f5f5f5;
+
+  color: #080808;
+}
+
+
+.app.light .gallery-grid {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    );
+}
+
+
+.app.light .gallery-subtitle {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+
+.app.light .gallery-description {
+  color: rgba(0, 0, 0, 0.44);
+}
+
+
+.app.light .gallery-photo-card {
+  background: #fff;
+
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+
+.app.light .gallery-progress-line {
+  background: rgba(0, 0, 0, 0.13);
+}
+
+
+.app.light .gallery-progress-text {
+  color: rgba(0, 0, 0, 0.32);
+}
+
+
+.app.light .gallery-view-more-button {
+  color: #080808;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.55)
+    );
+
+  border-color: rgba(229, 9, 20, 0.45);
+}
+
+
+.app.light .gallery-view-more-button span {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+  .gallery-container {
+    width: 90%;
+
+    padding: 35px 0 30px;
+  }
+
+
+  .gallery-group {
+    grid-template-columns: repeat(2, 1fr);
+
+    height: 390px;
+
+    gap: 12px;
+  }
+
+
+  .gallery-photo-card {
+    height: 185px;
+  }
+
+
+  .gallery-title {
+    font-size: 54px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .gallery-container {
+    width: 88%;
+
+    padding: 30px 0 25px;
+  }
+
+
+  .gallery-header {
+    margin-bottom: 15px;
+  }
+
+
+  .gallery-eyebrow {
+    font-size: 8px;
+  }
+
+
+  .gallery-title {
+    font-size: clamp(42px, 13vw, 60px);
+  }
+
+
+  .gallery-subtitle {
+    font-size: 14px;
+  }
+
+
+  .gallery-description {
+    font-size: 11px;
+
+    max-width: 340px;
+  }
+
+
+  .gallery-stage {
+    min-height: 390px;
+  }
+
+
+  .gallery-group {
+    grid-template-columns: repeat(2, 1fr);
+
+    height: 300px;
+
+    gap: 10px;
+  }
+
+
+  .gallery-photo-card {
+    height: 145px;
+  }
+
+
+  .gallery-overlay {
+    padding: 10px;
+  }
+
+
+  .gallery-photo-meta {
+    font-size: 6px;
+  }
+
+
+  .gallery-photo-bottom h3 {
+    font-size: 12px;
+  }
+
+
+  .gallery-photo-bottom span {
+    font-size: 6px;
+  }
+
+
+  .gallery-photo-arrow {
+    width: 25px;
+    height: 25px;
+  }
+
+
+  .gallery-view-more {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+
+  .gallery-view-more-button {
+    min-height: 90px;
+
+    padding: 19px;
+  }
+
+
+  .gallery-view-more-button strong {
+    font-size: 20px;
+  }
+
+
+  .gallery-progress-text {
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .gallery-stage {
+    min-height: 340px;
+  }
+
+
+  .gallery-group {
+    height: 260px;
+  }
+
+
+  .gallery-photo-card {
+    height: 125px;
+  }
+
+
+  .gallery-photo-bottom h3 {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-group,
+  .gallery-view-more,
+  .gallery-progress-fill,
+  .gallery-photo-card,
+  .gallery-image {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   SAFETY / PERFORMANCE OPTIMIZATION
+========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.gallery-section,
+.gallery-container,
+.gallery-stage {
+  box-sizing: border-box;
+}
+
+.gallery-group,
+.gallery-view-more {
+  will-change: transform, opacity;
+}
+
+.gallery-image {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  .gallery-section {
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  .gallery-container {
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-group,
+  .gallery-view-more,
+  .gallery-progress-fill,
+  .gallery-photo-card,
+  .gallery-image {
+    will-change: auto;
+  }
+}

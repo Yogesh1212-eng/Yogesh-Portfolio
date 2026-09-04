@@ -1,54 +1,28 @@
-import { Sun, Moon, FileText, ArrowRight } from "lucide-react";
+import {
+  FileText,
+  ArrowRight,
+} from "lucide-react";
 
-function Hero({ darkMode, setDarkMode }) {
+function Hero() {
   return (
     <main className="hero">
 
-      {/* ================= HEADER ================= */}
-      <header className="navbar">
-
-        <div className="logo-name">
-          Yogesh Maurya
-        </div>
-
-        <div className="nav-right">
-
-          <span className="username">
-            @yogeshm
-          </span>
-
-          <button
-            className="theme-btn"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Change theme"
-          >
-            {darkMode ? (
-              <Sun size={20} strokeWidth={1.8} />
-            ) : (
-              <Moon size={20} strokeWidth={1.8} />
-            )}
-          </button>
-
-        </div>
-
-      </header>
-
-
       {/* ================= MAIN CONTENT ================= */}
-      <section className="hero-content">
+      <section
+        id="home"
+        className="hero-content"
+      >
 
         {/* BIG PORTFOLIO TEXT */}
-        
-<div className="portfolio-title">
-  PORTFOLIO
-</div>
+        <div className="portfolio-title">
+          PORTFOLIO
+        </div>
 
-              
 
         {/* PROFILE IMAGE */}
         <div className="profile-container">
           <img
-            src="profile.png"
+            src="/profile.png"
             alt="Yogesh Maurya"
             className="profile-image"
           />
@@ -76,16 +50,10 @@ function Hero({ darkMode, setDarkMode }) {
             student and full stack developer passionate about building
             scalable, creative and impactful digital experiences.
           </p>
-         
-        
 
 
+          {/* ================= BUTTONS ================= */}
 
-
-
-
-
-          {/* BUTTONS */}
           <div className="action-buttons">
 
             <a
@@ -93,6 +61,7 @@ function Hero({ darkMode, setDarkMode }) {
               className="primary-btn"
             >
               View Projects
+
               <ArrowRight size={18} />
             </a>
 
@@ -104,25 +73,28 @@ function Hero({ darkMode, setDarkMode }) {
               className="secondary-btn"
             >
               <FileText size={18} />
+
               Resume
             </a>
 
           </div>
 
 
-          {/* SOCIAL BUTTONS */}
+          {/* ================= SOCIAL BUTTONS ================= */}
+
           <div className="social-buttons">
 
             <a
-              href="https://github.com/"
+              href="https://github.com/Yogesh1212-eng"
               target="_blank"
               rel="noreferrer"
             >
               GitHub
             </a>
 
+
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/yogesh-maurya-4010b2325/"
               target="_blank"
               rel="noreferrer"
             >
@@ -136,10 +108,16 @@ function Hero({ darkMode, setDarkMode }) {
       </section>
 
 
-      {/* SCROLL INDICATOR - desktop only */}
+      {/* ================= SCROLL INDICATOR ================= */}
+
       <div className="scroll-indicator">
-        <span>Scroll to explore</span>
-        <span className="scroll-arrow">↓</span>
+        <span>
+          Scroll to explore
+        </span>
+
+        <span className="scroll-arrow">
+          ↓
+        </span>
       </div>
 
     </main>

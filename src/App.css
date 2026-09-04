@@ -2365,3 +2365,17 @@ body {
     font-size: 28px;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 95px;
+}
+
+@media (max-width: 800px) {
+  section[id] {
+    scroll-margin-top: 75px;
+  }
+}

@@ -7,14 +7,110 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-function About() {
-  return (
-    <section className="about-section" id="about">
+function About({ darkMode }) {
+  /*
+   * GCP CARD COLORS
+   * Sab styling isi file me hai.
+   */
+  const gcpCardStyle = {
+    position: "relative",
+    overflow: "hidden",
 
-      {/* Background Text */}
+    opacity: 1,
+
+    display: "block",
+
+    color: darkMode ? "#ffffff" : "#111111",
+
+    background: darkMode
+      ? "linear-gradient(135deg, #b30916 0%, #8d0711 55%, #65050b 100%)"
+      : "linear-gradient(135deg, rgba(255,240,242,0.98) 0%, rgba(255,255,255,0.94) 100%)",
+
+    border: darkMode
+      ? "1px solid rgba(229,9,20,0.65)"
+      : "1px solid rgba(229,9,20,0.30)",
+
+    boxShadow: darkMode
+      ? "0 18px 45px rgba(0,0,0,0.30), 0 0 30px rgba(229,9,20,0.14)"
+      : "0 18px 40px rgba(0,0,0,0.08), 0 0 25px rgba(229,9,20,0.06)",
+
+    zIndex: 5,
+  };
+
+  const gcpIconStyle = {
+    color: darkMode ? "#ffffff" : "#e50914",
+
+    background: darkMode
+      ? "rgba(255,255,255,0.10)"
+      : "rgba(229,9,20,0.07)",
+
+    border: darkMode
+      ? "1px solid rgba(255,255,255,0.25)"
+      : "1px solid rgba(229,9,20,0.22)",
+
+    position: "relative",
+    zIndex: 10,
+  };
+
+  const gcpLabelStyle = {
+    display: "block",
+
+    color: darkMode
+      ? "rgba(255,255,255,0.82)"
+      : "#a4060d",
+
+    opacity: 1,
+
+    position: "relative",
+    zIndex: 10,
+  };
+
+  const gcpTitleStyle = {
+    color: darkMode ? "#ffffff" : "#111111",
+
+    opacity: 1,
+
+    position: "relative",
+    zIndex: 10,
+  };
+
+  const gcpDescriptionStyle = {
+    color: darkMode
+      ? "rgba(255,255,255,0.74)"
+      : "rgba(20,20,20,0.68)",
+
+    opacity: 1,
+
+    position: "relative",
+    zIndex: 10,
+  };
+
+  const gcpArrowStyle = {
+    color: darkMode ? "#ffffff" : "#e50914",
+
+    opacity: 1,
+
+    position: "absolute",
+    right: "22px",
+    bottom: "20px",
+
+    zIndex: 10,
+  };
+
+  return (
+    <section
+      className="about-section"
+      id="about"
+    >
+
+      {/* =================================================
+          BACKGROUND TEXT
+      ================================================= */}
+
       <div className="about-bg-text">
         ABOUT
       </div>
+
 
       <div className="about-container">
 
@@ -24,24 +120,107 @@ function About() {
 
         <div className="about-left">
 
-          <div className="section-number">
-            <span>01</span>
-            <span>/</span>
-            <span>ABOUT ME</span>
+          {/* 01 / ABOUT ME */}
+
+          <div
+            className="section-number about-section-number"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "flex-start",
+
+              width: "max-content",
+              minWidth: "max-content",
+
+              height: "auto",
+              minHeight: "0",
+
+              margin: "0 0 22px 0",
+              padding: "0",
+
+              gap: "8px",
+
+              border: "0",
+              borderRadius: "0",
+
+              background: "transparent",
+
+              color: "#e50914",
+
+              fontSize: "10px",
+              fontWeight: 700,
+
+              letterSpacing: "0.18em",
+              lineHeight: 1,
+
+              whiteSpace: "nowrap",
+              overflow: "visible",
+
+              writingMode: "horizontal-tb",
+            }}
+          >
+
+            <span
+              style={{
+                display: "inline-block",
+                width: "auto",
+                whiteSpace: "nowrap",
+                color: "#e50914",
+              }}
+            >
+              01
+            </span>
+
+
+            <span
+              style={{
+                display: "inline-block",
+                width: "auto",
+                whiteSpace: "nowrap",
+                color: "#e50914",
+                opacity: 0.55,
+              }}
+            >
+              /
+            </span>
+
+
+            <span
+              style={{
+                display: "inline-block",
+                width: "auto",
+                whiteSpace: "nowrap",
+                color: "#e50914",
+              }}
+            >
+              ABOUT ME
+            </span>
+
           </div>
+
+
+          {/* HEADING */}
 
           <h2 className="about-heading">
             Turning ideas into{" "}
-            <span>scalable digital experiences.</span>
+            <span>
+              scalable digital experiences.
+            </span>
           </h2>
 
+
           <div className="about-line"></div>
+
+
+          {/* DESCRIPTION */}
 
           <p className="about-description">
             I'm Yogesh Maurya, a Computer Science Engineering student
             and Full Stack Developer focused on building end-to-end
             web applications and automation systems.
           </p>
+
 
           <p className="about-description">
             Experienced in the MERN stack, Python, and cloud tools —
@@ -53,14 +232,14 @@ function About() {
 
 
         {/* =================================================
-            RIGHT COLUMN - BENTO GRID
+            RIGHT COLUMN
         ================================================= */}
 
         <div className="about-right">
 
-          {/* ---------------------------------------------
-              CARD 1 - CORE STACK
-          --------------------------------------------- */}
+          {/* =================================================
+              FULL STACK CARD
+          ================================================= */}
 
           <div className="about-card main-card">
 
@@ -69,41 +248,54 @@ function About() {
             </div>
 
             <div>
-              <span>FOCUS</span>
+
+              <span>
+                FOCUS
+              </span>
 
               <h3>
                 Full Stack & Cloud
               </h3>
 
               <p className="tech-badges">
+
                 <b>JavaScript</b>
                 <i>•</i>
+
                 <b>React.js</b>
                 <i>•</i>
+
                 <b>Node.js</b>
                 <i>•</i>
+
                 <b>Express.js</b>
                 <i>•</i>
+
                 <b>MongoDB</b>
                 <i>•</i>
+
                 <b>SQL</b>
                 <i>•</i>
+
                 <b>Python</b>
                 <i>•</i>
+
                 <b>GCP</b>
+
               </p>
+
             </div>
 
           </div>
 
 
-          {/* ---------------------------------------------
-              SMALL BENTO GRID
-          --------------------------------------------- */}
+          {/* =================================================
+              BENTO GRID
+          ================================================= */}
 
           <div className="about-grid">
 
-            {/* Education */}
+            {/* EDUCATION */}
 
             <div className="about-card">
 
@@ -111,7 +303,9 @@ function About() {
                 <GraduationCap size={22} />
               </div>
 
-              <span>EDUCATION</span>
+              <span>
+                EDUCATION
+              </span>
 
               <h3>
                 B.Tech CSE (AKTU)
@@ -124,7 +318,7 @@ function About() {
             </div>
 
 
-            {/* Leadership */}
+            {/* LEADERSHIP */}
 
             <div className="about-card">
 
@@ -132,7 +326,9 @@ function About() {
                 <Users size={22} />
               </div>
 
-              <span>LEADERSHIP</span>
+              <span>
+                LEADERSHIP
+              </span>
 
               <h3>
                 GDG on Campus Lead
@@ -146,7 +342,7 @@ function About() {
             </div>
 
 
-            {/* Problem Solving */}
+            {/* PROBLEM SOLVING */}
 
             <div className="about-card">
 
@@ -154,7 +350,9 @@ function About() {
                 <Brain size={22} />
               </div>
 
-              <span>PROBLEM SOLVING</span>
+              <span>
+                PROBLEM SOLVING
+              </span>
 
               <h3>
                 300+ LeetCode Solved
@@ -167,27 +365,77 @@ function About() {
             </div>
 
 
-            {/* Cloud */}
+            {/* =================================================
+                GCP CARD — FULLY CONTROLLED HERE
+            ================================================= */}
 
-            <div className="about-card journey-card">
+            <div
+              className="about-card journey-card gcp-card"
+              style={gcpCardStyle}
+            >
 
-              <div className="card-icon">
+              {/* GLOW */}
+
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  pointerEvents: "none",
+                  zIndex: 1,
+
+                  background: darkMode
+                    ? "radial-gradient(circle at 85% 20%, rgba(255,255,255,0.12), transparent 40%)"
+                    : "radial-gradient(circle at 85% 20%, rgba(229,9,20,0.07), transparent 40%)",
+                }}
+              />
+
+
+              {/* ICON */}
+
+              <div
+                className="card-icon"
+                style={gcpIconStyle}
+              >
                 <Cloud size={22} />
               </div>
 
-              <span>CLOUD</span>
 
-              <h3>
+              {/* LABEL */}
+
+              <span
+                className="gcp-label"
+                style={gcpLabelStyle}
+              >
+                CLOUD
+              </span>
+
+
+              {/* TITLE */}
+
+              <h3
+                className="gcp-title"
+                style={gcpTitleStyle}
+              >
                 Building on GCP
               </h3>
 
-              <p>
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="gcp-description"
+                style={gcpDescriptionStyle}
+              >
                 Cloud technologies & scalable systems
               </p>
 
+
+              {/* ARROW */}
+
               <ArrowUpRight
-                className="journey-arrow"
+                className="gcp-arrow"
                 size={25}
+                style={gcpArrowStyle}
               />
 
             </div>
@@ -199,11 +447,16 @@ function About() {
       </div>
 
 
-      {/* Bottom indicator */}
+      {/* =================================================
+          BOTTOM INDICATOR
+      ================================================= */}
 
       <div className="about-scroll">
+
         <div></div>
+
         SCROLL TO EXPLORE
+
       </div>
 
     </section>
