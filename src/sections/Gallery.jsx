@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import "./gallery.css";
+import "./Gallery.css";
 
 const PHOTOS_PER_VIEW = 4;
 
