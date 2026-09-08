@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Home,
   Menu,
@@ -18,60 +18,15 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  {
-    id: "home",
-    label: "Home",
-    icon: Home,
-    href: "#home",
-  },
-  {
-    id: "about",
-    label: "About",
-    icon: User,
-    href: "#about",
-  },
-  {
-    id: "coding",
-    label: "Coding",
-    icon: Code2,
-    href: "#coding",
-  },
-  {
-    id: "skills",
-    label: "Skills",
-    icon: Cpu,
-    href: "#skills",
-  },
-  {
-    id: "projects",
-    label: "Projects",
-    icon: FolderGit2,
-    href: "#projects",
-  },
-  {
-    id: "achievements",
-    label: "Achievements",
-    icon: Trophy,
-    href: "#achievements",
-  },
-  {
-    id: "certificates",
-    label: "Certificates",
-    icon: Award,
-    href: "#certificates",
-  },
-  {
-    id: "gallery",
-    label: "Gallery",
-    icon: Images,
-    href: "#gallery",
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    icon: Mail,
-    href: "#contact",
-  },
+  { id: "home", label: "Home", icon: Home, href: "#home" },
+  { id: "about", label: "About", icon: User, href: "#about" },
+  { id: "coding", label: "Coding", icon: Code2, href: "#coding" },
+  { id: "skills", label: "Skills", icon: Cpu, href: "#skills" },
+  { id: "projects", label: "Projects", icon: FolderGit2, href: "#projects" },
+  { id: "achievements", label: "Achievements", icon: Trophy, href: "#achievements" },
+  { id: "certificates", label: "Certificates", icon: Award, href: "#certificates" },
+  { id: "gallery", label: "Gallery", icon: Images, href: "#gallery" },
+  { id: "contact", label: "Contact", icon: Mail, href: "#contact" },
 ];
 
 function Navbar({ darkMode, setDarkMode }) {
@@ -82,245 +37,138 @@ function Navbar({ darkMode, setDarkMode }) {
   const [activeSection, setActiveSection] = useState("home");
 
   /* =====================================================
-     CLOSE MOBILE MENU ON ROUTE CHANGE
+     ACTIVE TAB DETECTION ACROSS ROUTES
   ===================================================== */
-
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
 
-
-  /* =====================================================
-     ACTIVE SECTION DETECTION
-  ===================================================== */
-
-  useEffect(() => {
-    if (location.pathname !== "/") {
+    // Other pages: Match navbar active tab correctly
+    if (location.pathname.includes("/certificates")) {
+      setActiveSection("certificates");
+      return;
+    }
+    if (location.pathname.includes("/projects")) {
+      setActiveSection("projects");
+      return;
+    }
+    if (location.pathname.includes("/gallery")) {
+      setActiveSection("gallery");
       return;
     }
 
+    if (location.pathname !== "/") return;
+
+    // Home Page ScrollSpy
     const sections = navItems
-      .map((item) =>
-        document.getElementById(item.id)
-      )
+      .map((item) => document.getElementById(item.id))
       .filter(Boolean);
 
     if (!sections.length) return;
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-          const visible =
-            entries
-              .filter(
-                (entry) =>
-                  entry.isIntersecting
-              )
-              .sort(
-                (a, b) =>
-                  b.intersectionRatio -
-                  a.intersectionRatio
-              );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-          if (visible.length) {
-            setActiveSection(
-              visible[0].target.id
-            );
-          }
-        },
-        {
-          threshold: [0.25, 0.5, 0.75],
-          rootMargin:
-            "-15% 0px -60% 0px",
+        if (visible.length) {
+          setActiveSection(visible[0].target.id);
         }
-      );
+      },
+      {
+        threshold: [0.25, 0.5],
+        rootMargin: "-15% 0px -55% 0px",
+      }
+    );
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [location.pathname]);
 
-
   /* =====================================================
-     SECTION NAVIGATION
+     NAVIGATION HANDLER
   ===================================================== */
-
-  const handleSectionClick = (
-    event,
-    href
-  ) => {
+  const handleSectionClick = (event, href) => {
     event.preventDefault();
-
     setMenuOpen(false);
 
-    const sectionId =
-      href.replace("#", "");
+    const sectionId = href.replace("#", "");
 
-    /* Already on home */
     if (location.pathname === "/") {
-      const element =
-        document.getElementById(
-          sectionId
-        );
-
+      const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-
-        window.history.replaceState(
-          null,
-          "",
-          `#${sectionId}`
-        );
-
-        setActiveSection(
-          sectionId
-        );
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", `#${sectionId}`);
+        setActiveSection(sectionId);
       }
-
       return;
     }
 
-    /* Other page -> Home section */
     navigate(`/#${sectionId}`);
   };
 
-
-  /* =====================================================
-     HOME BUTTON
-  ===================================================== */
-
-  const handleHomeClick = (
-    event
-  ) => {
+  const handleHomeClick = (event) => {
     event.preventDefault();
-
     setMenuOpen(false);
 
     if (location.pathname === "/") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-
-      window.history.replaceState(
-        null,
-        "",
-        "#home"
-      );
-
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.replaceState(null, "", "#home");
       setActiveSection("home");
     } else {
       navigate("/#home");
     }
   };
 
-
-  /* =====================================================
-     THEME TOGGLE
-  ===================================================== */
-
   const toggleTheme = () => {
     setDarkMode((prev) => !prev);
   };
 
-
   return (
-    <header
-  className={`portfolio-navbar ${
-    darkMode
-      ? "navbar-dark"
-      : "navbar-light"
-  }`}
->
-
+    <header className={`portfolio-navbar ${darkMode ? "navbar-dark" : "navbar-light"}`}>
       <div className="navbar-inner">
-
-        {/* =================================================
-            DESKTOP BRAND
-        ================================================= */}
-
-        <a
-          href="#home"
-          className="navbar-brand"
-          onClick={handleHomeClick}
-        >
+        {/* BRAND */}
+        <a href="#home" className="navbar-brand" onClick={handleHomeClick}>
           <span className="navbar-brand-icon">
             <Home size={16} />
           </span>
-
           <span className="navbar-brand-text">
-            Yogesh Maurya
-            <span>.</span>
+            Yogesh Maurya<span>.</span>
           </span>
         </a>
 
-
-        {/* =================================================
-            DESKTOP NAV
-        ================================================= */}
-
+        {/* DESKTOP NAV */}
         <nav className="navbar-desktop">
-
           {navItems.map((item) => {
             const Icon = item.icon;
-
             return (
               <a
                 key={item.id}
                 href={item.href}
                 className={`navbar-link ${
-                  activeSection === item.id
-                    ? "navbar-link-active"
-                    : ""
+                  activeSection === item.id ? "navbar-link-active" : ""
                 }`}
-                onClick={(event) =>
-                  handleSectionClick(
-                    event,
-                    item.href
-                  )
-                }
+                onClick={(event) => handleSectionClick(event, item.href)}
               >
                 <Icon size={13} />
-
-                <span>
-                  {item.label}
-                </span>
+                <span>{item.label}</span>
               </a>
             );
           })}
-
         </nav>
 
-
-        {/* =================================================
-            DESKTOP THEME BUTTON
-        ================================================= */}
-
+        {/* DESKTOP THEME */}
         <button
           type="button"
           className="navbar-theme-button desktop-theme-button"
           onClick={toggleTheme}
           aria-label="Change theme"
         >
-          {darkMode ? (
-            <Sun size={18} />
-          ) : (
-            <Moon size={18} />
-          )}
+          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
         </button>
 
-
-        {/* =================================================
-            MOBILE HOME
-        ================================================= */}
-
+        {/* MOBILE HOME */}
         <a
           href="#home"
           className="navbar-mobile-home"
@@ -330,116 +178,55 @@ function Navbar({ darkMode, setDarkMode }) {
           <Home size={19} />
         </a>
 
-
-        {/* =================================================
-            MOBILE THEME
-        ================================================= */}
-
+        {/* MOBILE THEME */}
         <button
           type="button"
           className="navbar-theme-button mobile-theme-button"
           onClick={toggleTheme}
           aria-label="Change theme"
         >
-          {darkMode ? (
-            <Sun size={18} />
-          ) : (
-            <Moon size={18} />
-          )}
+          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
         </button>
 
-
-        {/* =================================================
-            MOBILE MENU
-        ================================================= */}
-
+        {/* MOBILE BURGER */}
         <button
           type="button"
-          className={`navbar-menu-button ${
-            menuOpen ? "open" : ""
-          }`}
-          onClick={() =>
-            setMenuOpen(
-              (prev) => !prev
-            )
-          }
-          aria-label={
-            menuOpen
-              ? "Close navigation"
-              : "Open navigation"
-          }
+          className={`navbar-menu-button ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={menuOpen}
         >
-          {menuOpen ? (
-            <X size={21} />
-          ) : (
-            <Menu size={21} />
-          )}
+          {menuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
-
       </div>
 
-
-      {/* ===================================================
-          MOBILE MENU
-      =================================================== */}
-
-      <div
-        className={`navbar-mobile-menu ${
-          menuOpen
-            ? "navbar-mobile-menu-open"
-            : ""
-        }`}
-      >
+      {/* MOBILE DRAWER */}
+      <div className={`navbar-mobile-menu ${menuOpen ? "navbar-mobile-menu-open" : ""}`}>
         <div className="navbar-mobile-menu-inner">
-
-          {navItems.map(
-            (item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  className={`navbar-mobile-link ${
-                    activeSection === item.id
-                      ? "active"
-                      : ""
-                  }`}
-                  style={{
-                    "--item-index":
-                      index,
-                  }}
-                  onClick={(event) =>
-                    handleSectionClick(
-                      event,
-                      item.href
-                    )
-                  }
-                >
-
-                  <span className="navbar-mobile-link-left">
-
-                    <Icon size={17} />
-
-                    <span>
-                      {item.label}
-                    </span>
-
-                  </span>
-
-                  <span className="navbar-mobile-arrow">
-                    <ExternalLink size={14} />
-                  </span>
-
-                </a>
-              );
-            }
-          )}
-
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`navbar-mobile-link ${
+                  activeSection === item.id ? "active" : ""
+                }`}
+                style={{ "--item-index": index }}
+                onClick={(event) => handleSectionClick(event, item.href)}
+              >
+                <span className="navbar-mobile-link-left">
+                  <Icon size={17} />
+                  <span>{item.label}</span>
+                </span>
+                <span className="navbar-mobile-arrow">
+                  <ExternalLink size={14} />
+                </span>
+              </a>
+            );
+          })}
         </div>
       </div>
-
     </header>
   );
 }

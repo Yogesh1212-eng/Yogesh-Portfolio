@@ -6,102 +6,22 @@ import "./Gallery.css";
 const PHOTOS_PER_VIEW = 4;
 
 const galleryPhotos = [
-  {
-    src: "/gallery/trophy.jpeg",
-    title: "Achievement Moment",
-    category: "ACHIEVEMENT",
-    date: "2026",
-  },
-  {
-    src: "/gallery/anchoring.jpeg",
-    title: "Anchoring Event",
-    category: "EVENT",
-    date: "2026",
-  },
-  {
-    src: "/gallery/director-award.jpeg",
-    title: "Director Award",
-    category: "AWARD",
-    date: "2026",
-  },
-  {
-    src: "/gallery/hackathon.jpg",
-    title: "Hackathon",
-    category: "HACKATHON",
-    date: "2026",
-  },
-  {
-    src: "/gallery/robotics-winner.jpg",
-    title: "Robotics Winner",
-    category: "ACHIEVEMENT",
-    date: "2026",
-  },
-  {
-    src: "/gallery/trophy.jpg",
-    title: "Winning Moment",
-    category: "ACHIEVEMENT",
-    date: "2026",
-  },
-  {
-    src: "/gallery/certificate.jpg",
-    title: "Certification",
-    category: "CERTIFICATION",
-    date: "2026",
-  },
-  {
-    src: "/gallery/group-photo.jpg",
-    title: "Team Moment",
-    category: "TEAM",
-    date: "2026",
-  },
-  {
-    src: "/gallery/google-swags.jpg",
-    title: "Google Swags",
-    category: "GOOGLE",
-    date: "2026",
-  },
-  {
-    src: "/gallery/students.jpg",
-    title: "With Students",
-    category: "COMMUNITY",
-    date: "2026",
-  },
-  {
-    src: "/gallery/event-stage.jpg",
-    title: "On Stage",
-    category: "EVENT",
-    date: "2026",
-  },
-  {
-    src: "/gallery/team.jpg",
-    title: "Core Team",
-    category: "TEAM",
-    date: "2026",
-  },
-  {
-    src: "/gallery/swags-2.jpg",
-    title: "More Swags",
-    category: "GOOGLE",
-    date: "2026",
-  },
-  {
-    src: "/gallery/hackathon-team.jpg",
-    title: "Hackathon Team",
-    category: "HACKATHON",
-    date: "2026",
-  },
-  {
-    src: "/gallery/award-stage.jpg",
-    title: "Award Ceremony",
-    category: "AWARD",
-    date: "2026",
-  },
-  {
-    src: "/gallery/college-fest.jpg",
-    title: "College Fest",
-    category: "EVENT",
-    date: "2026",
-  },
+  { src: "/gallery/trophy.jpeg", title: "Achievement Moment", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/anchoring.jpeg", title: "Anchoring Event", category: "EVENT", date: "2026" },
+  { src: "/gallery/director-award.jpeg", title: "Director Award", category: "AWARD", date: "2026" },
+  { src: "/gallery/hackathon.jpg", title: "Hackathon", category: "HACKATHON", date: "2026" },
+  { src: "/gallery/robotics-winner.jpg", title: "Robotics Winner", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/trophy.jpg", title: "Winning Moment", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/certificate.jpg", title: "Certification", category: "CERTIFICATION", date: "2026" },
+  { src: "/gallery/group-photo.jpg", title: "Team Moment", category: "TEAM", date: "2026" },
+  { src: "/gallery/google-swags.jpg", title: "Google Swags", category: "GOOGLE", date: "2026" },
+  { src: "/gallery/students.jpg", title: "With Students", category: "COMMUNITY", date: "2026" },
+  { src: "/gallery/event-stage.jpg", title: "On Stage", category: "EVENT", date: "2026" },
+  { src: "/gallery/team.jpg", title: "Core Team", category: "TEAM", date: "2026" },
+  { src: "/gallery/swags-2.jpg", title: "More Swags", category: "GOOGLE", date: "2026" },
+  { src: "/gallery/hackathon-team.jpg", title: "Hackathon Team", category: "HACKATHON", date: "2026" },
+  { src: "/gallery/award-stage.jpg", title: "Award Ceremony", category: "AWARD", date: "2026" },
+  { src: "/gallery/college-fest.jpg", title: "College Fest", category: "EVENT", date: "2026" },
 ];
 
 function Gallery() {
@@ -112,7 +32,7 @@ function Gallery() {
   const isLockedRef = useRef(false);
   const wheelAccumulatorRef = useRef(0);
   const touchStartYRef = useRef(0);
-  const releaseCooldownRef = useRef(false);
+  const cooldownRef = useRef(false);
 
   const groups = useMemo(() => {
     const result = [];
@@ -134,29 +54,31 @@ function Gallery() {
     const section = sectionRef.current;
     if (!section) return;
     const top = section.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top, behavior: "auto" });
+    if (Math.abs(window.scrollY - top) > 4) {
+      window.scrollTo({ top, behavior: "auto" });
+    }
   }, []);
 
-  const releaseToNextSection = useCallback(() => {
+  const releaseToNext = useCallback(() => {
     const nextEl = sectionRef.current?.nextElementSibling;
     if (!nextEl) return;
-    releaseCooldownRef.current = true;
+    cooldownRef.current = true;
     const nextTop = nextEl.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: nextTop, behavior: "smooth" });
     setTimeout(() => {
-      releaseCooldownRef.current = false;
-    }, 850);
+      cooldownRef.current = false;
+    }, 700);
   }, []);
 
-  const releaseToPrevSection = useCallback(() => {
+  const releaseToPrev = useCallback(() => {
     const prevEl = sectionRef.current?.previousElementSibling;
     if (!prevEl) return;
-    releaseCooldownRef.current = true;
+    cooldownRef.current = true;
     const prevTop = prevEl.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: prevTop, behavior: "smooth" });
     setTimeout(() => {
-      releaseCooldownRef.current = false;
-    }, 850);
+      cooldownRef.current = false;
+    }, 700);
   }, []);
 
   const moveNext = useCallback(() => {
@@ -166,14 +88,13 @@ function Gallery() {
     if (current < VIEW_MORE_STEP) {
       isLockedRef.current = true;
       setGalleryStep(current + 1);
-      pinGallery();
       setTimeout(() => {
         isLockedRef.current = false;
-      }, 750);
+      }, 550);
     } else {
-      releaseToNextSection();
+      releaseToNext();
     }
-  }, [VIEW_MORE_STEP, pinGallery, releaseToNextSection]);
+  }, [VIEW_MORE_STEP, releaseToNext]);
 
   const movePrev = useCallback(() => {
     if (isLockedRef.current) return;
@@ -182,36 +103,34 @@ function Gallery() {
     if (current > 0) {
       isLockedRef.current = true;
       setGalleryStep(current - 1);
-      pinGallery();
       setTimeout(() => {
         isLockedRef.current = false;
-      }, 750);
+      }, 550);
     } else {
-      releaseToPrevSection();
+      releaseToPrev();
     }
-  }, [pinGallery, releaseToPrevSection]);
+  }, [releaseToPrev]);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Desktop Mouse Wheel
     const handleWheel = (event) => {
-      const section = sectionRef.current;
-      if (!section || releaseCooldownRef.current) return;
+      if (cooldownRef.current) return;
 
       const rect = section.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      // Check if Gallery is in active lock zone
-      const isInLockZone = rect.top <= 80 && rect.bottom >= vh - 80;
-      const isEnteringFromTop = event.deltaY > 0 && rect.top > 0 && rect.top < vh * 0.55;
-      const isEnteringFromBottom = event.deltaY < 0 && rect.bottom < vh && rect.bottom > vh * 0.45;
+      // Check active gallery viewport
+      const isInZone = rect.top <= 60 && rect.bottom >= vh - 60;
+      const isEnteringTop = event.deltaY > 0 && rect.top > 0 && rect.top < vh * 0.55;
+      const isEnteringBottom = event.deltaY < 0 && rect.bottom < vh && rect.bottom > vh * 0.45;
 
-      if (!isInLockZone && !isEnteringFromTop && !isEnteringFromBottom) {
-        return;
-      }
+      if (!isInZone && !isEnteringTop && !isEnteringBottom) return;
 
-      // Pin cleanly if arriving
-      if (!isInLockZone && (isEnteringFromTop || isEnteringFromBottom)) {
+      if (!isInZone && (isEnteringTop || isEnteringBottom)) {
         event.preventDefault();
-        event.stopPropagation();
         pinGallery();
         return;
       }
@@ -219,26 +138,22 @@ function Gallery() {
       const isAtStart = currentStepRef.current === 0;
       const isAtEnd = currentStepRef.current === VIEW_MORE_STEP;
 
-      // Allow natural exit to preceding/following pages
       if (isAtStart && event.deltaY < 0) {
-        releaseToPrevSection();
+        releaseToPrev();
         return;
       }
-
       if (isAtEnd && event.deltaY > 0) {
-        releaseToNextSection();
+        releaseToNext();
         return;
       }
 
-      // Hard lock while scrolling between internal cards
       event.preventDefault();
-      event.stopPropagation();
       pinGallery();
 
       if (isLockedRef.current) return;
 
       wheelAccumulatorRef.current += event.deltaY;
-      const WHEEL_THRESHOLD = 60;
+      const WHEEL_THRESHOLD = 45;
 
       if (wheelAccumulatorRef.current > WHEEL_THRESHOLD) {
         wheelAccumulatorRef.current = 0;
@@ -249,37 +164,40 @@ function Gallery() {
       }
     };
 
+    // Mobile Swipe Handler
     const handleTouchStart = (e) => {
       touchStartYRef.current = e.touches[0].clientY;
     };
 
     const handleTouchMove = (e) => {
-      const section = sectionRef.current;
-      if (!section || releaseCooldownRef.current) return;
+      if (cooldownRef.current) return;
 
       const rect = section.getBoundingClientRect();
       const vh = window.innerHeight;
-      const isInLockZone = rect.top <= 40 && rect.bottom >= vh - 40;
+      const isInZone = rect.top <= 80 && rect.bottom >= vh - 80;
 
-      if (!isInLockZone) return;
+      if (!isInZone) return;
 
       const currentY = e.touches[0].clientY;
       const deltaY = touchStartYRef.current - currentY;
-
       const isAtStart = currentStepRef.current === 0;
       const isAtEnd = currentStepRef.current === VIEW_MORE_STEP;
 
-      if (isAtStart && deltaY < -20) {
-        releaseToPrevSection();
+      if (isAtStart && deltaY < -25) {
+        releaseToPrev();
         return;
       }
-      if (isAtEnd && deltaY > 20) {
-        releaseToNextSection();
+      if (isAtEnd && deltaY > 25) {
+        releaseToNext();
         return;
       }
 
-      e.preventDefault();
-      if (Math.abs(deltaY) > 40 && !isLockedRef.current) {
+      if (e.cancelable) {
+        event.preventDefault();
+      }
+      pinGallery();
+
+      if (Math.abs(deltaY) > 35 && !isLockedRef.current) {
         touchStartYRef.current = currentY;
         if (deltaY > 0) {
           moveNext();
@@ -290,16 +208,17 @@ function Gallery() {
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false, capture: true });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    section.addEventListener("touchstart", handleTouchStart, { passive: true });
+    section.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleWheel, { capture: true });
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
+      section.removeEventListener("touchstart", handleTouchStart);
+      section.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [VIEW_MORE_STEP, moveNext, movePrev, pinGallery, releaseToNextSection, releaseToPrevSection]);
+  }, [VIEW_MORE_STEP, moveNext, movePrev, pinGallery, releaseToNext, releaseToPrev]);
 
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event) => {
       const section = sectionRef.current;
@@ -313,7 +232,6 @@ function Gallery() {
         event.preventDefault();
         moveNext();
       }
-
       if (event.key === "ArrowUp" || event.key === "PageUp") {
         event.preventDefault();
         movePrev();

@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import {
-  ArrowUpRight,
-  Award,
-  MoveUpRight,
-} from "lucide-react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { ArrowUpRight, Award, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./Certificates.css";
 
 const Certifications = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const navigate = useNavigate();
+
+  const handleNavigateDirect = (e) => {
+    // Kisi bhi parent container ya global scroll listener ko roko
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    navigate("/certificates/online");
+  };
 
   const cards = [
     {
@@ -19,6 +24,7 @@ const Certifications = () => {
       title: "CERTIFIED",
       subtitle: "LEARNING.",
       bottom: ["GOOGLE", "NPTEL / IIT", "HACKATHONS"],
+      posClass: "card-left",
     },
     {
       id: 1,
@@ -28,6 +34,7 @@ const Certifications = () => {
       title: "BUILD.",
       subtitle: "LEARN.",
       bottom: ["GOOGLE", "COURSES", "WORKSHOPS"],
+      posClass: "card-center",
     },
     {
       id: 2,
@@ -37,364 +44,137 @@ const Certifications = () => {
       title: "KEEP",
       subtitle: "GROWING.",
       bottom: ["EVENTS", "HACKATHONS", "PROGRAMS"],
+      posClass: "card-right",
     },
   ];
 
-  const getPosition = (cardId) => {
-    /*
-      Normal state:
-      Front card = LEFT/DOWN
-      Middle card = CENTER/UP
-      Back card = RIGHT/DOWN
-    */
-
-    if (hoveredCard === null) {
-      if (cardId === 0) return "fan-left";
-      if (cardId === 1) return "fan-center";
-      return "fan-right";
-    }
-
-    /*
-      Mouse enters a card:
-      hovered card becomes CENTER/UP
-      previous card becomes LEFT/DOWN
-      next card becomes RIGHT/DOWN
-    */
-
-    const relative =
-      (cardId - hoveredCard + cards.length) % cards.length;
-
-    if (relative === 0) {
-      return "fan-center";
-    }
-
-    if (relative === 1) {
-      return "fan-right";
-    }
-
-    return "fan-left";
-  };
-
   return (
-    <section
-      className="cert-section"
-      id="certificates"
-    >
-      {/* =========================================
-          BACKGROUND
-      ========================================= */}
-
+    <section className="cert-section" id="certificates">
+      {/* Background Decor */}
       <div className="cert-noise"></div>
-
       <div className="cert-grid"></div>
-
       <div className="cert-glow cert-glow-left"></div>
-
       <div className="cert-glow cert-glow-right"></div>
-
-      <div className="cert-bg-word">
-        CERTIFIED
-      </div>
-
-      {/* =========================================
-          MAIN CONTAINER
-      ========================================= */}
+      <div className="cert-bg-word">CERTIFIED</div>
 
       <div className="cert-container">
-
-        {/* =========================================
-            META
-        ========================================= */}
-
+        {/* Meta Bar */}
         <div className="cert-meta">
-
           <div className="cert-meta-left">
-
             <span className="cert-red-dot"></span>
-
-            <span>
-              06 / CERTIFICATIONS
-            </span>
-
+            <span>06 / CERTIFICATIONS</span>
           </div>
-
-          <span className="cert-meta-right">
-            LEARNING ARCHIVE • 2025 — 2026
-          </span>
-
+          <span className="cert-meta-right">LEARNING ARCHIVE • 2025 — 2026</span>
         </div>
 
-        {/* =========================================
-            MAIN
-        ========================================= */}
-
+        {/* Main Content */}
         <div className="cert-main">
-
-          {/* =======================================
-              LEFT
-          ======================================= */}
-
+          {/* Left Hero Content */}
           <div className="cert-left">
-
             <div className="cert-eyebrow">
-
               <Award size={16} />
-
-              <span>
-                PROOF OF PROGRESS
-              </span>
-
+              <span>PROOF OF PROGRESS</span>
             </div>
 
             <h2 className="cert-title">
-
               Certificates
-
               <br />
-
-              <span>
-                that Validate
-              </span>
-
+              <span>that Validate</span>
               <br />
-
               My Journey.
-
             </h2>
 
             <p className="cert-description">
-              A collection of certifications, programs,
-              workshops and technical achievements that
-              represent my continuous journey of learning
-              and building.
+              A collection of certifications, programs, workshops and technical
+              achievements that represent my continuous journey of learning and building.
             </p>
 
             <div className="cert-stat">
-
               <div className="cert-stat-number">
-
-                <span>+</span>
-                30
-
+                <span>+</span>30
               </div>
-
               <div className="cert-stat-info">
-
-                <strong>
-                  CERTIFICATIONS
-                </strong>
-
-                <span>
-                  AND CREDENTIALS
-                </span>
-
+                <strong>CERTIFICATIONS</strong>
+                <span>AND CREDENTIALS</span>
               </div>
-
             </div>
-
           </div>
 
-          {/* =======================================
-              RIGHT
-          ======================================= */}
-
+          {/* Right Static Cards Stack */}
           <div className="cert-right">
-
             <div className="cert-archive-label">
-
-              <span>
-                MY LEARNING ARCHIVE
-              </span>
-
-              <span>
-                HOVER TO ARRANGE
-              </span>
-
+              <span>MY LEARNING ARCHIVE</span>
+              <span>VERIFIED CREDENTIALS</span>
             </div>
 
-            {/* =====================================
-                CARD FAN
-            ===================================== */}
+            <div className="cert-stack">
+              {cards.map((card) => (
+                <div key={card.id} className={`cert-paper ${card.posClass}`}>
+                  <div className="paper-red-strip"></div>
 
-            <div
-              className="cert-stack"
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-
-              {cards.map((card) => {
-
-                const position =
-                  getPosition(card.id);
-
-                return (
-                  <div
-                    key={card.id}
-                    className={`cert-paper ${position}`}
-                    onMouseEnter={() =>
-                      setHoveredCard(card.id)
-                    }
-                  >
-
-                    {/* Red Strip */}
-
-                    <div className="paper-red-strip"></div>
-
-                    {/* Content */}
-
-                    <div className="paper-content">
-
-                      {/* Top */}
-
-                      <div className="paper-top">
-
-                        <span>
-                          {card.archive}
-                        </span>
-
-                        <span>
-                          {card.year}
-                        </span>
-
-                      </div>
-
-                      {/* Main */}
-
-                      <div className="paper-main">
-
-                        <div className="paper-logo">
-
-                          <Award size={32} />
-
-                        </div>
-
-                        <div>
-
-                          <span className="paper-small">
-                            {card.label}
-                          </span>
-
-                          <h3>
-
-                            {card.title}
-
-                            <br />
-
-                            <span>
-                              {card.subtitle}
-                            </span>
-
-                          </h3>
-
-                        </div>
-
-                      </div>
-
-                      {/* Bottom */}
-
-                      <div className="paper-bottom">
-
-                        {card.bottom.map(
-                          (item, index) => (
-                            <React.Fragment
-                              key={item}
-                            >
-
-                              <span>
-                                {item}
-                              </span>
-
-                              {index !==
-                                card.bottom.length - 1 && (
-                                <b>/</b>
-                              )}
-
-                            </React.Fragment>
-                          )
-                        )}
-
-                      </div>
-
+                  <div className="paper-content">
+                    <div className="paper-top">
+                      <span>{card.archive}</span>
+                      <span>{card.year}</span>
                     </div>
 
-                    {/* Visual Arrow ONLY */}
+                    <div className="paper-main">
+                      <div className="paper-logo">
+                        <Award size={30} />
+                      </div>
 
-                    <div className="card-arrow">
-
-                      <ArrowUpRight size={16} />
-
+                      <div>
+                        <span className="paper-small">{card.label}</span>
+                        <h3>
+                          {card.title}
+                          <br />
+                          <span>{card.subtitle}</span>
+                        </h3>
+                      </div>
                     </div>
 
+                    <div className="paper-bottom">
+                      {card.bottom.map((item, index) => (
+                        <React.Fragment key={item}>
+                          <span>{item}</span>
+                          {index !== card.bottom.length - 1 && <b>/</b>}
+                        </React.Fragment>
+                      ))}
+                    </div>
                   </div>
-                );
-              })}
-
-              {/* Number */}
+                </div>
+              ))}
 
               <div className="cert-stack-number">
-
                 30<span>+</span>
-
               </div>
-
             </div>
-
-            {/* Instruction */}
-
-            <div className="deck-instruction">
-
-              <span className="deck-dot"></span>
-
-              HOVER A CARD TO ARRANGE
-
-            </div>
-
           </div>
-
         </div>
 
-        {/* =========================================
-            BOTTOM
-        ========================================= */}
-
-        <div className="cert-bottom">
-
-          <Link
-            to="/certificates/online"
-            className="cert-archive-btn"
+        {/* Action Button Container */}
+        <div className="cert-action-wrapper">
+          <button
+            type="button"
+            className="cert-cta-button"
+            onPointerDown={handleNavigateDirect}
+            onClick={handleNavigateDirect}
+            aria-label="View all certifications"
           >
+            <div className="btn-glow-layer"></div>
 
-            <div className="cert-btn-text">
-
-              <span>
-                EXPLORE
-              </span>
-
-              <strong>
-                ALL CERTIFICATES
-              </strong>
-
-            </div>
-
-            <div className="cert-btn-icon">
-
-              <ArrowUpRight size={25} />
-
-            </div>
-
-          </Link>
-
-          <div className="cert-click">
-
-            <MoveUpRight size={14} />
-
-            <span>
-              ENTER ARCHIVE
+            <span className="btn-tag">
+              <Sparkles size={13} className="sparkle-icon" />
+              PORTFOLIO
             </span>
 
-          </div>
+            <span className="btn-title">VIEW ALL CERTIFICATES</span>
 
+            <div className="btn-arrow-badge">
+              <ArrowUpRight size={18} />
+            </div>
+          </button>
         </div>
-
       </div>
     </section>
   );

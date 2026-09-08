@@ -392,11 +392,8 @@ const CertificateCard = ({ certificate }) => {
 
 const OnlineCertificates = () => {
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant",
-    });
+    // Naye page pe aane ke BAAD scroll top hoga, jisse Navbar confuse nahi hoga
+    window.scrollTo(0, 0);
   }, []);
 
   return (

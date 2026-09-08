@@ -1,48 +1,38 @@
 /* =========================================================
-   PORTFOLIO NAVBAR
+   PORTFOLIO NAVBAR (FIXED WRAPPER)
 ========================================================= */
 
 .portfolio-navbar {
   position: fixed;
-
   top: 18px;
   left: 50%;
-
   transform: translateX(-50%);
-
   width: min(1320px, calc(100% - 36px));
-
   z-index: 999999;
 
-  pointer-events: auto;
+  /* CRITICAL: Outer wrapper must pass clicks to the page underneath */
+  pointer-events: none !important;
 }
 
-
 /* =========================================================
-   MAIN NAVBAR
+   MAIN NAVBAR INNER (CLICKABLE)
 ========================================================= */
 
 .navbar-inner {
   position: relative;
-
   width: 100%;
   min-height: 58px;
-
   box-sizing: border-box;
-
   padding: 7px 9px;
-
   display: flex;
   align-items: center;
-
   gap: 10px;
 
-  pointer-events: auto;
+  /* Re-enable clicks only for the visible bar itself */
+  pointer-events: auto !important;
 
   border: 1px solid rgba(255, 255, 255, 0.14);
-
   border-radius: 18px;
-
   background:
     linear-gradient(
       135deg,
@@ -50,26 +40,17 @@
       rgba(255, 255, 255, 0.055),
       rgba(100, 0, 0, 0.08)
     );
-
-  backdrop-filter:
-    blur(24px)
-    saturate(155%);
-
-  -webkit-backdrop-filter:
-    blur(24px)
-    saturate(155%);
-
+  backdrop-filter: blur(24px) saturate(155%);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
   box-shadow:
     0 14px 42px rgba(0, 0, 0, 0.30),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 0 35px rgba(229, 9, 20, 0.07);
-
   transition:
     background 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
-
 
 /* =========================================================
    BRAND
@@ -77,117 +58,72 @@
 
 .navbar-brand {
   min-width: 155px;
-
   display: inline-flex;
   align-items: center;
-
   gap: 9px;
-
   padding: 8px 10px;
-
   color: #ffffff;
-
   text-decoration: none;
-
   flex-shrink: 0;
-
-  pointer-events: auto;
-
   cursor: pointer;
+  pointer-events: auto;
 }
-
 
 .navbar-brand-icon {
   width: 34px;
   height: 34px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
-
   border-radius: 11px;
-
   color: #ffffff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e50914,
-      #a4060d
-    );
-
-  box-shadow:
-    0 0 18px rgba(229, 9, 20, 0.25);
+  background: linear-gradient(135deg, #e50914, #a4060d);
+  box-shadow: 0 0 18px rgba(229, 9, 20, 0.25);
 }
-
 
 .navbar-brand-text {
   font-size: 14px;
-
   font-weight: 800;
-
   letter-spacing: 0.02em;
-
   white-space: nowrap;
 }
-
 
 .navbar-brand-text span {
   color: #e50914;
 }
 
-
 /* =========================================================
-   DESKTOP NAV
+   DESKTOP NAV LINKS
 ========================================================= */
 
 .navbar-desktop {
   flex: 1;
-
   min-width: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 3px;
+  pointer-events: auto;
 }
-
 
 .navbar-link {
   position: relative;
-
   min-height: 38px;
-
   padding: 0 10px;
-
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 6px;
-
   border: 1px solid transparent;
-
   border-radius: 11px;
-
   color: rgba(255, 255, 255, 0.72);
-
   text-decoration: none;
-
   font-size: 10px;
-
   font-weight: 700;
-
   white-space: nowrap;
-
-  pointer-events: auto;
-
   cursor: pointer;
-
+  pointer-events: auto;
   transition:
     color 0.25s ease,
     background 0.25s ease,
@@ -195,65 +131,36 @@
     transform 0.25s ease;
 }
 
-
-.navbar-link svg {
-  flex-shrink: 0;
-}
-
-
 .navbar-link:hover {
   color: #ffffff;
-
-  background:
-    rgba(229, 9, 20, 0.10);
-
-  border-color:
-    rgba(229, 9, 20, 0.20);
-
-  transform:
-    translateY(-1px);
+  background: rgba(229, 9, 20, 0.10);
+  border-color: rgba(229, 9, 20, 0.20);
+  transform: translateY(-1px);
 }
-
-
-/* ACTIVE */
 
 .navbar-link-active {
   color: #ffffff !important;
-
   background:
     linear-gradient(
       135deg,
       rgba(229, 9, 20, 0.20),
       rgba(229, 9, 20, 0.07)
     );
-
-  border-color:
-    rgba(229, 9, 20, 0.30);
+  border-color: rgba(229, 9, 20, 0.30);
 }
-
 
 .navbar-link-active::after {
   content: "";
-
   position: absolute;
-
   left: 50%;
   bottom: 4px;
-
   width: 4px;
   height: 4px;
-
-  transform:
-    translateX(-50%);
-
+  transform: translateX(-50%);
   border-radius: 50%;
-
   background: #e50914;
-
-  box-shadow:
-    0 0 8px rgba(229, 9, 20, 0.8);
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.8);
 }
-
 
 /* =========================================================
    THEME BUTTON
@@ -262,33 +169,19 @@
 .navbar-theme-button {
   width: 40px;
   height: 40px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
-
   appearance: none;
   -webkit-appearance: none;
-
-  border:
-    1px solid
-    rgba(229, 9, 20, 0.34);
-
+  border: 1px solid rgba(229, 9, 20, 0.34);
   border-radius: 11px;
-
   color: #ffffff;
-
-  background:
-    rgba(229, 9, 20, 0.10);
-
+  background: rgba(229, 9, 20, 0.10);
   cursor: pointer;
-
   pointer-events: auto;
-
   transition:
     color 0.25s ease,
     background 0.25s ease,
@@ -296,27 +189,18 @@
     transform 0.25s ease;
 }
 
-
 .navbar-theme-button:hover {
-  background:
-    rgba(229, 9, 20, 0.18);
-
-  border-color:
-    rgba(229, 9, 20, 0.55);
-
-  transform:
-    translateY(-1px);
+  background: rgba(229, 9, 20, 0.18);
+  border-color: rgba(229, 9, 20, 0.55);
+  transform: translateY(-1px);
 }
-
 
 .navbar-theme-button:active {
-  transform:
-    scale(0.96);
+  transform: scale(0.96);
 }
 
-
 /* =========================================================
-   MOBILE HIDDEN BY DEFAULT
+   MOBILE ELEMENTS (HIDDEN BY DEFAULT ON DESKTOP)
 ========================================================= */
 
 .mobile-theme-button,
@@ -325,113 +209,72 @@
   display: none;
 }
 
-
 /* =========================================================
-   MOBILE MENU
+   MOBILE MENU DRAWER
 ========================================================= */
 
 .navbar-mobile-menu {
   position: relative;
-
   z-index: 2;
-
-  display: none;
-
   margin-top: 8px;
-
   width: 100%;
-
   box-sizing: border-box;
-
-  pointer-events: auto;
-
   overflow: hidden;
-
-  border:
-    1px solid
-    rgba(229, 9, 20, 0.20);
-
+  border: 1px solid rgba(229, 9, 20, 0.20);
   border-radius: 17px;
-
   background:
     linear-gradient(
       145deg,
       rgba(255, 20, 35, 0.13),
-      rgba(5, 5, 5, 0.92)
+      rgba(5, 5, 5, 0.96)
     );
-
-  backdrop-filter:
-    blur(25px)
-    saturate(150%);
-
-  -webkit-backdrop-filter:
-    blur(25px)
-    saturate(150%);
-
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
   box-shadow:
     0 22px 60px rgba(0, 0, 0, 0.42),
     0 0 35px rgba(229, 9, 20, 0.08);
 
+  /* Closed state: Must NOT catch clicks */
   opacity: 0;
-
-  transform:
-    translateY(-8px)
-    scale(0.98);
-
+  visibility: hidden;
+  pointer-events: none !important;
+  transform: translateY(-8px) scale(0.98);
   transform-origin: top;
-
   transition:
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    visibility 0.25s;
 }
 
-
-.navbar-mobile-menu-open {
+/* Open state: Catch clicks properly */
+.navbar-mobile-menu.navbar-mobile-menu-open {
   opacity: 1;
-
-  transform:
-    translateY(0)
-    scale(1);
+  visibility: visible;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1);
 }
-
 
 .navbar-mobile-menu-inner {
   padding: 9px;
+  pointer-events: auto;
 }
-
 
 .navbar-mobile-link {
   width: 100%;
-
   min-height: 50px;
-
   box-sizing: border-box;
-
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   padding: 0 13px;
-
   border-radius: 12px;
-
-  color:
-    rgba(255, 255, 255, 0.74);
-
+  color: rgba(255, 255, 255, 0.74);
   background: transparent;
-
   text-decoration: none;
-
   opacity: 0;
-
-  transform:
-    translateY(7px);
-
-  pointer-events: auto;
-
+  transform: translateY(7px);
   cursor: pointer;
-
+  pointer-events: auto;
   transition:
     color 0.25s ease,
     background 0.25s ease,
@@ -439,60 +282,39 @@
     transform 0.25s ease;
 }
 
-
-.navbar-mobile-menu-open
-.navbar-mobile-link {
+.navbar-mobile-menu-open .navbar-mobile-link {
   opacity: 1;
-
-  transform:
-    translateY(0);
-
-  transition-delay:
-    calc(var(--item-index) * 30ms);
+  transform: translateY(0);
+  transition-delay: calc(var(--item-index) * 30ms);
 }
-
 
 .navbar-mobile-link:hover,
 .navbar-mobile-link.active {
   color: #ffffff;
-
-  background:
-    rgba(229, 9, 20, 0.11);
+  background: rgba(229, 9, 20, 0.11);
 }
-
 
 .navbar-mobile-link.active {
-  box-shadow:
-    inset 3px 0 0 #e50914;
+  box-shadow: inset 3px 0 0 #e50914;
 }
-
 
 .navbar-mobile-link-left {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
 }
 
-
 .navbar-mobile-link-left svg {
   color: #e50914;
-
   flex-shrink: 0;
 }
 
-
 .navbar-mobile-arrow {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  color:
-    rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.28);
 }
-
 
 /* =========================================================
    DARK MODE
@@ -506,48 +328,33 @@
       rgba(255, 255, 255, 0.055),
       rgba(100, 0, 0, 0.08)
     );
-
-  border-color:
-    rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.14);
 }
-
 
 .portfolio-navbar.navbar-dark .navbar-brand {
   color: #ffffff;
 }
 
-
 .portfolio-navbar.navbar-dark .navbar-link {
-  color:
-    rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.72);
 }
-
 
 .portfolio-navbar.navbar-dark .navbar-link:hover,
 .portfolio-navbar.navbar-dark .navbar-link-active {
   color: #ffffff !important;
 }
 
-
 .portfolio-navbar.navbar-dark .navbar-theme-button {
   color: #ffffff;
-
-  background:
-    rgba(229, 9, 20, 0.10);
+  background: rgba(229, 9, 20, 0.10);
 }
 
-
 /* =========================================================
-   LIGHT MODE — TRANSPARENT GLASS
+   LIGHT MODE GLASS
 ========================================================= */
 
 .portfolio-navbar.navbar-light .navbar-inner {
   border: 1px solid rgba(229, 9, 20, 0.22);
-
-  /*
-    Transparent glass base
-    White solid background nahi
-  */
   background:
     linear-gradient(
       135deg,
@@ -555,132 +362,62 @@
       rgba(255, 255, 255, 0.22),
       rgba(255, 60, 70, 0.10)
     );
-
-  /*
-    Strong glass blur
-  */
-  backdrop-filter:
-    blur(24px)
-    saturate(165%);
-
-  -webkit-backdrop-filter:
-    blur(24px)
-    saturate(165%);
-
+  backdrop-filter: blur(24px) saturate(165%);
+  -webkit-backdrop-filter: blur(24px) saturate(165%);
   box-shadow:
     0 14px 45px rgba(0, 0, 0, 0.13),
-
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.65),
-
-    inset 0 -1px 0
-      rgba(229, 9, 20, 0.10),
-
-    0 0 35px
-      rgba(229, 9, 20, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(229, 9, 20, 0.10),
+    0 0 35px rgba(229, 9, 20, 0.08);
 }
-
-
-/* =========================================================
-   LIGHT MODE BRAND
-========================================================= */
 
 .portfolio-navbar.navbar-light .navbar-brand {
   color: #111111;
 }
 
-
 .portfolio-navbar.navbar-light .navbar-brand-icon {
   color: #ffffff;
 }
-
-
-/* =========================================================
-   LIGHT MODE LINKS
-========================================================= */
 
 .portfolio-navbar.navbar-light .navbar-link {
   color: rgba(15, 15, 15, 0.72);
 }
 
-
 .portfolio-navbar.navbar-light .navbar-link:hover {
   color: #080808;
-
-  background:
-    rgba(229, 9, 20, 0.09);
-
-  border-color:
-    rgba(229, 9, 20, 0.20);
+  background: rgba(229, 9, 20, 0.09);
+  border-color: rgba(229, 9, 20, 0.20);
 }
-
-
-/* ACTIVE LINK */
 
 .portfolio-navbar.navbar-light .navbar-link-active {
   color: #111111 !important;
-
   background:
     linear-gradient(
       135deg,
       rgba(229, 9, 20, 0.16),
       rgba(255, 255, 255, 0.08)
     );
-
-  border-color:
-    rgba(229, 9, 20, 0.30);
-
-  box-shadow:
-    inset 0 0 18px
-      rgba(229, 9, 20, 0.06);
+  border-color: rgba(229, 9, 20, 0.30);
+  box-shadow: inset 0 0 18px rgba(229, 9, 20, 0.06);
 }
-
-
-/* =========================================================
-   LIGHT MODE THEME BUTTON
-========================================================= */
 
 .portfolio-navbar.navbar-light .navbar-theme-button {
   color: #151515;
-
-  background:
-    rgba(229, 9, 20, 0.09);
-
-  border:
-    1px solid
-    rgba(229, 9, 20, 0.28);
-
+  background: rgba(229, 9, 20, 0.09);
+  border: 1px solid rgba(229, 9, 20, 0.28);
   box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.55),
-
-    0 0 15px
-      rgba(229, 9, 20, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 15px rgba(229, 9, 20, 0.05);
 }
 
-
-.portfolio-navbar.navbar-light
-.navbar-theme-button:hover {
+.portfolio-navbar.navbar-light .navbar-theme-button:hover {
   color: #080808;
-
-  background:
-    rgba(229, 9, 20, 0.15);
-
-  border-color:
-    rgba(229, 9, 20, 0.45);
+  background: rgba(229, 9, 20, 0.15);
+  border-color: rgba(229, 9, 20, 0.45);
 }
 
-
-/* =========================================================
-   LIGHT MODE MOBILE MENU
-========================================================= */
-
-.portfolio-navbar.navbar-light
-.navbar-mobile-menu {
-  border:
-    1px solid
-    rgba(229, 9, 20, 0.20);
-
+.portfolio-navbar.navbar-light .navbar-mobile-menu {
+  border: 1px solid rgba(229, 9, 20, 0.20);
   background:
     linear-gradient(
       145deg,
@@ -688,115 +425,42 @@
       rgba(255, 255, 255, 0.20),
       rgba(255, 60, 70, 0.08)
     );
-
-  backdrop-filter:
-    blur(26px)
-    saturate(165%);
-
-  -webkit-backdrop-filter:
-    blur(26px)
-    saturate(165%);
-
-  box-shadow:
-    0 22px 60px
-      rgba(0, 0, 0, 0.14),
-
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.65),
-
-    0 0 30px
-      rgba(229, 9, 20, 0.07);
+  backdrop-filter: blur(26px) saturate(165%);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
 }
 
-
-.portfolio-navbar.navbar-light
-.navbar-mobile-link {
-  color:
-    rgba(10, 10, 10, 0.70);
+.portfolio-navbar.navbar-light .navbar-mobile-link {
+  color: rgba(10, 10, 10, 0.70);
 }
 
-
-.portfolio-navbar.navbar-light
-.navbar-mobile-link:hover,
-.portfolio-navbar.navbar-light
-.navbar-mobile-link.active {
+.portfolio-navbar.navbar-light .navbar-mobile-link:hover,
+.portfolio-navbar.navbar-light .navbar-mobile-link.active {
   color: #111111;
-
-  background:
-    rgba(229, 9, 20, 0.09);
-}
-
-
-.portfolio-navbar.navbar-light
-.navbar-mobile-arrow {
-  color:
-    rgba(0, 0, 0, 0.28);
-}
-
-
-/* =========================================================
-   LIGHT MODE MOBILE BUTTONS
-========================================================= */
-
-@media (max-width: 800px) {
-
-  .portfolio-navbar.navbar-light
-  .navbar-mobile-home,
-
-  .portfolio-navbar.navbar-light
-  .mobile-theme-button,
-
-  .portfolio-navbar.navbar-light
-  .navbar-menu-button {
-    color: #111111;
-
-    background:
-      rgba(229, 9, 20, 0.09);
-
-    border:
-      1px solid
-      rgba(229, 9, 20, 0.28);
-
-    box-shadow:
-      inset 0 1px 0
-        rgba(255, 255, 255, 0.55),
-
-      0 0 14px
-        rgba(229, 9, 20, 0.05);
-  }
+  background: rgba(229, 9, 20, 0.09);
 }
 
 /* =========================================================
-   TABLET
+   TABLET RESPONSIVE
 ========================================================= */
 
 @media (max-width: 1100px) {
-
   .portfolio-navbar {
-    width:
-      calc(100% - 24px);
-
+    width: calc(100% - 24px);
     top: 12px;
   }
-
 
   .navbar-brand {
     min-width: 145px;
   }
 
-
   .navbar-link {
-    padding:
-      0 8px;
-
+    padding: 0 8px;
     font-size: 9px;
   }
-
 
   .navbar-brand-text {
     font-size: 12px;
   }
-
 
   .navbar-theme-button {
     width: 38px;
@@ -804,189 +468,98 @@
   }
 }
 
-
 /* =========================================================
-   MOBILE
+   MOBILE RESPONSIVE
 ========================================================= */
 
 @media (max-width: 800px) {
-
   .portfolio-navbar {
     top: 10px;
-
-    width:
-      calc(100% - 20px);
+    width: calc(100% - 20px);
   }
-
 
   .navbar-inner {
     min-height: 54px;
-
-    padding:
-      6px 7px;
-
+    padding: 6px 7px;
     border-radius: 16px;
   }
 
-
-  /* Hide desktop */
-
-  .navbar-brand {
-    display: none;
-  }
-
-
-  .navbar-desktop {
-    display: none;
-  }
-
-
+  .navbar-brand,
+  .navbar-desktop,
   .desktop-theme-button {
-    display: none;
+    display: none !important;
   }
-
-
-  /* Home */
 
   .navbar-mobile-home {
     width: 38px;
     height: 38px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     margin-left: 2px;
-
     flex-shrink: 0;
-
     color: #ffffff;
-
     text-decoration: none;
-
-    border:
-      1px solid
-      rgba(229, 9, 20, 0.28);
-
+    border: 1px solid rgba(229, 9, 20, 0.28);
     border-radius: 11px;
-
-    background:
-      rgba(229, 9, 20, 0.10);
-
-    pointer-events: auto;
-
+    background: rgba(229, 9, 20, 0.10);
     cursor: pointer;
+    pointer-events: auto;
   }
-
-
-  /* Theme */
 
   .mobile-theme-button {
     display: flex;
-
     width: 38px;
     height: 38px;
-
     margin-left: auto;
+    pointer-events: auto;
   }
-
-
-  /* Menu */
 
   .navbar-menu-button {
     width: 38px;
     height: 38px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     padding: 0;
-
-    border:
-      1px solid
-      rgba(229, 9, 20, 0.28);
-
+    border: 1px solid rgba(229, 9, 20, 0.28);
     border-radius: 11px;
-
     color: #ffffff;
-
-    background:
-      rgba(229, 9, 20, 0.10);
-
-    pointer-events: auto;
-
+    background: rgba(229, 9, 20, 0.10);
     cursor: pointer;
-
+    pointer-events: auto;
     appearance: none;
     -webkit-appearance: none;
   }
 
-
   .navbar-menu-button:hover,
   .navbar-menu-button.open {
-    background:
-      rgba(229, 9, 20, 0.18);
+    background: rgba(229, 9, 20, 0.18);
   }
 
-
-  .navbar-mobile-menu {
-    display: block;
-  }
-
-
-  /* Light mobile controls */
-
-  .portfolio-navbar.navbar-light
-  .navbar-mobile-home {
+  .portfolio-navbar.navbar-light .navbar-mobile-home,
+  .portfolio-navbar.navbar-light .mobile-theme-button,
+  .portfolio-navbar.navbar-light .navbar-menu-button {
     color: #111111;
-
-    background:
-      rgba(229, 9, 20, 0.075);
-  }
-
-
-  .portfolio-navbar.navbar-light
-  .mobile-theme-button {
-    color: #111111;
-
-    background:
-      rgba(229, 9, 20, 0.075);
-  }
-
-
-  .portfolio-navbar.navbar-light
-  .navbar-menu-button {
-    color: #111111;
-
-    background:
-      rgba(229, 9, 20, 0.075);
+    background: rgba(229, 9, 20, 0.075);
+    border: 1px solid rgba(229, 9, 20, 0.28);
   }
 }
-
 
 /* =========================================================
    SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 420px) {
-
   .portfolio-navbar {
-    width:
-      calc(100% - 14px);
-
+    width: calc(100% - 14px);
     top: 7px;
   }
-
 
   .navbar-inner {
     min-height: 50px;
   }
-
 
   .navbar-mobile-home,
   .navbar-menu-button,
@@ -996,30 +569,11 @@
   }
 }
 
-
-/* =========================================================
-   CLICK SAFETY
-========================================================= */
-
-.portfolio-navbar,
-.navbar-inner,
-.navbar-brand,
-.navbar-link,
-.navbar-theme-button,
-.navbar-mobile-home,
-.navbar-menu-button,
-.navbar-mobile-menu,
-.navbar-mobile-link {
-  pointer-events: auto !important;
-}
-
-
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .navbar-inner,
   .navbar-link,
   .navbar-theme-button,

@@ -1,9 +1,5 @@
-import { useState } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
@@ -24,127 +20,59 @@ import AllGallery from "./pages/AllGallery";
 import "./App.css";
 import "./components/Navbar.css";
 
-
-function Home({ darkMode, setDarkMode }) {
+function Home() {
   return (
-    <div className={darkMode ? "app dark" : "app light"}>
-
+    <>
       <Hero />
-
       <About />
-
       <CodingProfile />
-
       <Skills />
-
       <Projects />
-
       <Achievements />
-
       <Certificates />
-
       <Gallery />
-
       <Contact />
-
-    </div>
+    </>
   );
 }
 
-
 function App() {
-  /*
-   * SINGLE SOURCE OF TRUTH
-   *
-   * Theme state yahin rahega.
-   * Navbar isi ko change karega.
-   * Pura Home isi state se dark/light hoga.
-   */
-  const [darkMode, setDarkMode] = useState(true);
+  /* =========================================================
+     PERSISTENT THEME WITH LOCALSTORAGE
+  ========================================================= */
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("portfolio_theme");
+    return savedTheme !== null ? savedTheme === "dark" : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("portfolio_theme", darkMode ? "dark" : "light");
+    
+    // Body tag par sidhe class toggle karein taaki har page match kare
+    if (darkMode) {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    } else {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <BrowserRouter>
+      {/* Pura application ek consistent wrapper mein rahega */}
+      <div className={`app ${darkMode ? "dark" : "light"}`}>
+        {/* NAVBAR */}
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      {/* ================= NAVBAR ================= */}
-
-      <Navbar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-      />
-
-
-      {/* ================= ROUTES ================= */}
-
-      <Routes>
-
-        {/* HOME */}
-
-        <Route
-          path="/"
-          element={
-            <Home
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-            />
-          }
-        />
-
-
-        {/* ALL PROJECTS */}
-
-        <Route
-          path="/projects"
-          element={
-            <div
-              className={
-                darkMode
-                  ? "app dark"
-                  : "app light"
-              }
-            >
-              <AllProjects />
-            </div>
-          }
-        />
-
-
-        {/* ONLINE CERTIFICATES */}
-
-        <Route
-          path="/certificates/online"
-          element={
-            <div
-              className={
-                darkMode
-                  ? "app dark"
-                  : "app light"
-              }
-            >
-              <OnlineCertificates />
-            </div>
-          }
-        />
-
-
-        {/* ALL GALLERY */}
-
-        <Route
-          path="/gallery"
-          element={
-            <div
-              className={
-                darkMode
-                  ? "app dark"
-                  : "app light"
-              }
-            >
-              <AllGallery />
-            </div>
-          }
-        />
-
-      </Routes>
-
+        {/* ROUTES */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/certificates/online" element={<OnlineCertificates />} />
+          <Route path="/gallery" element={<AllGallery />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -5,6 +5,7 @@
   overflow: hidden;
   background: #050505;
   color: #fff;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .certificates-page::before {
@@ -257,4 +258,87 @@
   .certificate-category {
     margin-bottom: 65px;
   }
+}
+
+/* =========================================================
+   LIGHT / DAY MODE SUPPORT (.app.light)
+========================================================= */
+
+.app.light .certificates-page {
+  background: #f5f5f5;
+  color: #080808;
+}
+
+.app.light .certificates-page::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+.app.light .back-btn {
+  color: #666;
+}
+
+.app.light .back-btn:hover {
+  color: #ff2b2b;
+}
+
+.app.light .certificates-page-header h1 {
+  color: #080808;
+}
+
+.app.light .certificates-page-header p {
+  color: #555;
+}
+
+.app.light .category-heading h2 {
+  color: #080808;
+}
+
+.app.light .category-line {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 43, 43, 0.7),
+    rgba(0, 0, 0, 0.08),
+    transparent
+  );
+}
+
+.app.light .certificate-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.app.light .certificate-card:hover {
+  border-color: rgba(255, 43, 43, 0.55);
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.12);
+}
+
+.app.light .certificate-image-wrapper {
+  background: #eaeaea;
+}
+
+.app.light .certificate-card-content h3 {
+  color: #080808;
+}
+
+.app.light .certificate-date {
+  color: #777;
+}
+
+.app.light .certificate-card-content p {
+  color: #555;
+}
+
+.app.light .credential-btn {
+  color: #111;
+  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.app.light .credential-btn:hover {
+  border-color: #ff2b2b;
+  color: #ff2b2b;
+  background: rgba(255, 43, 43, 0.04);
 }

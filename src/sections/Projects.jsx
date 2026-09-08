@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./Projects.css";
 
 const featuredProjects = [
@@ -28,8 +30,7 @@ const featuredProjects = [
       "Automation",
       "Database",
     ],
-    github:
-      "https://github.com/Yogesh1212-eng/Event-Feedback",
+    github: "https://github.com/Yogesh1212-eng/Event-Feedback",
   },
   {
     number: "03",
@@ -42,429 +43,259 @@ const featuredProjects = [
       "JavaScript",
       "AI",
     ],
-    github:
-      "https://github.com/Yogesh1212-eng/SmartCampus_AI",
+    github: "https://github.com/Yogesh1212-eng/SmartCampus_AI",
   },
 ];
 
 function Projects() {
-  const sectionRef = useRef(null);
-
   const [activeProject, setActiveProject] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
+  const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
-  /*
-    Refs use kar rahe hain taaki wheel handler
-    stale state ke saath kaam na kare.
-  */
-  const activeProjectRef = useRef(0);
-  const wheelLock = useRef(false);
+  // Fresh references for instant wheel/touch handling without state delay
+  const activeRef = useRef(0);
+  const isAnimating = useRef(false);
+  const touchStartY = useRef(0);
+
+  const handleNavigateProjects = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate("/projects");
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
-
     if (!section) return;
 
-    const handleWheel = (e) => {
-      const rect =
-        section.getBoundingClientRect();
+    /* =========================================================
+       PROJECT LOCKING CONTROLLER
+    ========================================================= */
+    const changeCard = (direction) => {
+      if (isAnimating.current) return true;
 
-      /*
-        Section ko thoda tolerant range diya hai.
+      const current = activeRef.current;
 
-        Pehle:
-        rect.top <= 5
-        rect.bottom >= viewport - 5
-
-        Ab:
-        section agar viewport me properly aa gaya
-        hai to project scroll lock kaam karega.
-      */
-
-      const viewportHeight =
-        window.innerHeight;
-
-      const sectionVisible =
-        rect.top <= 120 &&
-        rect.bottom >=
-          viewportHeight - 120;
-
-      if (!sectionVisible) {
-        return;
-      }
-
-      /*
-        Animation already chal rahi hai.
-        Browser ko bilkul scroll nahi karne dena.
-      */
-
-      if (wheelLock.current) {
-        e.preventDefault();
-        return;
-      }
-
-      /*
-        Small wheel movements ignore.
-        Isse trackpad jitter kam hoga.
-      */
-
-      if (Math.abs(e.deltaY) < 8) {
-        e.preventDefault();
-        return;
-      }
-
-      /*
-        Current project ref
-        */
-      const current =
-        activeProjectRef.current;
-
-      /* ========================================
-         SCROLL DOWN
-      ======================================== */
-
-      if (e.deltaY > 0) {
-
-        /*
-          Jab tak:
-          Project 1 -> Project 2
-          Project 2 -> Project 3
-          Project 3 -> View More
-
-          tab tak browser scroll BLOCK rahega.
-        */
-
-        if (
-          current <
-          featuredProjects.length
-        ) {
-          e.preventDefault();
-
-          /*
-            Projects ko viewport ke exact top par
-            softly lock kar dete hain.
-          */
-
-          if (rect.top > 2) {
-            window.scrollTo({
-              top:
-                window.scrollY +
-                rect.top,
-              behavior: "auto",
-            });
-          }
-
-          wheelLock.current = true;
-
-          setIsLocked(true);
-
-          const next =
-            current + 1;
-
-          activeProjectRef.current =
-            next;
-
+      // Downwards / Next Card
+      if (direction === "next") {
+        if (current < featuredProjects.length - 1) {
+          isAnimating.current = true;
+          const next = current + 1;
+          activeRef.current = next;
           setActiveProject(next);
 
-          /*
-            Slow enough so that fast wheel
-            ek saath multiple project skip
-            na kare.
-          */
-
           setTimeout(() => {
-            wheelLock.current = false;
-          }, 950);
+            isAnimating.current = false;
+          }, 650);
 
-          return;
+          return true; // Scroll blocked, card transitioned
         }
-
-        /*
-          activeProject === 3
-
-          Matlab View More visible hai.
-          Ab normal browser scrolling allowed.
-        */
-
-        setIsLocked(false);
-
-        return;
+        return false; // Last card reached, allow normal scroll to next section
       }
 
-      /* ========================================
-         SCROLL UP
-      ======================================== */
-
-      if (e.deltaY < 0) {
-
-        /*
-          Project 3 -> Project 2
-          Project 2 -> Project 1
-          Project 1 -> section ke previous part
-
-          Jab current > 0 hai tab page lock rahega.
-        */
-
+      // Upwards / Previous Card
+      if (direction === "prev") {
         if (current > 0) {
-          e.preventDefault();
-
-          /*
-            Section ko top par hold rakho.
-          */
-
-          if (rect.top > 2) {
-            window.scrollTo({
-              top:
-                window.scrollY +
-                rect.top,
-              behavior: "auto",
-            });
-          }
-
-          wheelLock.current = true;
-
-          setIsLocked(true);
-
-          const previous =
-            current - 1;
-
-          activeProjectRef.current =
-            previous;
-
-          setActiveProject(previous);
+          isAnimating.current = true;
+          const prev = current - 1;
+          activeRef.current = prev;
+          setActiveProject(prev);
 
           setTimeout(() => {
-            wheelLock.current = false;
-          }, 950);
+            isAnimating.current = false;
+          }, 650);
 
-          return;
+          return true; // Scroll blocked, card transitioned
         }
+        return false; // First card reached, allow normal scroll back to Skills
+      }
 
-        /*
-          Project 1 par ho aur user aur
-          upar scroll kare -> browser ko
-          normal scroll karne do.
-        */
+      return false;
+    };
 
-        setIsLocked(false);
+    // Laptop Mouse Wheel
+    const handleWheel = (e) => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
 
-        return;
+      if (!inView) return;
+
+      if (Math.abs(e.deltaY) < 10) return;
+
+      if (e.deltaY > 0) {
+        const lock = changeCard("next");
+        if (lock) {
+          e.preventDefault();
+        }
+      } else if (e.deltaY < 0) {
+        const lock = changeCard("prev");
+        if (lock) {
+          e.preventDefault();
+        }
       }
     };
 
-    window.addEventListener(
-      "wheel",
-      handleWheel,
-      {
-        passive: false,
+    // Mobile Touch
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top <= 60 && rect.bottom >= window.innerHeight - 60;
+
+      if (!inView) return;
+
+      const currentY = e.touches[0].clientY;
+      const diff = touchStartY.current - currentY;
+
+      if (Math.abs(diff) > 35) {
+        if (diff > 0) {
+          const lock = changeCard("next");
+          if (lock) {
+            e.preventDefault();
+            touchStartY.current = currentY;
+          }
+        } else {
+          const lock = changeCard("prev");
+          if (lock) {
+            e.preventDefault();
+            touchStartY.current = currentY;
+          }
+        }
       }
-    );
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
-      window.removeEventListener(
-        "wheel",
-        handleWheel
-      );
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
 
   return (
-    <section
-      
-      ref={sectionRef}
-      className={`projects-section ${
-        isLocked
-          ? "projects-scroll-locked"
-          : ""
-      }`}
-      id="projects"
-    >
-      {/* Glow */}
-
+    <section className="projects-section" ref={sectionRef} id="projects">
       <div className="projects-glow projects-glow-one"></div>
-
       <div className="projects-glow projects-glow-two"></div>
 
       <div className="projects-container">
-
-        {/* ======================================
-            HEADING
-        ====================================== */}
-
+        {/* HEADING */}
         <div className="projects-heading">
-
-          <span className="projects-small-title">
-            04 / PROJECTS
-          </span>
-
+          <span className="projects-small-title">04 / PROJECTS</span>
           <h2>
-            Things I've{" "}
-            <span>Built.</span>
+            Things I've <span>Built.</span>
           </h2>
-
           <p>
-            A collection of projects where ideas
-            turned into functional digital
-            experiences.
+            A collection of projects where ideas turned into functional digital experiences.
           </p>
-
         </div>
 
+        {/* ANIMATED CARD STACK */}
+        <div className="projects-card-stack">
+          {featuredProjects.map((project, index) => {
+            const isCurrent = index === activeProject;
+            const isPassed = index < activeProject;
 
-        {/* ======================================
-            PROJECT VIEWPORT
-        ====================================== */}
+            let cardClass = "card-future";
+            if (isCurrent) cardClass = "card-current";
+            if (isPassed) cardClass = "card-passed";
 
-        <div className="projects-stage">
+            return (
+              <article
+                key={project.number}
+                className={`project-card ${cardClass}`}
+                style={{
+                  "--depth": activeProject - index,
+                  zIndex: index + 10,
+                }}
+              >
+                <div className="project-top">
+                  <span className="project-number">{project.number}</span>
+                  <span className="project-status">FEATURED PROJECT</span>
+                </div>
 
-          {featuredProjects.map(
-            (project, index) => {
-
-              const isActive =
-                index === activeProject;
-
-              const isBehind =
-                index < activeProject;
-
-              return (
-                <article
-                  className={`project-card ${
-                    isActive
-                      ? "project-active"
-                      : ""
-                  } ${
-                    isBehind
-                      ? "project-behind"
-                      : ""
-                  }`}
-                  key={project.number}
-                >
-
-                  {/* TOP */}
-
-                  <div className="project-top">
-
-                    <span className="project-number">
-                      {project.number}
-                    </span>
-
-                    <span className="project-status">
-                      FEATURED PROJECT
-                    </span>
-
+                <div className="project-visual">
+                  <div className="visual-grid"></div>
+                  <div className="visual-content">
+                    <span className="visual-number">{project.number}</span>
+                    <span className="visual-label">FULL STACK</span>
                   </div>
+                </div>
 
+                <div className="project-content">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
 
-                  {/* VISUAL */}
-
-                  <div className="project-visual">
-
-                    <div className="visual-grid"></div>
-
-                    <div className="visual-content">
-
-                      <span className="visual-number">
-                        {project.number}
+                  {/* RESTORED TECH STACK WITH RED DOT & BORDER */}
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span className="project-tag" key={tag}>
+                        <span className="tag-dot"></span>
+                        {tag}
                       </span>
-
-                      <span className="visual-label">
-                        FULL STACK
-                      </span>
-
-                    </div>
-
+                    ))}
                   </div>
 
-
-                  {/* CONTENT */}
-
-                  <div className="project-content">
-
-                    <h3>
-                      {project.title}
-                    </h3>
-
-                    <p>
-                      {project.description}
-                    </p>
-
-
-                    {/* TAGS */}
-
-                    <div className="project-tags">
-
-                      {project.tags.map(
-                        (tag) => (
-                          <span
-                            className="project-tag"
-                            key={tag}
-                          >
-                            {tag}
-                          </span>
-                        )
-                      )}
-
-                    </div>
-
-
-                    {/* ACTION */}
-
-                    <div className="project-actions">
-
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="project-button github-button"
-                      >
-                        GitHub
-                        <span>↗</span>
-                      </a>
-
-                    </div>
-
+                  <div className="project-actions">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="project-button github-button"
+                    >
+                      GitHub
+                      <span>↗</span>
+                    </a>
                   </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
 
-                </article>
-              );
-            }
-          )}
-
-
-          {/* ====================================
-              VIEW MORE
-          ==================================== */}
-
-          <div
-            className={`view-more-projects ${
-              activeProject ===
-              featuredProjects.length
-                ? "view-more-active"
-                : ""
-            }`}
-          >
-
-            <a
-              href="/projects"
-              className="view-more-button"
-            >
-
-              <span>
-                View More Projects
-              </span>
-
-              <span className="view-more-arrow">
-                ↗
-              </span>
-
-            </a>
-
+        {/* DOTS & BUTTON */}
+        <div className="projects-bottom-bar">
+          <div className="projects-dots">
+            {featuredProjects.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`project-dot ${i === activeProject ? "active" : ""}`}
+                onClick={() => {
+                  activeRef.current = i;
+                  setActiveProject(i);
+                }}
+                aria-label={`Go to project ${i + 1}`}
+              />
+            ))}
           </div>
 
+          <div className="projects-action-wrapper">
+            <button
+              type="button"
+              className="projects-cta-button"
+              onClick={handleNavigateProjects}
+              aria-label="View all projects"
+            >
+              <div className="btn-glow-layer"></div>
+
+              <span className="btn-tag">
+                <Sparkles size={13} className="sparkle-icon" />
+                SHOWCASE
+              </span>
+
+              <span className="btn-title">VIEW ALL PROJECTS</span>
+
+              <div className="btn-arrow-badge">
+                <ArrowUpRight size={18} />
+              </div>
+            </button>
+          </div>
         </div>
-
       </div>
-
     </section>
   );
 }

@@ -23,12 +23,12 @@ function About({ darkMode }) {
     color: darkMode ? "#ffffff" : "#111111",
 
     background: darkMode
-      ? "linear-gradient(135deg, #b30916 0%, #8d0711 55%, #65050b 100%)"
-      : "linear-gradient(135deg, rgba(255,240,242,0.98) 0%, rgba(255,255,255,0.94) 100%)",
+      ? "linear-gradient(135deg, #f4eded 0%, #f5eeef 55%, #110f0f 100%)"
+      : "linear-gradient(135deg, rgb(161, 79, 79) 0%, rgb(241, 8, 8) 100%)",
 
     border: darkMode
-      ? "1px solid rgba(229,9,20,0.65)"
-      : "1px solid rgba(229,9,20,0.30)",
+      ? "1px solid rgb(248, 245, 245)"
+      : "1px solid rgb(229, 198, 199)",
 
     boxShadow: darkMode
       ? "0 18px 45px rgba(0,0,0,0.30), 0 0 30px rgba(229,9,20,0.14)"
@@ -38,15 +38,15 @@ function About({ darkMode }) {
   };
 
   const gcpIconStyle = {
-    color: darkMode ? "#ffffff" : "#e50914",
+    color: darkMode ? "#902424" : "#fbf3f3",
 
     background: darkMode
-      ? "rgba(255,255,255,0.10)"
-      : "rgba(229,9,20,0.07)",
+      ? "rgb(227, 13, 13)"
+      : "rgb(245, 11, 23)",
 
     border: darkMode
-      ? "1px solid rgba(255,255,255,0.25)"
-      : "1px solid rgba(229,9,20,0.22)",
+      ? "1px solid rgb(240, 233, 233)"
+      : "1px solid rgba(228, 217, 218, 0.98)",
 
     position: "relative",
     zIndex: 10,
@@ -57,7 +57,7 @@ function About({ darkMode }) {
 
     color: darkMode
       ? "rgba(255,255,255,0.82)"
-      : "#a4060d",
+      : "#f1ecec",
 
     opacity: 1,
 
@@ -86,7 +86,7 @@ function About({ darkMode }) {
   };
 
   const gcpArrowStyle = {
-    color: darkMode ? "#ffffff" : "#e50914",
+    color: darkMode ? "#f5eded" : "#100101",
 
     opacity: 1,
 

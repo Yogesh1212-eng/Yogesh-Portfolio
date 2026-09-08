@@ -273,23 +273,35 @@
 .section-number {
   width: 46px;
   height: 46px;
-
   flex-shrink: 0;
 
-  display: flex;
+  /* Perfect Center */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
 
-  align-items: center;
-  justify-content: center;
+  /* Text baseline fix */
+  line-height: 1;
+  padding: 0 !important;
+  margin: 0;
+  box-sizing: border-box;
 
   border: 1px solid #ff2424;
-
   border-radius: 11px;
-
   color: #ff2424;
-
   font-size: 13px;
-
   font-weight: 700;
+}
+
+/* Agar andar koi span ya text tag hai to use bhi reset karein */
+.section-number * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .section-intro-text {
