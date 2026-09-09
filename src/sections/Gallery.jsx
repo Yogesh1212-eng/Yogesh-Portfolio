@@ -6,41 +6,41 @@ import "./Gallery.css";
 const PHOTOS_PER_VIEW = 4;
 
 const galleryPhotos = [
-  { src: "/gallery/Trophy.jpeg", title: "Achievement Moment", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/dev3.jpeg", title: "Devfest Team", category: "GOOGLE", date: "2026" },
-  { src: "/gallery/director-award.jpeg", title: "GDG Award", category: "AWARD", date: "2026" },
-  { src: "/gallery/Hac.jpeg", title: "Hackathon Winner", category: "HACKATHON", date: "2026" },
+  { src: "/gallery/Trophy.jpeg", title: "Milestone To Remember", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/dev3.jpeg", title: "Behind the Devfest Experiences", category: "GOOGLE", date: "2025" },
+  { src: "/gallery/director-award.jpeg", title: "GDG Excellence Award", category: "AWARD", date: "2026" },
+  { src: "/gallery/Hac.jpeg", title: "Hackathon Victory", category: "HACKATHON", date: "2025" },
 
-  { src: "/gallery/Dev1.jpeg", title: "Devfest 2024", category: "EVENT", date: "2026" },
-  { src: "/gallery/swag.jpeg", title: "Google Swags", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/Dev1.jpeg", title: "Devfest 2024 Organizer", category: " GOOGLE EVENT", date: "2024" },
+  { src: "/gallery/swag.jpeg", title: "Google Goodies & Recognition", category: "ACHIEVEMENT", date: "2026" },
   { src: "/gallery/trophy1.jpeg", title: "Technical Trophy", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/dev2.jpeg", title: "Devfest 2025", category: "TEAM", date: "2026" },
+  { src: "/gallery/dev2.jpeg", title: "Devfest 2025 Highlights", category: "TEAM", date: "2026" },
 
-  { src: "/gallery/Anchoring1.jpeg", title: "Conducting Technical Session", category: "CERTIFICATION", date: "2026" },
-  { src: "/gallery/anchoring2.jpeg", title: "GCP Seminar", category: "CERTIFICATION", date: "2026" },
-  { src: "/gallery/anchoring3.jpeg", title: "Anchoring", category: "CERTIFICATION", date: "2026" },
-  { src: "/gallery/anchoring.jpeg", title: "Hosting ", category: "EVENT", date: "2026" },
+  { src: "/gallery/Anchoring1.jpeg", title: "Conducting Technical Session", category: "Seminar", date: "2026" },
+  { src: "/gallery/anchoring2.jpeg", title: "GCP Seminar Insights", category: "Seminar", date: "2025" },
+  { src: "/gallery/anchoring3.jpeg", title: "Anchoring", category: "Seminar", date: "2025" },
+  { src: "/gallery/anchoring.jpeg", title: "Technical Session Leadership ", category: "EVENT", date: "2026" },
 
   { src: "/gallery/team1.jpeg", title: " GDG Team", category: "TEAM", date: "2026" },
-  { src: "/gallery/team2.jpeg", title: "GDG Core Team", category: "TEAM", date: "2026" },
+  { src: "/gallery/team2.jpeg", title: "GDG Core Team", category: "TEAM", date: "2025" },
   { src: "/gallery/team3.jpeg", title: "GDG Team Appreciation Moment", category: "TEAM", date: "2026" },
-  { src: "/gallery/team4.jpeg", title: "With GDG Winners", category: "TEAM", date: "2026" },
+  { src: "/gallery/team4.jpeg", title: "GDG Winning Moment", category: "TEAM", date: "2026" },
 
-  { src: "/gallery/swag1.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/swag2.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/swag3.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/swag4.jpeg", title: "Certificate Facilitate", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/swag1.jpeg", title: "Community Engagement", category: "SWAGS", date: "2026" },
+  { src: "/gallery/swag2.jpeg", title: "Giving Recognition & Rewards", category: "SWAGS", date: "2026" },
+  { src: "/gallery/swag3.jpeg", title: "Swags Distribution Highlight", category: "REWARD", date: "2026" },
+  { src: "/gallery/swag4.jpeg", title: "Honoring Excellence", category: "RECOGNITION", date: "2026" },
 
-  { src: "/gallery/director.jpeg", title: "Award", category: "COMMUNITY", date: "2026" },
-  { src: "/gallery/event.jpeg", title: "Events", category: "HACKATHON", date: "2026" },
-  { src: "/gallery/help.jpeg", title: "Helping Students", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/robo.jpeg", title: "Robotics Winner", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/director.jpeg", title: "Recieving The Honors", category: "COMMUNITY", date: "2026" },
+  { src: "/gallery/event.jpeg", title: "Events Chronicles", category: "HACKATHON", date: "2026" },
+  { src: "/gallery/help.jpeg", title: "Guiding Young Minds", category: "Seminar", date: "2026" },
+  { src: "/gallery/robo.jpeg", title: "A Triumph in Robotics ", category: "Robotics", date: "2024" },
 
   
-  { src: "/gallery/meet.jpeg", title: "GDG Conference with Director Sir ", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/group.jpeg", title: "TCB Members", category: "AWARD", date: "2026" },
-  { src: "/gallery/audiance.jpeg", title: "My Audiance", category: "EVENT", date: "2026" },
-  { src: "/gallery/certificate.jpeg", title: "MERN AKTU Workshop", category: "EVENT", date: "2026" },
+  { src: "/gallery/meet.jpeg", title: "GDG Conference with Director Sir ", category: "Meeting", date: "2025" },
+  { src: "/gallery/group.jpeg", title: "Technical Club Members", category: "Team", date: "2026" },
+  { src: "/gallery/audiance.jpeg", title: "Engaging the Audience", category: "EVENT", date: "2025" },
+  { src: "/gallery/certificate.jpeg", title: "MERN Stack Workshop - AKTU", category: "Workshop", date: "2025" },
 
 ];
 
