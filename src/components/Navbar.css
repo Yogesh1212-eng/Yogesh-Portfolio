@@ -17,6 +17,9 @@
 /* =========================================================
    MAIN NAVBAR INNER (CLICKABLE)
 ========================================================= */
+/* =========================================================
+   MAIN NAVBAR INNER (CLICKABLE)
+========================================================= */
 
 .navbar-inner {
   position: relative;
@@ -27,31 +30,130 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
-  /* Re-enable clicks only for the visible bar itself */
   pointer-events: auto !important;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 25, 40, 0.13),
-      rgba(255, 255, 255, 0.055),
-      rgba(100, 0, 0, 0.08)
-    );
-  backdrop-filter: blur(24px) saturate(155%);
-  -webkit-backdrop-filter: blur(24px) saturate(155%);
+
+  /* Mobile ke liye deeper tint taaki peeche ka text chhip jaye aur red glow aaye */
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.35) 0%,
+    rgba(15, 15, 18, 0.85) 45%,
+    rgba(120, 10, 20, 0.40) 100%
+  );
+
+  /* Webkit aur Standard Backdrop Blur */
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+
+  /* Mobile Safari & Chrome GPU Fix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
+
   box-shadow:
-    0 14px 42px rgba(0, 0, 0, 0.30),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 35px rgba(229, 9, 20, 0.07);
+    0 14px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 0 30px rgba(229, 9, 20, 0.22);
   transition:
     background 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
 
+/* =========================================================
+   MOBILE MENU DRAWER
+========================================================= */
+
+.navbar-mobile-menu {
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  border-radius: 17px;
+
+  /* Deeper frosted red-dark glass */
+  background: linear-gradient(
+    155deg,
+    rgba(229, 9, 20, 0.32) 0%,
+    rgba(12, 12, 14, 0.92) 50%,
+    rgba(60, 4, 8, 0.85) 100%
+  );
+
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  backdrop-filter: blur(32px) saturate(190%);
+
+  /* Mobile GPU Compositing */
+  -webkit-transform: translateY(-8px) scale(0.98) translateZ(0);
+  transform: translateY(-8px) scale(0.98) translateZ(0);
+  will-change: backdrop-filter, transform;
+
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(229, 9, 20, 0.18);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
+  transform-origin: top;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s;
+}
+
+.navbar-mobile-menu.navbar-mobile-menu-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto !important;
+  -webkit-transform: translateY(0) scale(1) translateZ(0);
+  transform: translateY(0) scale(1) translateZ(0);
+}
+
+/* =========================================================
+   DARK MODE OVERRIDE
+========================================================= */
+
+.portfolio-navbar.navbar-dark .navbar-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.32) 0%,
+    rgba(10, 10, 12, 0.88) 50%,
+    rgba(80, 5, 12, 0.38) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   LIGHT MODE GLASS OVERRIDE
+========================================================= */
+
+.portfolio-navbar.navbar-light .navbar-inner {
+  border: 1px solid rgba(229, 9, 20, 0.28);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 70, 85, 0.28) 0%,
+    rgba(255, 255, 255, 0.78) 50%,
+    rgba(255, 100, 110, 0.22) 100%
+  );
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+}
+
+.portfolio-navbar.navbar-light .navbar-mobile-menu {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 70, 85, 0.30) 0%,
+    rgba(255, 255, 255, 0.88) 50%,
+    rgba(255, 90, 100, 0.25) 100%
+  );
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+}
 /* =========================================================
    BRAND
 ========================================================= */
