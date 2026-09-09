@@ -39,7 +39,7 @@ const onlineCertificates = [
         title: "Google Cloud Study Jam 2025",
         organization: "GDG on Campus — BBDNIIT",
         date: "Oct–Nov 2025",
-        image: "/certificates/online/gdg-studyjam.jpeg",
+        image: "/certificates/online/gdg-studyjam.jpg",
         description:
           "Comprehensive completion certificate for practical cloud pathways during Google Cloud Study Jam 2025[cite: 1].",
         credential: "#",
@@ -55,7 +55,7 @@ const onlineCertificates = [
         title: "Fundamental Algorithms: Design and Analysis (Elite)",
         organization: "NPTEL — IIT Kharagpur",
         date: "Jan–Feb 2026",
-        image: "/certificates/online/nptel-algorithms.jpeg",
+        image: "/certificates/online/nptel-daa.jpeg",
         description:
           "Elite NPTEL Certification in Fundamental Algorithms: Design and Analysis with a consolidated score of 65%.",
         credential: "#",
@@ -232,15 +232,7 @@ const onlineCertificates = [
   {
     category: "Courses & Skill Development",
     items: [
-      {
-        title: "Build with AI Using GitHub Workshop",
-        organization: "GDG on Campus — BBDNIIT",
-        date: "2026",
-        image: "/certificates/online/gdg-github-ai.jpeg",
-        description:
-          "Active participation and completion of the workshop on AI-driven development and GitHub collaborative workflows.",
-        credential: "#",
-      },
+      
       {
         title: "Java And C++ Complete Course",
         organization: "Udemy — Crunch Coding Institute",
@@ -266,6 +258,15 @@ const onlineCertificates = [
         image: "/certificates/online/learnovate.jpeg",
         description:
           "Completed the Learnovate Enterprises Soft Skill Program at Babu Banarasi Das Educational Group, Lucknow.",
+        credential: "#",
+      },
+      {
+        title: "Build with AI Using GitHub Workshop",
+        organization: "GDG on Campus — BBDNIIT",
+        date: "2026",
+        image: "/certificates/online/gdg-github-ai.jpeg",
+        description:
+          "Active participation and completion of the workshop on AI-driven development and GitHub collaborative workflows.",
         credential: "#",
       },
     ],

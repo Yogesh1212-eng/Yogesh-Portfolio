@@ -1,191 +1,160 @@
+import React from "react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import "./Achievements.css";
 
 const achievements = [
   {
     number: "01",
     year: "2025–26",
-    category: "LEADERSHIP",
+    category: "COMMUNITY LEADERSHIP",
     title: "GDG On Campus Organizer",
     description:
-      "Google Developer Group On Campus Organizer at BBDNIIT, contributing to the developer community through events, workshops and technical initiatives.",
-    highlight: "BBDNIIT",
+      "Leading the developer ecosystem at BBDNIIT, driving technical workshops, hackathons, and Google Cloud study pathways.",
+    highlight: "Primary Organizer",
   },
-
   {
     number: "02",
     year: "2026",
     category: "GOOGLE CLOUD",
     title: "Google Cloud Study Jams — Tier 1",
     description:
-      "Achieved Tier 1 ranking in Google Cloud Study Jams and actively participated in Google Cloud learning initiatives.",
+      "Ranked in Tier 1 nationwide for Google Cloud developer cohorts, completing specialized cloud architectures and labs.",
     highlight: "Tier 1 Ranked",
   },
-
   {
     number: "03",
     year: "2026",
-    category: "GOOGLE",
-    title: "Google Goodies & Swags",
+    category: "NPTEL • IITs",
+    title: "NPTEL Silver Medalist — Python & OOP",
     description:
-      "Earned multiple official Google goodies and swags through participation and achievements in Google developer programs.",
-    highlight: "Google Goodies",
+      "Awarded elite Silver Medals across advanced Python and Object-Oriented Programming exams conducted by IIT faculties.",
+    highlight: "2× Silver Medalist",
   },
-
   {
     number: "04",
-    year: "2025–26",
-    category: "COMMUNITY",
-    title: "Devfest Organizing Team & AI Community Volunteer",
+    year: "2026",
+    category: "COMPETITIVE CODING",
+    title: "300+ LeetCode DSA Problems",
     description:
-      "Contributed as part of the Devfest organizing team and volunteered with the AI community in technical and community-driven activities.",
-    highlight: "Volunteer",
+      "Consistently mastered complex data structures, dynamic programming algorithms, and optimization patterns.",
+    highlight: "300+ Solved",
   },
-
   {
     number: "05",
-    year: "2023",
-    category: "AWARD",
-    title: "Sam Manekshaw Award",
+    year: "2024–25",
+    category: "ROBOTICS CHAMPION",
+    title: "Consecutive Robotics Competitions Winner",
     description:
-      "Received the Sam Manekshaw Award for being recognized as the most bright and smartest child.",
-    highlight: "Award",
+      "Swept first place in Line Follower, Light Follower, Robo-Marathon, and Pick & Place technical fest challenges.",
+    highlight: "Multi-Trophy Champion",
   },
-
   {
     number: "06",
     year: "2026",
-    category: "CODING",
-    title: "300+ LeetCode DSA Problems",
+    category: "RECOGNITION",
+    title: "Official Google Goodies & Swags",
     description:
-      "Solved 300+ Data Structures and Algorithms problems on LeetCode, strengthening problem-solving and competitive programming skills.",
-    highlight: "DSA",
+      "Awarded official Google developer swags, backpacks, and certificates for high-tier program contributions.",
+    highlight: "Verified Rewards",
   },
-
   {
     number: "07",
     year: "2025–26",
-    category: "LEADERSHIP",
+    category: "CORE LEADERSHIP",
     title: "Technical Club Internal Coordinator",
     description:
-      "Worked as the Internal Coordinator of the Technical Club at BBDNIIT, supporting technical activities and student initiatives.",
-    highlight: "Coordinator",
+      "Orchestrating internal team directives, student hackathons, and campus technology development initiatives.",
+    highlight: "Internal Coordinator",
   },
-
   {
     number: "08",
-    year: "2024–25",
-    category: "ROBOTICS",
-    title: "Multiple Robotics Competition Winner",
+    year: "2025–26",
+    category: "TECH ECOSYSTEM",
+    title: "DevFest Team & AI Community Volunteer",
     description:
-      "Winner in Line Follower, Light Follower, Robo Marathon and Pick & Place competitions consecutively during college fest activities.",
-    highlight: "Winner",
+      "Assisted large-scale community operations, speaker sessions, and hackathon infrastructure during DevFest.",
+    highlight: "Key Volunteer",
   },
   {
-  number: "09",
-  year: "2026",
-  category: "NPTEL • IIT",
-  title: "NPTEL Silver Medalist — Python & Object-Oriented Programming",
-  description:
-    "Earned Silver Medals in NPTEL certifications for Programming in Python and Object-Oriented Programming, conducted through the IITs.",
-  highlight: "2× Silver Medalist",
-},
+    number: "09",
+    year: "2023",
+    category: "HONORARY RECOGNITION",
+    title: "Sam Manekshaw Award",
+    description:
+      "Conferred the honorary recognition award celebrating scholastic merit, intellectual acumen, and student excellence.",
+    highlight: "Merit Award",
+  },
 ];
 
 function Achievements() {
   return (
-    <section
-      className="achievements-section"
-      id="achievements"
-    >
-      {/* Background */}
-      <div className="achievement-bg-glow achievement-bg-glow-one"></div>
-      <div className="achievement-bg-glow achievement-bg-glow-two"></div>
+    <section className="clean-timeline-section" id="achievements">
+      {/* AMBIENT BACKGROUND GLOWS */}
+      <div className="timeline-glow glow-left" />
+      <div className="timeline-glow glow-right" />
+      <div className="timeline-grid-pattern" />
 
-      <div className="achievements-container">
-
+      <div className="timeline-container">
         {/* HEADER */}
-        <div className="achievements-heading">
-          <span className="achievements-small-title">
-            05 / ACHIEVEMENTS
-          </span>
+        <header className="timeline-header">
+          <div className="timeline-pill-badge">
+            <Sparkles size={12} className="pill-sparkle" />
+            <span>05 / CAREER MILESTONES</span>
+          </div>
 
-          <h2>
+          <h2 className="timeline-headline">
             Milestones & <span>Achievements.</span>
           </h2>
 
-          <p>
-            A timeline of achievements, leadership experiences
-            and milestones from my journey in technology.
+          <p className="timeline-subtitle">
+            A chronological progression of leadership mandates, competitive honors, and engineering milestones.
           </p>
-        </div>
+        </header>
 
+        {/* TIMELINE TRACK */}
+        <div className="timeline-track">
+          {/* CENTER LASER LINE */}
+          <div className="timeline-spine-line" />
 
-        {/* TIMELINE */}
-        <div className="achievement-timeline">
-
-          <div className="timeline-line"></div>
-
-          {achievements.map((achievement, index) => {
-
-            const isRight = index % 2 !== 0;
+          {achievements.map((item, index) => {
+            const isEven = index % 2 === 0;
 
             return (
               <div
-                className={`achievement-item ${
-                  isRight
-                    ? "achievement-item-right"
-                    : "achievement-item-left"
-                }`}
-                key={achievement.number}
+                key={item.number}
+                className={`timeline-node ${isEven ? "node-left" : "node-right"}`}
               >
-
-                {/* CONTENT */}
-                <div className="achievement-content">
-
-                  <div className="achievement-meta">
-                    <span className="achievement-number">
-                      {achievement.number}
-                    </span>
-
-                    <span className="achievement-category">
-                      {achievement.category}
-                    </span>
-
-                    <span className="achievement-year">
-                      {achievement.year}
-                    </span>
+                {/* CONTENT (NO BOX, PURE TYPOGRAPHY) */}
+                <div className="timeline-content">
+                  <div className="timeline-meta-row">
+                    <span className="timeline-num">{item.number}</span>
+                    <span className="timeline-cat">{item.category}</span>
+                    <span className="timeline-year">{item.year}</span>
                   </div>
 
-                  <h3>
-                    {achievement.title}
-                  </h3>
+                  <h3 className="timeline-title">{item.title}</h3>
+                  <p className="timeline-desc">{item.description}</p>
 
-                  <p>
-                    {achievement.description}
-                  </p>
-
-                  <span className="achievement-highlight">
-                    {achievement.highlight}
-                  </span>
-
+                  <div className="timeline-highlight-wrap">
+                    <span className="timeline-highlight">
+                      {item.highlight}
+                      <ArrowUpRight size={12} />
+                    </span>
+                  </div>
                 </div>
 
-
-                {/* CENTER POINT */}
-                <div className="achievement-dot">
-                  <span></span>
+                {/* CENTER GLOWING DOT */}
+                <div className="timeline-anchor">
+                  <div className="anchor-ripple" />
+                  <div className="anchor-core" />
                 </div>
 
-
-                {/* EMPTY SIDE FOR ALTERNATING LAYOUT */}
-                <div className="achievement-space"></div>
-
+                {/* EMPTY BALANCING SIDE */}
+                <div className="timeline-spacer" />
               </div>
             );
           })}
-
         </div>
-
       </div>
     </section>
   );

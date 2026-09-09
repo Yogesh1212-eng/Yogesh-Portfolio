@@ -1,785 +1,448 @@
 /* =========================================================
-   ACHIEVEMENTS
-   ========================================================= */
+   CLEAN LUXURY TIMELINE - ZERO BOXES, PURE TYPOGRAPHY
+========================================================= */
 
-.achievements-section {
+.clean-timeline-section {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-
-  position: relative;
+  box-sizing: border-box;
+  background: #050505 !important;
+  color: #ffffff;
+  padding: 100px 0 130px;
   overflow: hidden;
-
-  padding: 70px 8% 90px;
-
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.022) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.022) 1px,
-      transparent 1px
-    ),
-    #050505;
-
-  background-size: 48px 48px;
-
-  color: #fff;
 }
 
-
-/* =========================================================
-   BACKGROUND GLOW
-   ========================================================= */
-
-.achievement-bg-glow {
+/* Atmospheric Glows */
+.timeline-glow {
   position: absolute;
-
-  width: 380px;
-  height: 380px;
-
+  width: 650px;
+  height: 650px;
   border-radius: 50%;
-
-  filter: blur(100px);
-
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.16) 0%, transparent 68%);
+  filter: blur(160px);
   pointer-events: none;
+  z-index: 1;
 }
 
-.achievement-bg-glow-one {
-  top: 15%;
-  left: -220px;
+.glow-left { top: 10%; left: -240px; }
+.glow-right { bottom: 5%; right: -240px; }
 
-  background: rgba(255, 25, 25, 0.10);
-}
-
-.achievement-bg-glow-two {
-  bottom: 5%;
-  right: -220px;
-
-  background: rgba(255, 25, 25, 0.08);
-}
-
-
-/* =========================================================
-   CONTAINER
-   ========================================================= */
-
-.achievements-container {
-  width: 100%;
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  position: relative;
+.timeline-grid-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 45px 45px;
   z-index: 2;
 }
 
+.timeline-container {
+  position: relative;
+  z-index: 10;
+  width: min(1140px, 92%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* =========================================================
-   HEADING
-   ========================================================= */
+   HEADER
+========================================================= */
 
-.achievements-heading {
+.timeline-header {
   text-align: center;
-
-  margin-bottom: 55px;
-}
-
-.achievements-small-title {
-  display: block;
-
-  margin-bottom: 12px;
-
-  color: #777;
-
-  font-size: 9px;
-
-  font-weight: 700;
-
-  letter-spacing: 4px;
-}
-
-.achievements-heading h2 {
-  margin: 0;
-
-  color: #fff;
-
-  font-size: clamp(42px, 5vw, 64px);
-
-  line-height: 1;
-
-  font-weight: 800;
-
-  letter-spacing: -3px;
-}
-
-.achievements-heading h2 span {
-  color: #ff2424;
-}
-
-.achievements-heading p {
-  max-width: 600px;
-
-  margin: 16px auto 0;
-
-  color: #858585;
-
-  font-size: 13px;
-
-  line-height: 1.6;
-}
-
-
-/* =========================================================
-   TIMELINE
-   ========================================================= */
-
-.achievement-timeline {
-  width: 100%;
-
-  position: relative;
-
-  padding: 5px 0 20px;
-}
-
-
-/* =========================================================
-   CENTER LINE
-   ========================================================= */
-
-.timeline-line {
-  position: absolute;
-
-  top: 0;
-  bottom: 0;
-
-  left: 50%;
-
-  width: 1px;
-
-  transform: translateX(-50%);
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(255, 36, 36, 0.65) 8%,
-      rgba(255, 36, 36, 0.35) 50%,
-      rgba(255, 36, 36, 0.65) 92%,
-      transparent
-    );
-}
-
-
-/* =========================================================
-   ITEM
-   ========================================================= */
-
-.achievement-item {
-  width: 100%;
-
-  min-height: 145px;
-
-  position: relative;
-
-  display: grid;
-
-  grid-template-columns: 1fr 70px 1fr;
-
-  align-items: center;
-
-  margin-bottom: 12px;
-}
-
-
-/* =========================================================
-   LEFT / RIGHT
-   ========================================================= */
-
-.achievement-item-left .achievement-content {
-  grid-column: 1;
-
-  text-align: right;
-
-  padding-right: 42px;
-}
-
-.achievement-item-left .achievement-dot {
-  grid-column: 2;
-}
-
-.achievement-item-left .achievement-space {
-  grid-column: 3;
-}
-
-
-.achievement-item-right .achievement-space {
-  grid-column: 1;
-}
-
-.achievement-item-right .achievement-dot {
-  grid-column: 2;
-}
-
-.achievement-item-right .achievement-content {
-  grid-column: 3;
-
-  text-align: left;
-
-  padding-left: 42px;
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.achievement-content {
-  position: relative;
-
-  padding: 17px 0;
-
-  transition: transform 0.35s ease;
-}
-
-.achievement-content::before {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-
-  width: 28px;
-
-  height: 1px;
-
-  background: rgba(255, 36, 36, 0.35);
-}
-
-.achievement-item-left .achievement-content::before {
-  right: 0;
-}
-
-.achievement-item-right .achievement-content::before {
-  left: 0;
-}
-
-
-/* =========================================================
-   META
-   ========================================================= */
-
-.achievement-meta {
+  max-width: 720px;
+  margin-bottom: 75px;
   display: flex;
-
+  flex-direction: column;
   align-items: center;
-
-  gap: 10px;
-
-  margin-bottom: 8px;
 }
 
-.achievement-item-left .achievement-meta {
-  justify-content: flex-end;
-}
-
-.achievement-item-right .achievement-meta {
-  justify-content: flex-start;
-}
-
-.achievement-number {
-  color: #ff2424;
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-}
-
-.achievement-category {
-  color: #777;
-
-  font-size: 8px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-.achievement-year {
-  color: #555;
-
+.timeline-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-size: 10px;
-
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  color: #e50914;
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
 }
 
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.achievement-content h3 {
-  margin: 0 0 7px;
-
-  color: #f5f5f5;
-
-  font-size: 20px;
-
-  line-height: 1.2;
-
-  font-weight: 750;
+.pill-sparkle {
+  animation: twirlSparkle 4s linear infinite;
 }
 
+@keyframes twirlSparkle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.achievement-content p {
-  max-width: 390px;
-
+.timeline-headline {
   margin: 0;
-
-  color: #777;
-
-  font-size: 11px;
-
-  line-height: 1.55;
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
-.achievement-item-left .achievement-content p {
-  margin-left: auto;
+.timeline-headline span {
+  color: #e50914;
 }
 
+.timeline-subtitle {
+  margin: 12px auto 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+}
 
 /* =========================================================
-   HIGHLIGHT
-   ========================================================= */
+   TIMELINE TRACK
+========================================================= */
 
-.achievement-highlight {
-  display: inline-block;
-
-  margin-top: 10px;
-
-  padding: 4px 8px;
-
-  border-radius: 5px;
-
-  border: 1px solid rgba(255, 36, 36, 0.20);
-
-  background: rgba(255, 36, 36, 0.045);
-
-  color: #ff4a4a;
-
-  font-size: 8px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   DOT
-   ========================================================= */
-
-.achievement-dot {
-  width: 70px;
-  height: 70px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
+.timeline-track {
   position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 
+/* Center Laser Spine */
+.timeline-spine-line {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(229, 9, 20, 0.8) 10%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(229, 9, 20, 0.8) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+  z-index: 1;
+}
+
+/* Timeline Node */
+.timeline-node {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
   z-index: 5;
 }
 
-.achievement-dot::before {
-  content: "";
-
-  position: absolute;
-
-  width: 28px;
-  height: 28px;
-
-  border-radius: 50%;
-
-  border: 1px solid rgba(255, 36, 36, 0.30);
-
-  background: #050505;
-
-  box-shadow:
-    0 0 20px rgba(255, 36, 36, 0.08);
-}
-
-.achievement-dot span {
-  width: 8px;
-  height: 8px;
-
-  position: relative;
-
-  z-index: 2;
-
-  border-radius: 50%;
-
-  background: #ff2424;
-
-  box-shadow:
-    0 0 12px rgba(255, 36, 36, 0.65);
-}
-
-
 /* =========================================================
-   HOVER
-   ========================================================= */
+   LEFT / RIGHT POSITIONING (DESKTOP)
+========================================================= */
 
-.achievement-item:hover .achievement-content {
+.node-left .timeline-content {
+  grid-column: 1;
+  text-align: right;
+  padding-right: 36px;
+}
+
+.node-left .timeline-anchor {
+  grid-column: 2;
+}
+
+.node-left .timeline-spacer {
+  grid-column: 3;
+}
+
+.node-right .timeline-spacer {
+  grid-column: 1;
+}
+
+.node-right .timeline-anchor {
+  grid-column: 2;
+}
+
+.node-right .timeline-content {
+  grid-column: 3;
+  text-align: left;
+  padding-left: 36px;
+}
+
+/* Subtle Connecting Horizontal Laser Arm */
+.timeline-content {
+  position: relative;
+  transition: transform 0.35s ease;
+}
+
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(229, 9, 20, 0.5);
+  box-shadow: 0 0 8px #e50914;
+}
+
+.node-left .timeline-content::before { right: 0; }
+.node-right .timeline-content::before { left: 0; }
+
+.timeline-node:hover .timeline-content {
   transform: translateY(-3px);
 }
 
-.achievement-item:hover .achievement-dot::before {
-  border-color: rgba(255, 36, 36, 0.75);
-
-  box-shadow:
-    0 0 28px rgba(255, 36, 36, 0.18);
-}
-
-.achievement-item:hover .achievement-dot span {
-  box-shadow:
-    0 0 20px rgba(255, 36, 36, 0.9);
-}
-
 /* =========================================================
-   LIGHT MODE — FINAL FIX
+   PURE TYPOGRAPHY (NO BOXES)
 ========================================================= */
 
-.app.light .achievements-section {
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    #f7f7f7;
-
-  color: #111111;
+.timeline-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-
-/* =========================================================
-   HEADING
-========================================================= */
-
-.app.light .achievements-small-title {
-  color: #555555;
+.node-left .timeline-meta-row {
+  justify-content: flex-end;
 }
 
-
-.app.light .achievements-heading h2 {
-  color: #111111;
+.node-right .timeline-meta-row {
+  justify-content: flex-start;
 }
 
-
-.app.light .achievements-heading h2 span {
+.timeline-num {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: #e50914;
 }
 
-
-.app.light .achievements-heading p {
-  color: #666666;
+.timeline-cat {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.45);
 }
 
-
-/* =========================================================
-   TIMELINE
-========================================================= */
-
-.app.light .timeline-line {
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(229, 9, 20, 0.60) 8%,
-      rgba(229, 9, 20, 0.32) 50%,
-      rgba(229, 9, 20, 0.60) 92%,
-      transparent
-    );
+.timeline-year {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
 }
 
+.timeline-title {
+  margin: 0 0 8px;
+  font-size: clamp(19px, 2.2vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
 
-/* =========================================================
-   META
-========================================================= */
+.timeline-node:hover .timeline-title {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
 
-.app.light .achievement-number {
+.timeline-desc {
+  margin: 0;
+  max-width: 440px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.node-left .timeline-desc {
+  margin-left: auto;
+}
+
+.timeline-highlight-wrap {
+  margin-top: 12px;
+}
+
+.timeline-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: #e50914;
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  padding: 3px 8px;
+  border-radius: 5px;
+  transition: all 0.25s ease;
 }
 
-
-.app.light .achievement-category {
-  color: #555555;
-}
-
-
-.app.light .achievement-year {
-  color: #444444;
-}
-
-
-/* =========================================================
-   TITLES — MAIN BUG FIX
-========================================================= */
-
-.app.light .achievement-content h3 {
-  color: #111111 !important;
-
-  opacity: 1 !important;
-}
-
-
-/* =========================================================
-   DESCRIPTION — MAIN BUG FIX
-========================================================= */
-
-.app.light .achievement-content p {
-  color: #555555 !important;
-
-  opacity: 1 !important;
-}
-
-
-/* =========================================================
-   HIGHLIGHT
-========================================================= */
-
-.app.light .achievement-highlight {
-  color: #d90b18;
-
-  border-color:
-    rgba(229, 9, 20, 0.25);
-
-  background:
-    rgba(229, 9, 20, 0.055);
-}
-
-
-/* =========================================================
-   CENTER DOT
-========================================================= */
-
-.app.light .achievement-dot::before {
-  background: #f7f7f7;
-
-  border-color:
-    rgba(229, 9, 20, 0.35);
-
-  box-shadow:
-    0 0 20px
-      rgba(229, 9, 20, 0.08);
-}
-
-
-.app.light .achievement-dot span {
+.timeline-node:hover .timeline-highlight {
   background: #e50914;
-
-  box-shadow:
-    0 0 12px
-      rgba(229, 9, 20, 0.55);
+  color: #ffffff;
+  border-color: #e50914;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.5);
 }
 
-
 /* =========================================================
-   CONNECTING LINES
+   CENTER GLOWING DOT ANCHOR
 ========================================================= */
 
-.app.light .achievement-content::before {
-  background:
-    rgba(229, 9, 20, 0.35);
+.timeline-anchor {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.anchor-ripple {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  background: rgba(5, 5, 5, 0.9);
+  box-shadow: 0 0 16px rgba(229, 9, 20, 0.3);
+  transition: all 0.3s ease;
+}
+
+.anchor-core {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e50914;
+  box-shadow: 0 0 12px #e50914, 0 0 20px rgba(229, 9, 20, 0.8);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.timeline-node:hover .anchor-ripple {
+  transform: scale(1.3);
+  border-color: #e50914;
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.6);
+}
+
+.timeline-node:hover .anchor-core {
+  transform: scale(1.4);
+  background: #ffffff;
+  box-shadow: 0 0 14px #ffffff, 0 0 25px #e50914;
+}
 
 /* =========================================================
-   GLOW
+   LIGHT THEME SUPPORT
 ========================================================= */
 
-.app.light .achievement-bg-glow-one {
-  background:
-    rgba(229, 9, 20, 0.055);
+.app.light .clean-timeline-section {
+  background: #f7f7f9 !important;
+  color: #080808;
 }
 
-
-.app.light .achievement-bg-glow-two {
-  background:
-    rgba(229, 9, 20, 0.045);
-}
+.app.light .timeline-headline { color: #080808; }
+.app.light .timeline-subtitle { color: #555555; }
+.app.light .timeline-title { color: #080808; }
+.app.light .timeline-desc { color: #555555; }
+.app.light .anchor-ripple { background: #ffffff; }
 
 /* =========================================================
-   TABLET
-   ========================================================= */
+   MOBILE RESPONSIVE VIEW (STRICT LEFT-LINE, RIGHT-TEXT)
+========================================================= */
 
-@media (max-width: 850px) {
-
-  .achievements-section {
-    padding: 55px 5% 70px;
+@media (max-width: 768px) {
+  .clean-timeline-section {
+    padding: 60px 0 80px;
   }
 
-  .achievements-heading {
-    margin-bottom: 40px;
+  .timeline-header {
+    margin-bottom: 45px;
   }
 
-  .achievement-item {
-    grid-template-columns: 1fr 50px 1fr;
+  .timeline-headline {
+    font-size: 34px;
   }
 
-  .achievement-dot {
-    width: 50px;
+  /* Single Track on Left */
+  .timeline-track {
+    gap: 36px;
+    padding-left: 20px;
   }
 
-  .achievement-item-left .achievement-content {
-    padding-right: 25px;
-  }
-
-  .achievement-item-right .achievement-content {
-    padding-left: 25px;
-  }
-
-  .achievement-content h3 {
-    font-size: 17px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  .achievements-section {
-    padding: 50px 20px 60px;
-  }
-
-  .achievements-heading {
-    margin-bottom: 35px;
-  }
-
-  .achievements-heading h2 {
-    font-size: 37px;
-
-    letter-spacing: -2px;
-  }
-
-  .achievements-heading p {
-    font-size: 12px;
-  }
-
-  .achievement-timeline {
-    padding-left: 18px;
-  }
-
-  .timeline-line {
-    left: 18px;
-
+  .timeline-spine-line {
+    left: 36px;
     transform: none;
   }
 
-  .achievement-item,
-  .achievement-item-left,
-  .achievement-item-right {
-    min-height: 125px;
-
-    display: grid;
-
-    grid-template-columns: 36px 1fr;
-
-    margin-bottom: 10px;
+  .timeline-node,
+  .node-left,
+  .node-right {
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
   }
 
-  .achievement-item-left .achievement-content,
-  .achievement-item-right .achievement-content {
-    grid-column: 2;
-
-    grid-row: 1;
-
-    text-align: left;
-
-    padding: 10px 0 10px 18px;
-  }
-
-  .achievement-item-left .achievement-meta,
-  .achievement-item-right .achievement-meta {
-    justify-content: flex-start;
-  }
-
-  .achievement-item-left .achievement-content p {
-    margin-left: 0;
-  }
-
-  .achievement-item-left .achievement-dot,
-  .achievement-item-right .achievement-dot {
+  .node-left .timeline-anchor,
+  .node-right .timeline-anchor {
     grid-column: 1;
-
     grid-row: 1;
-
-    width: 36px;
+    width: 32px;
+    height: 32px;
   }
 
-  .achievement-item-left .achievement-space,
-  .achievement-item-right .achievement-space {
+  .node-left .timeline-content,
+  .node-right .timeline-content {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+
+  .node-left .timeline-content::before,
+  .node-right .timeline-content::before {
     display: none;
   }
 
-  .achievement-content::before {
+  .node-left .timeline-meta-row,
+  .node-right .timeline-meta-row {
+    justify-content: flex-start !important;
+  }
+
+  .node-left .timeline-desc,
+  .node-right .timeline-desc {
+    margin-left: 0 !important;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .timeline-spacer {
     display: none;
   }
 
-  .achievement-dot::before {
-    width: 23px;
-    height: 23px;
-  }
-
-  .achievement-dot span {
-    width: 7px;
-    height: 7px;
-  }
-
-  .achievement-content h3 {
+  .timeline-title {
     font-size: 16px;
   }
 
-  .achievement-content p {
-    font-size: 10px;
+  .anchor-ripple {
+    width: 20px;
+    height: 20px;
   }
 
-  .achievement-category {
-    font-size: 7px;
-  }
-
-  .achievement-year {
-    font-size: 9px;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .achievement-content {
-    transition: none;
+  .anchor-core {
+    width: 6px;
+    height: 6px;
   }
 }

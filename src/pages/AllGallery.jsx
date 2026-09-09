@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Camera,
-} from "lucide-react";
+import React, { useState, useMemo, useEffect } from "react";
+import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight, Sparkles, Trophy, Globe, Users, Presentation, Calendar, Award, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./AllGallery.css";
 
@@ -11,303 +7,461 @@ const photos = [
   {
     id: 1,
     image: "/gallery/Trophy.jpeg",
-    title: "Achievement Moment",
+    title: "Milestone To Remember",
+    categories: ["ACHIEVEMENTS", "AWARDS"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 2,
     image: "/gallery/dev3.jpeg",
-    title: "More Swags",
-    year: "2026",
+    title: "Behind the Devfest Experience",
+    categories: ["GOOGLE", "EVENTS", "SWAGS"],
+    year: "2025",
+    aspect: "wide",
   },
   {
     id: 3,
     image: "/gallery/director-award.jpeg",
-    title: "Director Award",
+    title: "GDG Excellence Award",
+    categories: ["ACHIEVEMENTS", "AWARDS", "GOOGLE"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 4,
     image: "/gallery/Hac.jpeg",
-    title: "Hackathon",
-    year: "2026",
+    title: "Hackathon Victory",
+    categories: ["ACHIEVEMENTS", "EVENTS", "TEAM"],
+    year: "2025",
+    aspect: "wide",
   },
   {
     id: 5,
-    image: "/gallery/swag.jpeg",
-    title: "Robotics Winner",
-    year: "2026",
+    image: "/gallery/Dev1.jpeg",
+    title: "Devfest 2024 Organizer",
+    categories: ["GOOGLE", "EVENTS", "SEMINAR"],
+    year: "2024",
+    aspect: "tall",
   },
   {
     id: 6,
-    image: "/gallery/trophy1.jpeg",
-    title: "Winning Moment",
+    image: "/gallery/swag.jpeg",
+    title: "Google Goodies & Recognition",
+    categories: ["GOOGLE", "SWAGS", "ACHIEVEMENTS"],
     year: "2026",
+    aspect: "square",
   },
   {
     id: 7,
-    image: "/gallery/Dev1.jpeg",
-    title: "On Stage",
+    image: "/gallery/trophy1.jpeg",
+    title: "Technical Trophy",
+    categories: ["ACHIEVEMENTS", "AWARDS"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 8,
     image: "/gallery/dev2.jpeg",
-    title: "Core Team",
+    title: "Devfest 2025 Highlights",
+    categories: ["GOOGLE", "EVENTS", "TEAM"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 9,
-    image: "/gallery/anchoring.jpeg",
-    title: "Anchoring Event",
+    image: "/gallery/Anchoring1.jpeg",
+    title: "Conducting Technical Session",
+    categories: ["SEMINAR", "EVENTS"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 10,
-    image: "/gallery/Anchoring1.jpeg",
-    title: "Certification",
-    year: "2026",
+    image: "/gallery/anchoring2.jpeg",
+    title: "GCP Seminar Insights",
+    categories: ["SEMINAR", "GOOGLE", "EVENTS"],
+    year: "2025",
+    aspect: "wide",
   },
   {
     id: 11,
-    image: "/gallery/anchoring2.jpeg",
-    title: "Certification",
-    year: "2026",
+    image: "/gallery/anchoring3.jpeg",
+    title: "Anchoring Stage Highlights",
+    categories: ["SEMINAR", "EVENTS"],
+    year: "2025",
+    aspect: "square",
   },
   {
     id: 12,
-    image: "/gallery/anchoring3.jpeg",
-    title: "Certification",
+    image: "/gallery/anchoring.jpeg",
+    title: "Technical Session Leadership",
+    categories: ["SEMINAR", "EVENTS"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 13,
     image: "/gallery/team1.jpeg",
-    title: "Team Moment",
+    title: "GDG Team Spirit",
+    categories: ["TEAM", "GOOGLE"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 14,
     image: "/gallery/team2.jpeg",
-    title: "Team Moment",
-    year: "2026",
+    title: "GDG Core Team Assemble",
+    categories: ["TEAM", "GOOGLE"],
+    year: "2025",
+    aspect: "tall",
   },
   {
     id: 15,
     image: "/gallery/team3.jpeg",
-    title: "Team Moment",
+    title: "Team Appreciation Moment",
+    categories: ["TEAM", "ACHIEVEMENTS", "GOOGLE"],
     year: "2026",
+    aspect: "square",
   },
   {
     id: 16,
     image: "/gallery/team4.jpeg",
-    title: "Team Moment",
+    title: "GDG Winning Moment",
+    categories: ["TEAM", "ACHIEVEMENTS", "GOOGLE"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 17,
     image: "/gallery/swag1.jpeg",
-    title: "Robotics Winner",
+    title: "Community Engagement & Swags",
+    categories: ["SWAGS", "EVENTS", "GOOGLE"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 18,
     image: "/gallery/swag2.jpeg",
-    title: "Robotics Winner",
+    title: "Giving Recognition & Rewards",
+    categories: ["SWAGS", "ACHIEVEMENTS", "AWARDS"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 19,
     image: "/gallery/swag3.jpeg",
-    title: "Robotics Winner",
+    title: "Swags Distribution Highlight",
+    categories: ["SWAGS", "EVENTS", "GOOGLE"],
     year: "2026",
+    aspect: "square",
   },
   {
     id: 20,
     image: "/gallery/swag4.jpeg",
-    title: "Robotics Winner",
+    title: "Honoring Excellence & Swags",
+    categories: ["SWAGS", "ACHIEVEMENTS", "AWARDS"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 21,
     image: "/gallery/director.jpeg",
-    title: "With Students",
+    title: "Receiving The Honors",
+    categories: ["ACHIEVEMENTS", "AWARDS", "TEAM"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 22,
     image: "/gallery/event.jpeg",
-    title: "Hackathon Team",
+    title: "Hackathon Chronicles",
+    categories: ["EVENTS", "ACHIEVEMENTS", "TEAM"],
     year: "2026",
+    aspect: "tall",
   },
   {
     id: 23,
     image: "/gallery/help.jpeg",
-    title: "Robotics Winner",
+    title: "Guiding Young Minds",
+    categories: ["SEMINAR", "EVENTS"],
     year: "2026",
+    aspect: "square",
   },
   {
     id: 24,
     image: "/gallery/robo.jpeg",
-    title: "Robotics Winner",
-    year: "2026",
+    title: "A Triumph in Robotics",
+    categories: ["ACHIEVEMENTS", "AWARDS", "EVENTS"],
+    year: "2024",
+    aspect: "wide",
   },
   {
     id: 25,
     image: "/gallery/meet.jpeg",
-    title: "Robotics Winner",
-    year: "2026",
+    title: "Conference with Director Sir",
+    categories: ["TEAM", "GOOGLE", "AWARDS"],
+    year: "2025",
+    aspect: "tall",
   },
   {
     id: 26,
     image: "/gallery/group.jpeg",
-    title: "Award Ceremony",
+    title: "Technical Club Members",
+    categories: ["TEAM", "EVENTS"],
     year: "2026",
+    aspect: "wide",
   },
   {
     id: 27,
     image: "/gallery/audiance.jpeg",
-    title: "College Fest",
-    year: "2026",
+    title: "Engaging the Audience",
+    categories: ["EVENTS", "SEMINAR"],
+    year: "2025",
+    aspect: "tall",
   },
   {
     id: 28,
     image: "/gallery/certificate.jpeg",
-    title: "College Fest",
-    year: "2026",
+    title: "MERN Stack Workshop - AKTU",
+    categories: ["SEMINAR", "ACHIEVEMENTS", "EVENTS"],
+    year: "2025",
+    aspect: "wide",
   },
 ];
 
-const INITIAL_COUNT = 6;
-const LOAD_COUNT = 6;
+const categoryMeta = [
+  { key: "ALL", label: "Complete Vault", icon: Sparkles },
+  { key: "GOOGLE", label: "Google & DevFest", icon: Globe },
+  { key: "ACHIEVEMENTS", label: "Trophies & Wins", icon: Trophy },
+  { key: "SWAGS", label: "Swags & Goodies", icon: Gift },
+  { key: "EVENTS", label: "Events & Hackathons", icon: Calendar },
+  { key: "SEMINAR", label: "Seminars & Stage", icon: Presentation },
+  { key: "TEAM", label: "Team & Community", icon: Users },
+];
 
-const AllGallery = () => {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+function AllGallery() {
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const visiblePhotos = photos.slice(0, visibleCount);
-  const hasMore = visibleCount < photos.length;
+  const categoryCounts = useMemo(() => {
+    const counts = { ALL: photos.length };
+    categoryMeta.forEach((cat) => {
+      if (cat.key !== "ALL") {
+        counts[cat.key] = photos.filter((p) => p.categories.includes(cat.key)).length;
+      }
+    });
+    return counts;
+  }, []);
 
-  const handleLoadMore = () => {
-    setVisibleCount((current) =>
-      Math.min(current + LOAD_COUNT, photos.length)
-    );
-  };
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === "ALL") return photos;
+    return photos.filter((p) => p.categories.includes(activeCategory));
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight") setLightboxIndex((prev) => (prev + 1) % filteredPhotos.length);
+      if (e.key === "ArrowLeft") setLightboxIndex((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIndex, filteredPhotos.length]);
 
   return (
-    <div className="all-gallery-page">
-      {/* BACKGROUND */}
-      <div className="all-gallery-grid"></div>
-      <div className="all-gallery-noise"></div>
-      <div className="all-gallery-glow"></div>
+    <main className="super-gallery-root">
+      <div className="super-ambient-glow glow-1" />
+      <div className="super-ambient-glow glow-2" />
+      <div className="super-pattern-grid" />
 
-      {/* CONTAINER */}
-      <div className="all-gallery-container">
-        {/* Back */}
-        <Link to="/" className="all-gallery-back">
-          <ArrowLeft size={17} />
-          <span>BACK TO PORTFOLIO</span>
-        </Link>
+      <div className="super-gallery-shell">
+        {/* TOPBAR */}
+        <header className="super-topbar">
+          <Link
+            to="/"
+            className="super-back-btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+          >
+            <ArrowLeft size={15} />
+            <span>RETURN TO PORTFOLIO</span>
+          </Link>
 
-        {/* HEADER */}
-        <div className="all-gallery-header">
-          <div className="all-gallery-eyebrow">
-            <Camera size={17} />
-            <span>07 / VISUAL ARCHIVE</span>
+          <div className="super-counter-chip">
+            <span className="live-pulse-dot" />
+            <span>{photos.length} TOTAL ARCHIVES</span>
           </div>
+        </header>
 
-          <h1>
-            My <span>Journey</span>
-            <br />
-            In Frames.
+        {/* HERO HEADER */}
+        <section className="super-hero">
+          <span className="super-badge">
+            <Camera size={13} />
+            VISUAL LEGACY & EXCELLENCE
+          </span>
+          <h1 className="super-title">
+            The <span>Visual</span> Archive.
           </h1>
-
-          <p>
-            From hosting events and building communities to winning
-            competitions, receiving recognition, collecting swags and creating
-            unforgettable moments along the way.
+          <p className="super-lead">
+            A comprehensive photographic vault of hackathon victories, GDG communities, speaker sessions, swag drops, and unforgettable milestones.
           </p>
+        </section>
+
+        {/* FLOATING GLASS CATEGORY BAR */}
+        <nav className="super-category-dock" aria-label="Gallery categories">
+          <div className="super-category-scroller">
+            {categoryMeta.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeCategory === tab.key;
+              const count = categoryCounts[tab.key] || 0;
+
+              return (
+                <button
+                  key={tab.key}
+                  type="button"
+                  className={`super-tab-btn ${isActive ? "active" : ""}`}
+                  onClick={() => setActiveCategory(tab.key)}
+                >
+                  <Icon size={15} className="tab-icon" />
+                  <span className="tab-label">{tab.label}</span>
+                  <span className="tab-count-pill">{count}</span>
+                  {isActive && <div className="tab-active-glow" />}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* LIVE FILTER STATS BAR */}
+        <div className="gallery-status-bar">
+          <div className="status-label">
+            <span>FILTER ACTIVE:</span>
+            <strong>{categoryMeta.find((c) => c.key === activeCategory)?.label}</strong>
+          </div>
+          <div className="status-divider" />
+          <div className="status-count">
+            <span>DISPLAYING</span>
+            <strong>{filteredPhotos.length} OF {photos.length} FRAMES</strong>
+          </div>
         </div>
 
-        {/* ARCHIVE INFO */}
-        <div className="gallery-archive-info">
-          <div>
-            <span>TOTAL MOMENTS</span>
-            <strong>{photos.length}</strong>
-          </div>
-
-          <div>
-            <span>SHOWING</span>
-            <strong>{visibleCount}</strong>
-          </div>
-
-          <div className="gallery-info-line"></div>
-
-          <p>A VISUAL RECORD OF THE JOURNEY</p>
-        </div>
-
-        {/* PHOTO GRID */}
-        <div className="full-gallery-grid">
-          {visiblePhotos.map((photo, index) => (
-            <article
+        {/* CLEAN MASONRY GRID (NO RED LABELS BLOCKING PHOTO) */}
+        <section className="super-masonry-canvas">
+          {filteredPhotos.map((photo, index) => (
+            <figure
               key={photo.id}
-              className={`full-gallery-card card-${index % 6}`}
+              className={`super-photo-tile aspect-${photo.aspect}`}
+              onClick={() => setLightboxIndex(index)}
             >
-              <div className="full-gallery-image-wrap">
+              <div className="tile-inner-glass">
                 <img
                   src={photo.image}
                   alt={photo.title}
-                  className="full-gallery-image"
-                  loading={index < 3 ? "eager" : "lazy"}
+                  className="tile-img"
+                  loading={index < 4 ? "eager" : "lazy"}
                 />
 
-                <div className="full-gallery-overlay">
-                  <div className="full-gallery-top">
-                    <span>
-                      MOMENT / {String(photo.id).padStart(2, "0")}
-                    </span>
-                    <span>{photo.year}</span>
+                <div className="tile-ambient-shade" />
+
+                <figcaption className="tile-meta-layer">
+                  <div className="tile-top-chips">
+                    <span className="tile-year-tag">{photo.year}</span>
                   </div>
 
-                  <div className="full-gallery-bottom">
-                    <h3>{photo.title}</h3>
-                    <div className="full-gallery-arrow">
-                      <ArrowUpRight size={18} />
+                  <div className="tile-bottom-details">
+                    <h3 className="tile-headline">{photo.title}</h3>
+                    <div className="tile-expand-badge">
+                      <Sparkles size={14} />
                     </div>
                   </div>
-                </div>
+                </figcaption>
               </div>
-            </article>
+            </figure>
           ))}
-        </div>
+        </section>
 
-        {/* LOAD MORE */}
-        {hasMore && (
-          <div className="gallery-load-area">
-            <button className="gallery-load-btn" onClick={handleLoadMore}>
-              <span>LOAD MORE</span>
-              <strong>MOMENTS</strong>
-              <div className="gallery-load-icon">
-                <ArrowUpRight size={20} />
-              </div>
-            </button>
-
-            <p>
-              {photos.length - visibleCount} MORE MOMENTS IN THE ARCHIVE
-            </p>
-          </div>
-        )}
-
-        {/* END */}
-        {!hasMore && (
-          <div className="gallery-end">
-            <span></span>
-            <p>YOU'VE REACHED THE END OF MY JOURNEY</p>
-            <span></span>
-          </div>
-        )}
+        {/* FOOTER */}
+        <footer className="super-gallery-foot">
+          <div className="foot-line" />
+          <p>
+            <Award size={13} />
+            END OF ARCHIVE • MEMORIES CONTINUOUSLY IN THE MAKING
+          </p>
+          <div className="foot-line" />
+        </footer>
       </div>
-    </div>
+
+      {/* FULLSCREEN HD LIGHTBOX */}
+      {lightboxIndex !== null && filteredPhotos[lightboxIndex] && (
+        <div
+          className="super-lightbox-backdrop"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={() => setLightboxIndex(null)}
+            aria-label="Close modal"
+          >
+            <X size={20} />
+          </button>
+
+          <button
+            type="button"
+            className="lightbox-arrow arrow-prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
+            }}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={26} />
+          </button>
+
+          <div
+            className="lightbox-frame"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="lightbox-img-wrapper">
+              <img
+                src={filteredPhotos[lightboxIndex].image}
+                alt={filteredPhotos[lightboxIndex].title}
+                className="lightbox-current-img"
+              />
+            </div>
+
+            <div className="lightbox-bar">
+              <div className="lightbox-bar-left">
+                <div className="lightbox-chips">
+                  {filteredPhotos[lightboxIndex].categories.map((cat) => (
+                    <span key={cat}>{cat}</span>
+                  ))}
+                  <span className="lightbox-year">{filteredPhotos[lightboxIndex].year}</span>
+                </div>
+                <h3>{filteredPhotos[lightboxIndex].title}</h3>
+              </div>
+              <span className="lightbox-pagination">
+                {String(lightboxIndex + 1).padStart(2, "0")} / {String(filteredPhotos.length).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="lightbox-arrow arrow-next"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev + 1) % filteredPhotos.length);
+            }}
+            aria-label="Next image"
+          >
+            <ChevronRight size={26} />
+          </button>
+        </div>
+      )}
+    </main>
   );
-};
+}
 
 export default AllGallery;
