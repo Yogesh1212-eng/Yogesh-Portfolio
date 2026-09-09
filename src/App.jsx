@@ -38,17 +38,13 @@ function Home() {
 
 function App() {
   /* =========================================================
-     PERSISTENT THEME WITH LOCALSTORAGE
+      ALWAYS DEFAULT TO DARK MODE ON LOAD
   ========================================================= */
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem("portfolio_theme");
-    return savedTheme !== null ? savedTheme === "dark" : true;
-  });
+  // Har baar website khulne par by default true (Dark Mode) hi rahega
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("portfolio_theme", darkMode ? "dark" : "light");
-    
-    // Body tag par sidhe class toggle karein taaki har page match kare
+    // Body tag par class toggle
     if (darkMode) {
       document.body.classList.add("dark");
       document.body.classList.remove("light");

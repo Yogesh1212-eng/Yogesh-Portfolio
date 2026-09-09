@@ -6,22 +6,42 @@ import "./Gallery.css";
 const PHOTOS_PER_VIEW = 4;
 
 const galleryPhotos = [
-  { src: "/gallery/trophy.jpeg", title: "Achievement Moment", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/anchoring.jpeg", title: "Anchoring Event", category: "EVENT", date: "2026" },
-  { src: "/gallery/director-award.jpeg", title: "Director Award", category: "AWARD", date: "2026" },
-  { src: "/gallery/hackathon.jpg", title: "Hackathon", category: "HACKATHON", date: "2026" },
-  { src: "/gallery/robotics-winner.jpg", title: "Robotics Winner", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/trophy.jpg", title: "Winning Moment", category: "ACHIEVEMENT", date: "2026" },
-  { src: "/gallery/certificate.jpg", title: "Certification", category: "CERTIFICATION", date: "2026" },
-  { src: "/gallery/group-photo.jpg", title: "Team Moment", category: "TEAM", date: "2026" },
-  { src: "/gallery/google-swags.jpg", title: "Google Swags", category: "GOOGLE", date: "2026" },
-  { src: "/gallery/students.jpg", title: "With Students", category: "COMMUNITY", date: "2026" },
-  { src: "/gallery/event-stage.jpg", title: "On Stage", category: "EVENT", date: "2026" },
-  { src: "/gallery/team.jpg", title: "Core Team", category: "TEAM", date: "2026" },
-  { src: "/gallery/swags-2.jpg", title: "More Swags", category: "GOOGLE", date: "2026" },
-  { src: "/gallery/hackathon-team.jpg", title: "Hackathon Team", category: "HACKATHON", date: "2026" },
-  { src: "/gallery/award-stage.jpg", title: "Award Ceremony", category: "AWARD", date: "2026" },
-  { src: "/gallery/college-fest.jpg", title: "College Fest", category: "EVENT", date: "2026" },
+  { src: "/gallery/Trophy.jpeg", title: "Achievement Moment", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/dev3.jpeg", title: "Devfest Team", category: "GOOGLE", date: "2026" },
+  { src: "/gallery/director-award.jpeg", title: "GDG Award", category: "AWARD", date: "2026" },
+  { src: "/gallery/Hac.jpeg", title: "Hackathon Winner", category: "HACKATHON", date: "2026" },
+
+  { src: "/gallery/Dev1.jpeg", title: "Devfest 2024", category: "EVENT", date: "2026" },
+  { src: "/gallery/swag.jpeg", title: "Google Swags", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/trophy1.jpeg", title: "Technical Trophy", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/dev2.jpeg", title: "Devfest 2025", category: "TEAM", date: "2026" },
+
+  { src: "/gallery/Anchoring1.jpeg", title: "Conducting Technical Session", category: "CERTIFICATION", date: "2026" },
+  { src: "/gallery/anchoring2.jpeg", title: "GCP Seminar", category: "CERTIFICATION", date: "2026" },
+  { src: "/gallery/anchoring3.jpeg", title: "Anchoring", category: "CERTIFICATION", date: "2026" },
+  { src: "/gallery/anchoring.jpeg", title: "Hosting ", category: "EVENT", date: "2026" },
+
+  { src: "/gallery/team1.jpeg", title: " GDG Team", category: "TEAM", date: "2026" },
+  { src: "/gallery/team2.jpeg", title: "GDG Core Team", category: "TEAM", date: "2026" },
+  { src: "/gallery/team3.jpeg", title: "GDG Team Appreciation Moment", category: "TEAM", date: "2026" },
+  { src: "/gallery/team4.jpeg", title: "With GDG Winners", category: "TEAM", date: "2026" },
+
+  { src: "/gallery/swag1.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/swag2.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/swag3.jpeg", title: "Swags Distribution", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/swag4.jpeg", title: "Certificate Facilitate", category: "ACHIEVEMENT", date: "2026" },
+
+  { src: "/gallery/director.jpeg", title: "Award", category: "COMMUNITY", date: "2026" },
+  { src: "/gallery/event.jpeg", title: "Events", category: "HACKATHON", date: "2026" },
+  { src: "/gallery/help.jpeg", title: "Helping Students", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/robo.jpeg", title: "Robotics Winner", category: "ACHIEVEMENT", date: "2026" },
+
+  
+  { src: "/gallery/meet.jpeg", title: "GDG Conference with Director Sir ", category: "ACHIEVEMENT", date: "2026" },
+  { src: "/gallery/group.jpeg", title: "TCB Members", category: "AWARD", date: "2026" },
+  { src: "/gallery/audiance.jpeg", title: "My Audiance", category: "EVENT", date: "2026" },
+  { src: "/gallery/certificate.jpeg", title: "MERN AKTU Workshop", category: "EVENT", date: "2026" },
+
 ];
 
 function Gallery() {

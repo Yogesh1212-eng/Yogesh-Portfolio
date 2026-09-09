@@ -60,6 +60,8 @@ function Projects() {
   const handleNavigateProjects = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    // Naye page ko top se open karne ke liye scroll reset
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     navigate("/projects");
   };
 
