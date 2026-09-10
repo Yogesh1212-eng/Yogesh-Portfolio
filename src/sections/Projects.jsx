@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, Sparkles, Code2, Terminal, FolderGit2, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Sparkles, Code2, Terminal, FolderGit2, ExternalLink, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./Projects.css";
 
@@ -13,6 +13,7 @@ const featuredProjects = [
       "A full-stack enterprise learning platform with JWT authentication, role-based access, course management, video uploads via Cloudinary, and progress tracking.",
     tags: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
     github: "https://github.com/Yogesh1212-eng/LMS",
+    live: "https://lms-3-7g0b.onrender.com/", // Aapka live link yahan aayega
   },
   {
     number: "02",
@@ -23,6 +24,7 @@ const featuredProjects = [
       "A digital event and entry management system designed to automate registration, live verification, participant access logs, and rapid badge validation.",
     tags: ["Python", "QR Code", "Automation", "SQLite", "FastAPI"],
     github: "https://github.com/Yogesh1212-eng/Event-Feedback",
+    live: "https://event-feedback-demo.vercel.app", // Aapka live link yahan aayega
   },
   {
     number: "03",
@@ -33,6 +35,7 @@ const featuredProjects = [
       "An intelligent digital campus platform built to improve student productivity, automate academic queries, and provide predictive campus navigation.",
     tags: ["HTML5", "CSS3", "JavaScript", "AI Integration", "FastAPI"],
     github: "https://github.com/Yogesh1212-eng/SmartCampus_AI",
+    live: "https://smartcampus-ai-demo.vercel.app", // Aapka live link yahan aayega
   },
 ];
 
@@ -156,16 +159,30 @@ function Projects() {
                         &#125;);
                       </div>
 
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mac-action-btn"
-                      >
-                        <Code2 size={16} />
-                        <span>Inspect Source</span>
-                        <ExternalLink size={14} />
-                      </a>
+                      {/* ACTION BUTTONS: INSPECT SOURCE & LIVE DEMO */}
+                      <div className="mac-buttons-row">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mac-action-btn github-action-btn"
+                        >
+                          <Code2 size={15} />
+                          <span>Inspect Source</span>
+                          <ExternalLink size={13} />
+                        </a>
+
+                        <a
+                          href={project.live || project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mac-action-btn live-action-btn"
+                        >
+                          <Globe size={15} />
+                          <span>Live Demo</span>
+                          <ArrowUpRight size={14} />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>

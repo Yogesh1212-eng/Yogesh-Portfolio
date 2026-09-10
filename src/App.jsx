@@ -19,6 +19,7 @@ import AllGallery from "./pages/AllGallery";
 
 import "./App.css";
 import "./components/Navbar.css";
+import FloatingCallButton from "./components/FloatingCallButton";
 
 function Home() {
   return (
@@ -32,6 +33,8 @@ function Home() {
       <Certificates />
       <Gallery />
       <Contact />
+      <FloatingCallButton />
+      
     </>
   );
 }

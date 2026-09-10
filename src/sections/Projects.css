@@ -10,6 +10,7 @@
   color: #ffffff;
   padding: 95px 0 110px;
   overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Background Atmosphere */
@@ -133,14 +134,14 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
   overflow: hidden;
-  /* NO BLUR, STRICT 100% OPACITY */
   opacity: 1 !important;
   filter: none !important;
   transform: scale(0.98);
   transition:
     transform 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
     border-color 0.4s ease,
-    box-shadow 0.4s ease;
+    box-shadow 0.4s ease,
+    background 0.3s ease;
   will-change: transform;
 }
 
@@ -162,6 +163,7 @@
   padding: 13px 22px;
   background: rgba(20, 20, 24, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .mac-traffic-lights {
@@ -293,6 +295,7 @@
   border-radius: 14px;
   background: #08080a;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .code-lines {
@@ -307,28 +310,53 @@
 .c-func { color: #61afef; }
 .c-const { color: #d19a66; }
 
+/* DUAL ACTION BUTTONS (INSPECT SOURCE & LIVE DEMO) */
+.mac-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
 .mac-action-btn {
-  margin-top: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 9px 18px;
+  gap: 7px;
+  padding: 8px 14px;
   border-radius: 9px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #ffffff;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  background: rgba(229, 9, 20, 0.14);
-  border: 1px solid rgba(229, 9, 20, 0.45);
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.mac-action-btn:hover {
+.github-action-btn {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.github-action-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.live-action-btn {
+  color: #ffffff;
+  background: rgba(229, 9, 20, 0.16);
+  border: 1px solid rgba(229, 9, 20, 0.55);
+}
+
+.live-action-btn:hover {
   background: #e50914;
   border-color: #e50914;
   box-shadow: 0 6px 18px rgba(229, 9, 20, 0.4);
+  transform: translateY(-2px);
 }
 
 .mac-glow-rim {
@@ -418,67 +446,181 @@
 }
 
 /* =========================================================
-   LIGHT THEME SUPPORT
+   LIGHT THEME SUPPORT (HIGH CONTRAST & VISIBILITY)
+   Covers .app.light, [data-theme="light"], and body.light
 ========================================================= */
 
-.app.light .projects-section {
-  background: #f5f5f5 !important;
-  color: #080808;
+.app.light .projects-section,
+[data-theme="light"] .projects-section,
+body.light .projects-section,
+.light .projects-section {
+  background: #f8fafc !important;
+  color: #0f172a !important;
 }
 
-.app.light .projects-title {
-  color: #080808;
+.app.light .projects-grid-bg,
+[data-theme="light"] .projects-grid-bg,
+body.light .projects-grid-bg,
+.light .projects-grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
 }
 
-.app.light .projects-subtitle {
-  color: #555555;
+.app.light .projects-title,
+[data-theme="light"] .projects-title,
+body.light .projects-title,
+.light .projects-title {
+  color: #0f172a !important;
 }
 
-.app.light .project-mac-window {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+.app.light .projects-subtitle,
+[data-theme="light"] .projects-subtitle,
+body.light .projects-subtitle,
+.light .projects-subtitle {
+  color: #475569 !important;
 }
 
-.app.light .mac-titlebar {
-  background: #f0f0f2;
+/* Mac Window Light Styling */
+.app.light .project-mac-window,
+[data-theme="light"] .project-mac-window,
+body.light .project-mac-window,
+.light .project-mac-window {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08) !important;
 }
 
-.app.light .mac-tab {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+.app.light .project-mac-window.card-scaled,
+[data-theme="light"] .project-mac-window.card-scaled,
+body.light .project-mac-window.card-scaled,
+.light .project-mac-window.card-scaled {
+  border-color: rgba(229, 9, 20, 0.65) !important;
+  box-shadow: 0 25px 65px rgba(229, 9, 20, 0.15) !important;
 }
 
-.app.light .mac-filename {
-  color: #111111;
+/* Light Titlebar */
+.app.light .mac-titlebar,
+[data-theme="light"] .mac-titlebar,
+body.light .mac-titlebar,
+.light .mac-titlebar {
+  background: #f1f5f9 !important;
+  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-.app.light .mac-project-title {
-  color: #080808;
+.app.light .mac-tab,
+[data-theme="light"] .mac-tab,
+body.light .mac-tab,
+.light .mac-tab {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-.app.light .mac-project-desc {
-  color: #555555;
+.app.light .mac-filename,
+[data-theme="light"] .mac-filename,
+body.light .mac-filename,
+.light .mac-filename {
+  color: #0f172a !important;
 }
 
-.app.light .code-preview-pane {
-  background: #fafafa;
-  border-color: rgba(0, 0, 0, 0.08);
+.app.light .mac-meta-badge,
+[data-theme="light"] .mac-meta-badge,
+body.light .mac-meta-badge,
+.light .mac-meta-badge {
+  color: #64748b !important;
 }
 
-.app.light .code-lines {
-  color: rgba(0, 0, 0, 0.65);
+/* Light Content Text */
+.app.light .mac-project-title,
+[data-theme="light"] .mac-project-title,
+body.light .mac-project-title,
+.light .mac-project-title {
+  color: #0f172a !important;
 }
 
-.app.light .projects-showcase-btn {
-  background: #ffffff;
-  color: #080808;
-  border-color: rgba(229, 9, 20, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+.app.light .mac-project-desc,
+[data-theme="light"] .mac-project-desc,
+body.light .mac-project-desc,
+.light .mac-project-desc {
+  color: #334155 !important;
 }
 
-.app.light .projects-showcase-btn .btn-main-text {
-  color: #080808;
+.app.light .mac-tag,
+[data-theme="light"] .mac-tag,
+body.light .mac-tag,
+.light .mac-tag {
+  background: rgba(229, 9, 20, 0.04) !important;
+  border-color: rgba(229, 9, 20, 0.25) !important;
+  color: #1e293b !important;
+}
+
+/* Light Code Preview Pane */
+.app.light .code-preview-pane,
+[data-theme="light"] .code-preview-pane,
+body.light .code-preview-pane,
+.light .code-preview-pane {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+.app.light .code-lines,
+[data-theme="light"] .code-lines,
+body.light .code-lines,
+.light .code-lines {
+  color: #334155 !important;
+}
+
+.app.light .c-keyword,
+[data-theme="light"] .c-keyword { color: #dc2626 !important; }
+.app.light .c-string,
+[data-theme="light"] .c-string { color: #15803d !important; }
+.app.light .c-func,
+[data-theme="light"] .c-func { color: #0284c7 !important; }
+.app.light .c-const,
+[data-theme="light"] .c-const { color: #d97706 !important; }
+
+/* Light Action Buttons */
+.app.light .github-action-btn,
+[data-theme="light"] .github-action-btn,
+body.light .github-action-btn,
+.light .github-action-btn {
+  color: #0f172a !important;
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+.app.light .github-action-btn:hover,
+[data-theme="light"] .github-action-btn:hover,
+body.light .github-action-btn:hover,
+.light .github-action-btn:hover {
+  background: #f1f5f9 !important;
+}
+
+.app.light .live-action-btn,
+[data-theme="light"] .live-action-btn,
+body.light .live-action-btn,
+.light .live-action-btn {
+  color: #ffffff !important;
+  background: #e50914 !important;
+  border-color: #e50914 !important;
+}
+
+/* Light Showcase CTA Button */
+.app.light .projects-showcase-btn,
+[data-theme="light"] .projects-showcase-btn,
+body.light .projects-showcase-btn,
+.light .projects-showcase-btn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(229, 9, 20, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+.app.light .projects-showcase-btn .btn-main-text,
+[data-theme="light"] .projects-showcase-btn .btn-main-text,
+body.light .projects-showcase-btn .btn-main-text,
+.light .projects-showcase-btn .btn-main-text {
+  color: #0f172a !important;
 }
 
 /* =========================================================
@@ -502,12 +644,14 @@
     border: none;
   }
 
-  .mac-action-btn {
-    width: 100%;
+  .mac-buttons-row {
     margin-top: 0;
   }
 
-  /* Mobile par scale factor thoda gentle taaki overflow na ho */
+  .mac-action-btn {
+    flex: 1;
+  }
+
   .project-mac-window.card-scaled {
     transform: scale(1.02);
   }
@@ -541,6 +685,15 @@
   .mac-project-desc {
     font-size: 12.5px;
     margin-bottom: 14px;
+  }
+
+  .mac-buttons-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mac-action-btn {
+    width: 100%;
   }
 
   .projects-showcase-btn {

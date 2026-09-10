@@ -1,0 +1,221 @@
+/* =========================================================
+   COMPACT STICKY CALL BUTTON (MINIMALIST)
+========================================================= */
+
+.sticky-call-wrapper {
+  position: fixed;
+  left: 20px;
+  bottom: 22px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.sticky-call-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  background: rgba(14, 14, 18, 0.9);
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.75),
+    0 0 16px rgba(229, 9, 20, 0.22);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.25, 1);
+  overflow: hidden;
+}
+
+/* Subtle Radar Ring */
+.call-radar-wave {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(229, 9, 20, 0.75);
+  pointer-events: none;
+  animation: callRadarPing 2.2s infinite cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes callRadarPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* Compact Red Sphere (36px Desktop) */
+.call-icon-circle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e50914, #990000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 
+    0 0 12px rgba(229, 9, 20, 0.7),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+/* Ringing Shake Animation */
+.phone-vibrate-icon {
+  animation: phoneRingShake 3.2s infinite ease-in-out;
+}
+
+@keyframes phoneRingShake {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-14deg); }
+  20%, 40% { transform: rotate(14deg); }
+  50% { transform: rotate(0deg); }
+}
+
+/* Expandable Text (Desktop Only) */
+.call-action-text {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0;
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: max-width 0.35s cubic-bezier(0.2, 0.85, 0.25, 1),
+              opacity 0.25s ease,
+              padding 0.25s ease;
+}
+
+.call-status-dot {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #27c93f;
+  box-shadow: 0 0 6px #27c93f;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.call-label-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.call-label-sub {
+  font-family: monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Desktop Hover */
+.sticky-call-btn:hover {
+  transform: translateY(-2px);
+  border-color: #e50914;
+  box-shadow: 
+    0 10px 26px rgba(0, 0, 0, 0.9),
+    0 0 24px rgba(229, 9, 20, 0.45);
+}
+
+.sticky-call-btn:hover .call-icon-circle {
+  transform: scale(1.05);
+}
+
+.sticky-call-btn:hover .call-action-text {
+  max-width: 125px;
+  opacity: 1;
+  padding-right: 18px;
+}
+
+.sticky-call-btn:hover .call-status-dot {
+  opacity: 1;
+}
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+.app.light .sticky-call-btn,
+[data-theme="light"] .sticky-call-btn,
+body.light .sticky-call-btn,
+.light .sticky-call-btn {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 
+    0 8px 20px rgba(15, 23, 42, 0.1),
+    0 0 14px rgba(229, 9, 20, 0.14);
+}
+
+.app.light .call-label-title,
+[data-theme="light"] .call-label-title {
+  color: #0f172a;
+}
+
+.app.light .call-label-sub,
+[data-theme="light"] .call-label-sub {
+  color: #475569;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE (ULTRA-COMPACT)
+========================================================= */
+
+@media (max-width: 768px) {
+  .sticky-call-wrapper {
+    left: 14px;
+    bottom: 16px;
+  }
+
+  .sticky-call-btn {
+    padding: 3px;
+    box-shadow: 
+      0 6px 18px rgba(0, 0, 0, 0.8),
+      0 0 14px rgba(229, 9, 20, 0.25);
+  }
+
+  /* Ultra-compact 30px sphere on mobile */
+  .call-icon-circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .call-icon-circle svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .call-radar-wave {
+    width: 30px;
+    height: 30px;
+    left: 3px;
+    top: 3px;
+  }
+
+  /* Mobile par expanding text bilkul hide rahega taaki view block na ho */
+  .call-action-text,
+  .call-status-dot {
+    display: none !important;
+  }
+
+  .sticky-call-btn:hover {
+    transform: scale(0.96); /* Touch feedback */
+  }
+}

@@ -1,651 +1,578 @@
 /* =========================================================
-   ALL PROJECTS PAGE
-   ========================================================= */
+   ALL PROJECTS PAGE - MAC TERMINAL LUXURY DARK THEME
+========================================================= */
 
 .all-projects-page {
   width: 100%;
   min-height: 100vh;
-
   position: relative;
-
   overflow: hidden;
-
-  background:
-    radial-gradient(
-      circle at 8% 25%,
-      rgba(255, 30, 30, 0.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 92% 70%,
-      rgba(255, 30, 30, 0.08),
-      transparent 28%
-    ),
-    linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    #050505;
-
-  background-size:
-    auto,
-    auto,
-    48px 48px,
-    48px 48px;
-
-  color: #fff;
+  background: #050505 !important;
+  color: #ffffff;
+  padding: 40px 0 110px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-
-/* =========================================================
-   GLOW
-   ========================================================= */
-
+/* Background Atmosphere */
 .all-projects-glow {
   position: absolute;
-
-  width: 450px;
-  height: 450px;
-
+  width: 550px;
+  height: 550px;
   border-radius: 50%;
-
-  filter: blur(120px);
-
+  filter: blur(150px);
   pointer-events: none;
+  opacity: 0.12;
 }
 
 .all-projects-glow-one {
-  left: -300px;
-  top: 25%;
-
-  background: rgba(255, 20, 20, 0.10);
+  left: -240px;
+  top: 15%;
+  background: #e50914;
 }
 
 .all-projects-glow-two {
-  right: -300px;
+  right: -240px;
   bottom: 10%;
-
-  background: rgba(255, 20, 20, 0.07);
+  background: #e50914;
 }
 
+.all-projects-grid-bg-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 45px 45px;
+  z-index: 1;
+}
 
-/* =========================================================
-   CONTAINER
-   ========================================================= */
-
+/* Container */
 .all-projects-container {
-  width: 100%;
-  max-width: 1200px;
-
+  width: min(1240px, 92%);
   margin: 0 auto;
-
-  padding: 80px 30px 100px;
-
-  box-sizing: border-box;
-
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Back Button */
+.all-projects-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  margin-bottom: 40px;
+  transition: all 0.25s ease;
+}
 
-/* =========================================================
-   HEADING
-   ========================================================= */
+.all-projects-back-btn:hover {
+  color: #ffffff;
+  background: rgba(229, 9, 20, 0.18);
+  border-color: rgba(229, 9, 20, 0.45);
+  transform: translateX(-3px);
+}
 
+/* Header */
 .all-projects-heading {
   text-align: center;
-
-  margin-bottom: 55px;
+  max-width: 760px;
+  margin: 0 auto 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.all-projects-small-title {
-  display: block;
-
+.all-projects-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #e50914;
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  padding: 5px 14px;
+  border-radius: 999px;
   margin-bottom: 12px;
-
-  color: #777;
-
-  font-size: 9px;
-
-  letter-spacing: 4px;
 }
 
 .all-projects-heading h1 {
   margin: 0;
-
-  font-size: clamp(45px, 5vw, 68px);
-
+  font-size: clamp(40px, 5.5vw, 68px);
   line-height: 1;
-
-  font-weight: 800;
-
-  letter-spacing: -3px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 }
 
 .all-projects-heading h1 span {
-  color: #ff2424;
+  color: #e50914;
 }
 
 .all-projects-heading p {
-  max-width: 650px;
-
-  margin: 15px auto 0;
-
-  color: #858585;
-
+  max-width: 620px;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.55);
   font-size: 14px;
-
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
+/* =========================================================
+   STATS BAR (METRIC CHIPS)
+========================================================= */
+
+.projects-vault-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 40px;
+}
+
+.stat-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-unit span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.stat-unit strong {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #27c93f;
+  box-shadow: 0 0 8px #27c93f;
+}
 
 /* =========================================================
-   GRID
-   ========================================================= */
+   2-COLUMN GRID (MACBOOK WINDOW TERMINALS)
+========================================================= */
 
 .all-projects-grid {
   display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 22px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  width: 100%;
 }
-
-
-/* =========================================================
-   CARD
-   ========================================================= */
 
 .all-project-card {
   position: relative;
-
-  min-height: 390px;
-
-  overflow: hidden;
-
-  border: 1px solid rgba(255, 255, 255, 0.10);
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.035),
-      rgba(255, 255, 255, 0.012)
-    ),
-    #0a0a0a;
-
+  border-radius: 20px;
+  background: linear-gradient(145deg, #131316, #09090b);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
-
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.4s cubic-bezier(0.2, 0.85, 0.25, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .all-project-card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(255, 36, 36, 0.45);
-
+  transform: translateY(-6px);
+  border-color: rgba(229, 9, 20, 0.55);
   box-shadow:
-    0 20px 60px rgba(255, 20, 20, 0.08);
+    0 25px 65px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(229, 9, 20, 0.15);
 }
 
-
-/* =========================================================
-   LAST PROJECT
-   ========================================================= */
-
+/* Centered last item if odd number */
 .all-project-card-last {
   grid-column: 1 / -1;
-
-  width: calc(50% - 11px);
-
+  width: min(100%, calc(50% - 13px));
   margin: 0 auto;
 }
 
-
 /* =========================================================
-   TOP BAR
-   ========================================================= */
+   MAC TITLEBAR
+========================================================= */
 
-.all-project-top {
-  height: 48px;
-
-  padding: 0 22px;
-
+.mac-terminal-top {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-
-  box-sizing: border-box;
+  padding: 12px 18px;
+  background: rgba(20, 20, 24, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.all-project-number {
-  color: #ff2424;
-
-  font-size: 12px;
-
-  font-weight: 700;
-}
-
-.all-project-label {
-  color: #666;
-
-  font-size: 8px;
-
-  letter-spacing: 3px;
-}
-
-
-/* =========================================================
-   VISUAL
-   ========================================================= */
-
-.all-project-visual {
-  position: relative;
-
-  height: 125px;
-
-  overflow: hidden;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(255, 30, 30, 0.12),
-      transparent 38%
-    );
-}
-
-
-/* =========================================================
-   GRID BACKGROUND
-   ========================================================= */
-
-.all-project-grid-bg {
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    );
-
-  background-size: 40px 40px;
-}
-
-
-/* =========================================================
-   VISUAL CONTENT
-   ========================================================= */
-
-.all-project-visual-content {
-  position: relative;
-
-  height: 100%;
-
+.mac-dots {
   display: flex;
-
   align-items: center;
-
-  justify-content: center;
-
-  gap: 22px;
+  gap: 6px;
 }
 
-.all-project-visual-number {
-  color: rgba(255, 30, 30, 0.15);
-
-  font-size: 70px;
-
-  line-height: 1;
-
-  font-weight: 900;
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.all-project-visual-label {
-  color: #ff2424;
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
 
+.mac-tab-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tab-icon {
+  color: #e50914;
+}
+
+.mac-filename {
+  font-family: monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.mac-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 9px;
-
-  letter-spacing: 5px;
-
-  font-weight: 600;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.45);
 }
 
+.badge-live-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #27c93f;
+  box-shadow: 0 0 6px #27c93f;
+}
 
 /* =========================================================
-   CONTENT
-   ========================================================= */
+   CARD CONTENT
+========================================================= */
 
 .all-project-content {
-  padding: 18px 22px 20px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.project-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.project-id-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #e50914;
+}
+
+.project-type-tag {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .all-project-content h2 {
-  margin: 0 0 8px;
-
-  color: #f5f5f5;
-
-  font-size: 22px;
-
-  line-height: 1.2;
-
-  font-weight: 750;
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.25;
 }
 
 .all-project-content p {
-  margin: 0 0 13px;
-
-  color: #858585;
-
-  font-size: 12px;
-
-  line-height: 1.5;
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-
 /* =========================================================
-   TAGS
-   ========================================================= */
+   TAGS (RED PULSE DOTS)
+========================================================= */
 
 .all-project-tags {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 6px;
-
-  margin-bottom: 14px;
+  margin-bottom: 22px;
 }
 
 .all-project-tag {
   display: inline-flex;
-
   align-items: center;
-
-  gap: 5px;
-
-  padding: 5px 8px;
-
-  border: 1px solid rgba(255, 255, 255, 0.09);
-
+  gap: 6px;
+  padding: 4px 9px;
   border-radius: 6px;
-
-  background: rgba(255, 255, 255, 0.025);
-
-  color: #d5d5d5;
-
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(229, 9, 20, 0.28);
+  color: #e2e8f0;
   font-size: 10px;
-
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.all-project-tag span {
-  color: #ff2424;
+.tag-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e50914;
+  box-shadow: 0 0 6px #e50914;
 }
-
 
 /* =========================================================
-   GITHUB
-   ========================================================= */
+   DUAL ACTION BUTTONS (GITHUB & LIVE DEMO)
+========================================================= */
 
-.all-project-github {
-  display: inline-flex;
-
+.all-project-actions {
+  display: flex;
   align-items: center;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+}
 
-  gap: 8px;
-
-  padding: 8px 13px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  border-radius: 7px;
-
-  background: rgba(255, 255, 255, 0.025);
-
-  color: #fff;
-
-  text-decoration: none;
-
+.action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 11px;
-
-  font-weight: 600;
-
-  transition: 0.25s ease;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.all-project-github span {
-  color: #ff2424;
-
-  font-size: 14px;
+.github-btn {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.all-project-github:hover {
-  border-color: #ff2424;
-
-  color: #ff2424;
-
+.github-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
 }
 
+.live-btn {
+  color: #ffffff;
+  background: rgba(229, 9, 20, 0.14);
+  border: 1px solid rgba(229, 9, 20, 0.45);
+}
+
+.live-btn:hover {
+  background: #e50914;
+  border-color: #e50914;
+  box-shadow: 0 6px 18px rgba(229, 9, 20, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-ambient-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: inset 0 0 25px rgba(229, 9, 20, 0.08);
+  pointer-events: none;
+}
 
 /* =========================================================
-   LIGHT MODE
-   ========================================================= */
+   LIGHT THEME SUPPORT
+========================================================= */
 
-.app.light .all-projects-page {
-  background:
-    radial-gradient(
-      circle at 8% 25%,
-      rgba(255, 30, 30, 0.07),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 92% 70%,
-      rgba(255, 30, 30, 0.05),
-      transparent 28%
-    ),
-    linear-gradient(
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    #f5f5f5;
-
-  background-size:
-    auto,
-    auto,
-    48px 48px,
-    48px 48px;
-
-  color: #111;
+.app.light .all-projects-page,
+[data-theme="light"] .all-projects-page,
+body.light .all-projects-page {
+  background: #f8fafc !important;
+  color: #0f172a !important;
 }
 
-.app.light .all-projects-small-title {
-  color: #666;
+.app.light .all-projects-heading h1,
+[data-theme="light"] .all-projects-heading h1 {
+  color: #0f172a !important;
 }
 
-.app.light .all-projects-heading h1 {
-  color: #111;
+.app.light .all-projects-heading p,
+[data-theme="light"] .all-projects-heading p {
+  color: #475569 !important;
 }
 
-.app.light .all-projects-heading p {
-  color: #555;
+.app.light .all-projects-back-btn,
+[data-theme="light"] .all-projects-back-btn {
+  background: rgba(15, 23, 42, 0.04) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
 }
 
-.app.light .all-project-card {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.09);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+.app.light .projects-vault-stats,
+[data-theme="light"] .projects-vault-stats {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-.app.light .all-project-card:hover {
-  border-color: rgba(255, 36, 36, 0.45);
-  box-shadow: 0 15px 45px rgba(255, 20, 20, 0.10);
+.app.light .stat-unit strong,
+[data-theme="light"] .stat-unit strong {
+  color: #0f172a !important;
 }
 
-.app.light .all-project-top {
-  border-bottom-color: rgba(0, 0, 0, 0.06);
+.app.light .all-project-card,
+[data-theme="light"] .all-project-card {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06) !important;
 }
 
-.app.light .all-project-label {
-  color: #777;
+.app.light .mac-terminal-top,
+[data-theme="light"] .mac-terminal-top {
+  background: #f1f5f9 !important;
+  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-.app.light .all-project-visual {
-  border-bottom-color: rgba(0, 0, 0, 0.06);
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(255, 30, 30, 0.08),
-      transparent 38%
-    );
+.app.light .mac-filename,
+[data-theme="light"] .mac-filename {
+  color: #0f172a !important;
 }
 
-.app.light .all-project-grid-bg {
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    );
-  background-size: 40px 40px;
+.app.light .all-project-content h2,
+[data-theme="light"] .all-project-content h2 {
+  color: #0f172a !important;
 }
 
-.app.light .all-project-visual-number {
-  color: rgba(255, 30, 30, 0.12);
+.app.light .all-project-content p,
+[data-theme="light"] .all-project-content p {
+  color: #334155 !important;
 }
 
-.app.light .all-project-content h2 {
-  color: #111;
+.app.light .all-project-tag,
+[data-theme="light"] .all-project-tag {
+  background: rgba(229, 9, 20, 0.04) !important;
+  border-color: rgba(229, 9, 20, 0.25) !important;
+  color: #1e293b !important;
 }
 
-.app.light .all-project-content p {
-  color: #555;
+.app.light .github-btn,
+[data-theme="light"] .github-btn {
+  color: #0f172a !important;
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
 }
-
-.app.light .all-project-tag {
-  color: #222;
-  border-color: rgba(0, 0, 0, 0.10);
-  background: rgba(0, 0, 0, 0.03);
-}
-
-.app.light .all-project-github {
-  color: #111;
-  border-color: rgba(0, 0, 0, 0.14);
-  background: rgba(0, 0, 0, 0.025);
-}
-
-.app.light .all-project-github:hover {
-  border-color: #ff2424;
-  color: #ff2424;
-  background: rgba(255, 36, 36, 0.04);
-}
-
 
 /* =========================================================
-   TABLET
-   ========================================================= */
+   RESPONSIVE (TABLET & MOBILE)
+========================================================= */
 
-@media (max-width: 850px) {
-
-  .all-projects-container {
-    padding: 60px 20px 80px;
-  }
-
+@media (max-width: 900px) {
   .all-projects-grid {
-    gap: 18px;
-  }
-
-  .all-project-card {
-    min-height: 390px;
+    grid-template-columns: 1fr;
   }
 
   .all-project-card-last {
-    width: calc(50% - 9px);
+    width: 100%;
+  }
+
+  .projects-vault-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .stat-divider {
+    display: none;
   }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media (max-width: 600px) {
-
-  .all-projects-container {
-    padding: 45px 16px 60px;
+  .all-projects-page {
+    padding: 30px 0 70px;
   }
 
   .all-projects-heading {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
   }
 
-  .all-projects-heading h1 {
-    font-size: 38px;
-
-    letter-spacing: -2px;
-  }
-
-  .all-projects-heading p {
-    font-size: 12px;
-  }
-
-  .all-projects-grid {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-  }
-
-  .all-project-card {
-    width: 100%;
-
-    min-height: 380px;
-  }
-
-  .all-project-card-last {
-    grid-column: auto;
-
-    width: 100%;
-
-    margin: 0;
+  .all-project-content {
+    padding: 16px 18px;
   }
 
   .all-project-content h2 {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .all-project-content p {
     font-size: 12px;
+  }
+
+  .all-project-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-btn {
+    width: 100%;
   }
 }
