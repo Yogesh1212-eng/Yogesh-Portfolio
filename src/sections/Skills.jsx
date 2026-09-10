@@ -118,22 +118,22 @@ const skills = [
   {
     number: "01",
     title: "Languages",
-    items: ["Python", "JavaScript", "SQL"],
+    items: ["Python","Java", "JavaScript", "SQL"],
   },
   {
     number: "02",
     title: "Frontend",
-    items: ["HTML", "CSS", "React.js"],
+    items: ["HTML", "CSS","Javascript", "React.js"],
   },
   {
     number: "03",
     title: "Backend",
-    items: ["Node.js", "Express.js", "REST APIs"],
+    items: ["Node.js", "Express.js", "REST APIs","Postman"],
   },
   {
     number: "04",
     title: "Database",
-    items: ["MongoDB", "Mongoose", "MongoDB Atlas"],
+    items: ["MongoDB", "Mongoose", "MongoDB Atlas","MySQL"],
   },
   {
     number: "05",

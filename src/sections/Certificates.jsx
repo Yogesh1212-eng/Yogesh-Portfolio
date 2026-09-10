@@ -91,7 +91,7 @@ const Certifications = () => {
 
             <div className="cert-stat">
               <div className="cert-stat-number">
-                <span>+</span>30
+                <span>+</span>40
               </div>
               <div className="cert-stat-info">
                 <strong>CERTIFICATIONS</strong>
@@ -146,7 +146,7 @@ const Certifications = () => {
               ))}
 
               <div className="cert-stack-number">
-                30<span>+</span>
+                40<span>+</span>
               </div>
             </div>
           </div>

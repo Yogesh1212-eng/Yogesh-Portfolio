@@ -15,7 +15,7 @@ const onlineCertificates = [
         image: "/certificates/online/google-genai.jpeg",
         description:
           "Completed Gen AI Academy covering Google's Generative AI tools and platforms including Vertex AI, Gemini APIs, Imagen, Streamlit and Multimodal RAG.",
-        credential: "#",
+        credential: "https://certificate.hack2skill.com/legacy/2025H2S04GENAI-A01805",
       },
       {
         title: "Google Cloud Arcade Facilitator Program",
@@ -24,7 +24,7 @@ const onlineCertificates = [
         image: "/certificates/online/google-arcade.jpeg",
         description:
           "Achieved the Ultimate Milestone with exceptional dedication in the Google Cloud Arcade Facilitator Program 2025 Cohort 1.",
-        credential: "#",
+        credential: "https://www.credly.com/users/yogesh-maurya.9ac59771/badges/credly",
       },
       {
         title: "Bring AI to Work Workshop",
@@ -39,10 +39,10 @@ const onlineCertificates = [
         title: "Google Cloud Study Jam 2025",
         organization: "GDG on Campus — BBDNIIT",
         date: "Oct–Nov 2025",
-        image: "/certificates/online/gdg-studyjam.jpg",
+        image: "/certificates/online/gdg-studyjam.jpeg",
         description:
-          "Comprehensive completion certificate for practical cloud pathways during Google Cloud Study Jam 2025[cite: 1].",
-        credential: "#",
+          "Comprehensive completion certificate for practical cloud pathways during Google Cloud Study Jam 2025.",
+        credential: "https://www.credly.com/users/yogesh-maurya.041b60d9/badges/credly",
       },
     ],
   },
@@ -110,7 +110,7 @@ const onlineCertificates = [
         image: "/certificates/online/solution-challenge-2026.jpeg",
         description:
           "Certificate of participation for successful prototype submission in Solution Challenge 2026: Build with AI.",
-        credential: "#",
+        credential: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS17718",
       },
       {
         title: "Coderush 2.0 Hackathon",
@@ -119,7 +119,7 @@ const onlineCertificates = [
         image: "/certificates/online/coderush-hackathon.jpeg",
         description:
           "Successfully participated in the Coderush 2.0 Hackathon demonstrating innovation and technical problem-solving.",
-        credential: "#",
+        credential: "https://certifyix.com/verify/CODER-CT9BPH",
       },
       {
         title: "AKTU AI Tech Confluence Hackathon",
@@ -128,6 +128,15 @@ const onlineCertificates = [
         image: "/certificates/online/guvi-hackathon.jpeg",
         description:
           "Certificate of participation for successfully participating in the Hackathon Event during AKTU AI Tech Confluence 2025.",
+        credential: "https://www.guvi.in/verify-certificate?id=FQ49U9120h771553yu",
+      },
+      {
+        title: "Gen AI Hackathon 2025",
+        organization: "AI Community Lucknow X GDG",
+        date: "2025",
+        image: "/certificates/online/aihac.jpeg",
+        description:
+          "Certificate of participation in Gen AI Hackathon 2025 powered by AI Community Lucknow.",
         credential: "#",
       },
       {
@@ -137,12 +146,101 @@ const onlineCertificates = [
         image: "/certificates/online/guvi-confluence.jpeg",
         description:
           "Certificate of participation in AKTU AI Tech Confluence 2025 powered by HCL GUVI.",
+        credential: "https://www.guvi.in/verify-certificate?id=6il9M141nF79h76714",
+      },
+    ],
+  },
+
+  
+
+  // 5. Industry Training & Internships
+  {
+    category: "Industry Training & Internships",
+    items: [
+      {
+        title: "Full Stack Development Summer Training",
+        organization: "GRAStech × BBD Campus",
+        date: "June–Aug 2026",
+        image: "/certificates/online/grastech-fullstack.jpeg",
+        description:
+          "Successfully completed a 90 Hours Project-Based Summer Training Program on Full Stack Development.",
+        credential: "#",
+      },
+      {
+        title: "Python Development Virtual Internship",
+        organization: "QSkill (SR INDIA)",
+        date: "Jan–Feb 2026",
+        image: "/certificates/online/qskill-python-internship.jpeg",
+        description:
+          "Certificate of completion for active participation in the Qskill virtual internship program in Python Development.",
+        credential: "#",
+      },
+      {
+        title: "Design to Deploy — Full Stack Web Journey",
+        organization: "Softpro India × AKTU",
+        date: "Nov 24, 2025",
+        image: "/certificates/online/softpro-fullstack.jpeg",
+        description:
+          "Participated in the hands-on technical workshop 'Design to Deploy - A Full Stack Web Journey' in collaboration with Dr. APJ AKTU.",
         credential: "#",
       },
     ],
   },
 
-  // 4. Leadership & Community
+  // 6. Courses & Skill Development
+  {
+    category: "Courses & Skill Development",
+    items: [
+      
+      {
+        title: "Java And C++ Complete Course",
+        organization: "Udemy — Crunch Coding Institute",
+        date: "Aug 11, 2025",
+        image: "/certificates/online/udemy-java-cpp.jpeg",
+        description:
+          "Completed the Java And C++ Complete Course for Java And C++ Beginners.",
+        credential: "#",
+      },
+      {
+        title: "Python Skill Up",
+        organization: "GeeksforGeeks",
+        date: "2025",
+        image: "/certificates/online/gfg-python.jpeg",
+        description:
+          "Successfully completed the Python Skill Up course by GeeksforGeeks.",
+        credential: "#",
+      },
+      {
+        title: "Oracle Certified Foundations Associate ",
+        organization: "ORACLE",
+        date: "October 2025",
+        image: "/certificates/online/oracle.jpeg",
+        description:
+          "Earned the Oracle Certified Foundations Associate credential in Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate 🚀",
+        credential: "#",
+      },
+      {
+        title: "Learnovate Soft Skill Program",
+        organization: "Learnovate Enterprises × BBD",
+        date: "April 2026",
+        image: "/certificates/online/learnovate.jpeg",
+        description:
+          "Completed the Learnovate Enterprises Soft Skill Program at Babu Banarasi Das Educational Group, Lucknow.",
+        credential: "#",
+      },
+      {
+        title: "Build with AI Using GitHub Workshop",
+        organization: "GDG on Campus — BBDNIIT",
+        date: "2026",
+        image: "/certificates/online/gdg-github-ai.jpeg",
+        description:
+          "Active participation and completion of the workshop on AI-driven development and GitHub collaborative workflows.",
+        credential: "#",
+      },
+    ],
+  },
+
+  // 6. Leadership & Community
   {
     category: "Leadership & Community",
     items: [
@@ -150,9 +248,9 @@ const onlineCertificates = [
         title: "Core Team Member & Organizer Recognition",
         organization: "GDG on Campus — BBDNIIT",
         date: "2025",
-        image: "/certificates/online/gdg-organizer.jpeg",
+        image: "/certificates/online/gdg-profile-building.jpeg",
         description:
-          "Awarded Certificate of Appreciation for leadership and community building as the campus GDG Organiser[cite: 1].",
+          "Awarded Certificate of Appreciation for leadership and community building as the campus GDG Organiser.",
         credential: "#",
       },
       {
@@ -183,92 +281,24 @@ const onlineCertificates = [
         credential: "#",
       },
       {
-        title: "Organizing Team — Profile Building Workshop",
-        organization: "GDG — BBDNIIT",
-        date: "May 2, 2026",
-        image: "/certificates/online/gdg-profile-building.jpeg",
+        title: "Internal Coordinator in Utkarsh 2026",
+        organization: "Utkarsh'26 — BBD Educational Group",
+        date: "Feb 2024",
+        image: "/certificates/online/coordinator.jpeg",
         description:
-          "Contributed to organizing the workshop focused on impactful digital presence through LinkedIn, GitHub, and resumes.",
-        credential: "#",
-      },
-    ],
-  },
-
-  // 5. Industry Training & Internships
-  {
-    category: "Industry Training & Internships",
-    items: [
-      {
-        title: "Full Stack Development Summer Training",
-        organization: "GRAStech × BBD Campus",
-        date: "June–Aug 2026",
-        image: "/certificates/online/grastech-fullstack.jpeg",
-        description:
-          "Successfully completed a 90 Hours Project-Based Summer Training Program on Full Stack Development[cite: 1].",
+          "Internal Coordinator in Utkarsh 2026, the Annual Fest of BBD Educational Group,Lucknow.",
         credential: "#",
       },
       {
-        title: "Python Development Virtual Internship",
-        organization: "QSkill (SR INDIA)",
-        date: "Jan–Feb 2026",
-        image: "/certificates/online/qskill-python-internship.jpeg",
+        title: "Speaker in Robotics Workshop",
+        organization: "BBD Educational Group",
+        date: "Feb 2024",
+        image: "/certificates/online/speaker.jpeg",
         description:
-          "Certificate of completion for active participation in the Qskill virtual internship program in Python Development.",
+          "In recognition of your valuable contribution and dedicated efforts in Robotics Workshop help on 8-9 october 2025 at BBDNIIT.",
         credential: "#",
       },
-      {
-        title: "Design to Deploy — Full Stack Web Journey",
-        organization: "Softpro India × AKTU",
-        date: "Nov 24, 2025",
-        image: "/certificates/online/softpro-fullstack.jpeg",
-        description:
-          "Participated in the hands-on technical workshop 'Design to Deploy - A Full Stack Web Journey' in collaboration with Dr. APJ AKTU[cite: 1].",
-        credential: "#",
-      },
-    ],
-  },
-
-  // 6. Courses & Skill Development
-  {
-    category: "Courses & Skill Development",
-    items: [
       
-      {
-        title: "Java And C++ Complete Course",
-        organization: "Udemy — Crunch Coding Institute",
-        date: "Aug 11, 2025",
-        image: "/certificates/online/udemy-java-cpp.jpeg",
-        description:
-          "Completed the Java And C++ Complete Course for Java And C++ Beginners.",
-        credential: "#",
-      },
-      {
-        title: "Python Skill Up",
-        organization: "GeeksforGeeks",
-        date: "2025",
-        image: "/certificates/online/gfg-python.jpeg",
-        description:
-          "Successfully completed the Python Skill Up course by GeeksforGeeks.",
-        credential: "#",
-      },
-      {
-        title: "Learnovate Soft Skill Program",
-        organization: "Learnovate Enterprises × BBD",
-        date: "April 2026",
-        image: "/certificates/online/learnovate.jpeg",
-        description:
-          "Completed the Learnovate Enterprises Soft Skill Program at Babu Banarasi Das Educational Group, Lucknow.",
-        credential: "#",
-      },
-      {
-        title: "Build with AI Using GitHub Workshop",
-        organization: "GDG on Campus — BBDNIIT",
-        date: "2026",
-        image: "/certificates/online/gdg-github-ai.jpeg",
-        description:
-          "Active participation and completion of the workshop on AI-driven development and GitHub collaborative workflows.",
-        credential: "#",
-      },
     ],
   },
 
@@ -285,24 +315,7 @@ const onlineCertificates = [
           "Secured 1st position in the Line Follower robotics competition under the Technical category during Utkarsh'25 Future Tech annual fest.",
         credential: "#",
       },
-      {
-        title: "2nd Position — Line Follower",
-        organization: "Utkarsh'24 — BBD Educational Group",
-        date: "Feb 2024",
-        image: "/certificates/online/utkarsh24-linefollower.jpeg",
-        description:
-          "Secured 2nd position in the Line Follower technical robotics challenge during Utkarsh'24 annual fest[cite: 1].",
-        credential: "#",
-      },
-      {
-        title: "2nd Position — Pick & Place",
-        organization: "Utkarsh'24 — BBD Educational Group",
-        date: "Feb 2024",
-        image: "/certificates/online/utkarsh24-pickplace.jpeg",
-        description:
-          "Awarded Certificate of Merit for securing 2nd position in the Pick & Place technical competition at Utkarsh'24[cite: 1].",
-        credential: "#",
-      },
+      
       {
         title: "3rd Position — Pick and Place",
         organization: "Utkarsh'25 — BBD Educational Group",
@@ -330,13 +343,32 @@ const onlineCertificates = [
           "Achieved 3rd position in the Robo Marathon event under the Technical category at Utkarsh'25 Future Tech annual fest.",
         credential: "#",
       },
+      
+      {
+        title: "2nd Position — Line Follower",
+        organization: "Utkarsh'24 — BBD Educational Group",
+        date: "Feb 2024",
+        image: "/certificates/online/utkarsh24-linefollower.jpeg",
+        description:
+          "Secured 2nd position in the Line Follower technical robotics challenge during Utkarsh'24 annual fest.",
+        credential: "#",
+      },
+      {
+        title: "2nd Position — Pick & Place",
+        organization: "Utkarsh'24 — BBD Educational Group",
+        date: "Feb 2024",
+        image: "/certificates/online/utkarsh24-pickplace.jpeg",
+        description:
+          "Awarded Certificate of Merit for securing 2nd position in the Pick & Place technical competition at Utkarsh'24.",
+        credential: "#",
+      },
       {
         title: "Robo Games: Light Follower",
         organization: "Utkarsh'24 — BBD Educational Group",
         date: "Feb 2024",
         image: "/certificates/online/utkarsh24-lightfollower-part.jpeg",
         description:
-          "Active participation in the Robo Games Light Follower event during the Utkarsh'24 annual fest[cite: 1].",
+          "Active participation in the Robo Games Light Follower event during the Utkarsh'24 annual fest.",
         credential: "#",
       },
     ],
